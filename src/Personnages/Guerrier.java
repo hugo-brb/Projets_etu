@@ -1,6 +1,6 @@
 package Personnages;
 
-import Chateau.Chateau;
+import Plateau.Chateau;
 import Couleur.Couleur;
 
 /**

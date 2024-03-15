@@ -1,4 +1,4 @@
-package Chateau;
+package Plateau;
 
 import Couleur.Couleur;
 import Personnages.Guerrier;
