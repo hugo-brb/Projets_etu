@@ -15,12 +15,14 @@ public class Guerrier {
     private final int PV_MAX_BASE = 100;
     private final int RESSOURCE_BASE = 1;
     private int pointsDeVie;
-    private Couleur c;
+
+    private boolean estEntrainer;
     private Chateau cha;
 
     //Constructors
     public Guerrier(){
         setPointsDeVie(100);
+        this.estEntrainer = false;
     }
     //Méthodes
     public int getForce(){
@@ -30,10 +32,14 @@ public class Guerrier {
         return this.pointsDeVie;
     }
     public int getRessourcesPourEntrainement(){ return RESSOURCE_BASE; }
-    public Couleur getCouleur(){ return c; }
+    public Couleur getCouleur(){ return cha.getCouleur(); }
     public void setPointsDeVie(int pointsDeVie){
         this.pointsDeVie = pointsDeVie;
     }
+    public void setChateau(Chateau c){
+        this.cha = c;
+    }
+    public void setEstEntrainer (boolean b) { this.estEntrainer = b;}
 
     /**
      * Cette méthode permet de connaître l'état d'un Guerrier
@@ -41,6 +47,13 @@ public class Guerrier {
      */
     public boolean estVivant(){
         return getPointsDeVie()>0;
+    }
+
+    public boolean estBleu(){
+        return cha.estBleu();
+    }
+    public boolean estRouge(){
+        return cha.estRouge() ;
     }
 
     /**

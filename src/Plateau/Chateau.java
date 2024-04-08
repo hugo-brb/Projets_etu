@@ -12,6 +12,9 @@ public class Chateau {
     private int ressources;
     private final Couleur c;
 
+    private ArrayList<Guerrier> lesGuerriersNovice;
+    private ArrayList<Guerrier> lesGuerriersEntrainer;
+
     //Constructors
     public Chateau(Couleur couleur) {
         c=couleur;
@@ -21,16 +24,23 @@ public class Chateau {
     public void ajoutGuerrierNovice(Guerrier guerrier){
 
     }
-//    public ArrayList<Guerrier> getGuerriersNovice(){
-//
-//    }
-//
-//    public ArrayList<Guerrier> entrainer(){
-//
-//    }
+    public ArrayList<Guerrier> getGuerriersNovice(){
+        return lesGuerriersNovice;
+    }
+
+    public ArrayList<Guerrier> entrainer(){
+        int i = 0;
+        while (ressources != 0 || i < lesGuerriersNovice.size() ){
+            lesGuerriersNovice.get(i).setEstEntrainer(true);
+            lesGuerriersEntrainer.add(lesGuerriersNovice.get(i));
+            lesGuerriersNovice.remove(lesGuerriersNovice.get(i));
+            i++;
+        }
+        return lesGuerriersEntrainer;
+    }
 
     private void incrementerRessources(){
-
+        this.ressources += AJOUTEE_PAR_TOUR;
     }
 
     public Couleur getCouleur(){
@@ -38,10 +48,10 @@ public class Chateau {
     }
 
     public boolean estBleu(){
-        return c.getCouleur().equals("bleu");
+        return c.getCouleur().equalsIgnoreCase("bleu");
     }
 
     public boolean estRouge(){
-        return c.getCouleur().equals("rouge");
+        return c.getCouleur().equalsIgnoreCase("rouge");
     }
 }
