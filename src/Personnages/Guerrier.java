@@ -1,7 +1,7 @@
 package Personnages;
 
-import Plateau.Chateau;
 import Couleur.Couleur;
+import Plateau.Chateau;
 
 /**
  * Cette classe permet de définir un guerrier de base
@@ -15,6 +15,7 @@ public class Guerrier {
     private final int PV_MAX_BASE = 100;
     private final int RESSOURCE_BASE = 1;
     private int pointsDeVie;
+    private int nbRessources = 0;
 
     private boolean estEntrainer;
     private Chateau cha;
@@ -49,6 +50,9 @@ public class Guerrier {
         return getPointsDeVie()>0;
     }
 
+    /**
+     * Ces méthodes permet de connaître la couleur d'un Guerrier
+     */
     public boolean estBleu(){
         return cha.estBleu();
     }
@@ -74,5 +78,13 @@ public class Guerrier {
      */
     public void subirDegats(int degats){
         setPointsDeVie(getPointsDeVie()-degats);
+    }
+
+    public int getNbRessources() {
+        return nbRessources;
+    }
+
+    public void setNbRessources(int ressources) {
+        this.nbRessources += ressources;
     }
 }

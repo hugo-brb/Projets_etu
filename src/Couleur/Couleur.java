@@ -1,8 +1,5 @@
 package Couleur;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class Couleur {
     private String couleur;
     public Couleur(String couleur) {

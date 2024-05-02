@@ -1,20 +1,11 @@
 package Personnages;
-public class ChefElfe {
-    //attributs
-    private Elfe e;
+public class ChefElfe extends Elfe {
     //Constructors
     public ChefElfe(){
-        setE();
+        super();
     }
     //Méthodes
-
-    public Elfe getE() {
-        return e;
-    }
-    public void setE() {
-        this.e = new Elfe();
-    }
     public int getforce(){
-        return this.e.getforce()*2;
+        return super.getforce()*2;
     }
 }

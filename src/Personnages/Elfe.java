@@ -1,21 +1,12 @@
 package Personnages;
 
-public class Elfe {
-    //attributs
-    private Guerrier g;
+public class Elfe extends Guerrier {
     //Constructors
     public Elfe(){
-        setG();
+        super();
     }
     //Méthodes
-
-    public Guerrier getG() {
-        return g;
-    }
-    public void setG() {
-        this.g = new Guerrier();
-    }
     public int getforce(){
-        return this.g.getForce()*2;
+        return super.getForce()*2;
     }
 }

@@ -1,21 +1,12 @@
 package Personnages;
 
-public class Nain {
-    //attributs
-    private Guerrier g;
+public class Nain extends Guerrier {
     //Constructors
     public Nain(){
-        setG();
+        super();
     }
     //Méthodes
-
-    public Guerrier getG() {
-        return g;
-    }
-    public void setG() {
-        this.g = new Guerrier();
-    }
     public void subirDegats(int degats){
-        this.g.subirDegats(degats/2);
+        super.subirDegats(degats/2);
     }
 }

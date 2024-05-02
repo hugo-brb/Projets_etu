@@ -1,20 +1,13 @@
 package Personnages;
-public class ChefNain {
-    //attributs
-    private Nain n;
+public class ChefNain extends Nain {
+
     //Constructors
     public ChefNain(){
-        setN();
+        super();
     }
     //Méthodes
 
-    public Nain getN() {
-        return this.n;
-    }
-    public void setN() {
-        this.n = new Nain();
-    }
     public void subirDegats(int degats){
-        this.n.subirDegats(degats/2);
+        super.subirDegats(degats/2);
     }
 }
