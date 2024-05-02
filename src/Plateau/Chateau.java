@@ -107,10 +107,6 @@ public class Chateau {
                     temp.setNbRessources(1);
                     this.ressources --;
                 } else {
-                    if (temp.getNbRessources() == 4) {
-                        lesGuerriersEntrainer.add(new ChefElfe());
-                        getGuerriersNovice().remove(temp);
-                    }
                     if (it.hasNext()) {
                         temp = it.next();
                     }
@@ -127,6 +123,7 @@ public class Chateau {
     public void newRescues() {
         Scanner lecteur = new Scanner(System.in);
         ArrayList<Guerrier> tempGuerrier = new ArrayList<>();
+        int i = 0;
         for (Guerrier g : lesGuerriersNovice) {
             String temp;
             if (g.getNbRessources() >= 1) {
@@ -135,26 +132,34 @@ public class Chateau {
                 if (temp.equalsIgnoreCase("y")) {
                     if (g.getNbRessources() == 1) {
                         lesGuerriersEntrainer.add(new Nain());
-                        getGuerriersNovice().remove(g);
+                        i++;
                     } else if (g.getNbRessources() == 2) {
                         lesGuerriersEntrainer.add(new Elfe());
-                        getGuerriersNovice().remove(g);
+                        i ++;
                     } else if (g.getNbRessources() == 3) {
                         lesGuerriersEntrainer.add(new ChefNain());
-                        getGuerriersNovice().remove(g);
+                        i++;
+                    }else if (g.getNbRessources() == 4) {
+                        lesGuerriersEntrainer.add(new ChefElfe());
+                        i++;
                     }
                     tempGuerrier.add(lesGuerriersEntrainer.getLast());
+                    if (estBleu() && !tempGuerrier.isEmpty()) {
+                        pl.getCarreaux().getFirst().ajoutGuerriersBleus(tempGuerrier);
+                    } else if (!tempGuerrier.isEmpty()) {
+                        pl.getCarreaux().getLast().ajoutGuerriersRouge(tempGuerrier);
+                    }
                 }
             }
         }
-        if (estBleu() && !tempGuerrier.isEmpty()) {
-            pl.getCarreaux().getFirst().ajoutGuerriersBleus(tempGuerrier);
-        } else if (!tempGuerrier.isEmpty()) {
-            pl.getCarreaux().getLast().ajoutGuerriersRouge(tempGuerrier);
-        } else {
+        for (int j = 0; j < i; j++){
+            lesGuerriersNovice.remove(lesGuerriersNovice.getLast());
+        }
+         if (tempGuerrier.isEmpty()){
             System.out.println("Vous n'avez pas de guerrier novice à faire sortir du château...");
         }
         incrementerRessources();
+        ajoutGuerrierNovice(new Guerrier());
     }
 
     /**
