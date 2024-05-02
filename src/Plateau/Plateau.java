@@ -1,5 +1,6 @@
 package Plateau;
 
+import Couleur.Couleur;
 import java.util.ArrayList;
 
 public class Plateau {

@@ -1,5 +1,6 @@
 package Plateau;
 
+import Couleur.Couleur;
 import Personnages.*;
 
 import java.util.ArrayList;
