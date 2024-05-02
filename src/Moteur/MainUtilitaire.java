@@ -1,3 +1,5 @@
+package Moteur;
+
 import Plateau.Chateau;
 import Plateau.Plateau;
 

@@ -1,3 +1,5 @@
+package Moteur;
+
 import Couleur.Couleur;
 import Plateau.Chateau;
 import Plateau.Plateau;
