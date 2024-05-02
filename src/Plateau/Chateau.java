@@ -70,7 +70,6 @@ public class Chateau {
         if (getRessources() != 0) {
             Scanner lecteur = new Scanner(System.in);
             Iterator<Guerrier> it = getGuerriersNovice().iterator();
-            int i = 0;
             Guerrier temp = it.next();
             System.out.println(
                     """
@@ -92,9 +91,10 @@ public class Chateau {
                             A vous de faire les bons choix ;)
                             """
             );
-            while (getRessources() != 0) {
-                System.out.println("Le prochain guerrier à entraîner a actuellement " + temp.getNbRessources() + " points d'entraînement.");
-                System.out.println("Vous avez actuellement " + getRessources() + " points d'entraînement disponibles.");
+
+            while (getRessources() != 0 && it.hasNext()) {
+                System.out.println(STR."Le prochain guerrier à entraîner a actuellement \{temp.getNbRessources()} points d'entraînement.");
+                System.out.println(STR."Vous avez actuellement \{getRessources()} points d'entraînement disponibles.");
                 String choix;
                 do {
                     System.out.print("Voulez-vous l'entraîner ? (y|n) ");
@@ -130,7 +130,7 @@ public class Chateau {
         for (Guerrier g : lesGuerriersNovice) {
             String temp;
             if (g.getNbRessources() >= 1) {
-                System.out.print("Vous avez un guerrier avec " + g.getNbRessources() + " points d'entraînement, voulez-vous le sortir du château ? [y|n] ");
+                System.out.print(STR."Vous avez un guerrier avec \{g.getNbRessources()} points d'entraînement, voulez-vous le sortir du château ? [y|n] ");
                 temp = lecteur.nextLine();
                 if (temp.equalsIgnoreCase("y")) {
                     if (g.getNbRessources() == 1) {
@@ -143,7 +143,7 @@ public class Chateau {
                         lesGuerriersEntrainer.add(new ChefNain());
                         getGuerriersNovice().remove(g);
                     }
-                    tempGuerrier.add(lesGuerriersEntrainer.get(lesGuerriersEntrainer.size() - 1));
+                    tempGuerrier.add(lesGuerriersEntrainer.getLast());
                 }
             }
         }

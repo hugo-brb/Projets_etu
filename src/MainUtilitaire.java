@@ -13,7 +13,7 @@ public class MainUtilitaire {
      * @param cha le château du joueur
      */
     public static void tour(Plateau pl, Chateau cha ){
-        System.out.println(" --> Joueur " + cha.getCouleur() + ", à vous de jouer !");
+        System.out.println(STR." --> Joueur \{cha.getCouleur().getCouleur()}, à vous de jouer !");
         System.out.println(
                 """
                 Vous avez actuellement :
