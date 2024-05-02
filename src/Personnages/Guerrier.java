@@ -127,7 +127,7 @@ public class Guerrier {
         for (int i = 0; i < getForce(); i++) {
             d += (int) (Math.random() * 3) + 1;
         }
-        g.setPointsDeVie(g.getPointsDeVie() - d);
+        g.subirDegats(d);
     }
 
     /**

@@ -33,13 +33,23 @@ public class Plateau {
     public void deplaceGuerriers(Couleur c){
         if (c.getCouleur().equalsIgnoreCase("bleu")){
             for (int i=0; i<lesCarreaux.size()-2; i++){
-                lesCarreaux.get(i+1).ajoutGuerriersBleus(lesCarreaux.get(i).getGuerriersBleus());
-                lesCarreaux.get(i).getGuerriersBleus().clear();
+                if (lesCarreaux.get(i).haveBlue()) {
+                    lesCarreaux.get(i + 1).ajoutGuerriersBleus(lesCarreaux.get(i).getGuerriersBleus());
+                    lesCarreaux.get(i).getGuerriersBleus().clear();
+                    if (lesCarreaux.get(i + 1).haveRed()) {
+                        lanceCombat(c, lesCarreaux.get(i + 1));
+                    }
+                }
             }
         }else {
             for (int i=lesCarreaux.size()-1; i>0; i--){
-                lesCarreaux.get(i-1).ajoutGuerriersRouge(lesCarreaux.get(i).getGuerriersRouges());
-                lesCarreaux.get(i).getGuerriersRouges().clear();
+                if (lesCarreaux.get(i).haveRed()) {
+                    lesCarreaux.get(i - 1).ajoutGuerriersRouge(lesCarreaux.get(i).getGuerriersRouges());
+                    lesCarreaux.get(i).getGuerriersRouges().clear();
+                    if (lesCarreaux.get(i - 1).haveBlue()) {
+                        lanceCombat(c, lesCarreaux.get(i - 1));
+                    }
+                }
             }
         }
     }
@@ -47,8 +57,33 @@ public class Plateau {
     /**
      * Lance un combat sur le plateau.
      */
-    public void lanceCombat(){
+    public void lanceCombat(Couleur c, Carreau ca){
+        int temp;
+        if (c.getCouleur().equalsIgnoreCase("bleu")){
+            temp = 0;
+        }else{
+            temp = 1;
+        }
 
+        while(ca.haveRed() && ca.haveBlue()){
+            if (temp == 0){
+                ca.getGuerriersBleus().getFirst().attaquer(ca.getGuerriersRouges().getFirst());
+                if (ca.getGuerriersBleus().getFirst().getPointsDeVie() <= 0){
+                    ca.getGuerriersBleus().remove(ca.getGuerriersBleus().getFirst());
+                }else if (ca.getGuerriersRouges().getFirst().getPointsDeVie() <= 0){
+                    ca.getGuerriersRouges().remove(ca.getGuerriersRouges().getFirst());
+                }
+                temp = 1;
+            }else {
+                ca.getGuerriersRouges().getFirst().attaquer(ca.getGuerriersBleus().getFirst());
+                if (ca.getGuerriersRouges().getFirst().getPointsDeVie() <= 0){
+                    ca.getGuerriersRouges().remove(ca.getGuerriersRouges().getFirst());
+                }else if (ca.getGuerriersBleus().getFirst().getPointsDeVie() <= 0) {
+                    ca.getGuerriersBleus().remove(ca.getGuerriersBleus().getFirst());
+                }
+                temp = 0;
+            }
+        }
     }
 
     /**
