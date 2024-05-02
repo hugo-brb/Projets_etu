@@ -123,25 +123,22 @@ public class Chateau {
     public void newRescues() {
         Scanner lecteur = new Scanner(System.in);
         ArrayList<Guerrier> tempGuerrier = new ArrayList<>();
-        int i = 0;
+        ArrayList<Guerrier> aSupprimer = new ArrayList<>();
         for (Guerrier g : lesGuerriersNovice) {
             String temp;
             if (g.getNbRessources() >= 1) {
                 System.out.print(STR."Vous avez un guerrier avec \{g.getNbRessources()} points d'entraînement, voulez-vous le sortir du château ? [y|n] ");
                 temp = lecteur.nextLine();
                 if (temp.equalsIgnoreCase("y")) {
+                    aSupprimer.add(g);
                     if (g.getNbRessources() == 1) {
                         lesGuerriersEntrainer.add(new Nain());
-                        i++;
                     } else if (g.getNbRessources() == 2) {
                         lesGuerriersEntrainer.add(new Elfe());
-                        i ++;
                     } else if (g.getNbRessources() == 3) {
                         lesGuerriersEntrainer.add(new ChefNain());
-                        i++;
                     }else if (g.getNbRessources() == 4) {
                         lesGuerriersEntrainer.add(new ChefElfe());
-                        i++;
                     }
                     tempGuerrier.add(lesGuerriersEntrainer.getLast());
                     if (estBleu() && !tempGuerrier.isEmpty()) {
@@ -152,8 +149,8 @@ public class Chateau {
                 }
             }
         }
-        for (int j = 0; j < i; j++){
-            lesGuerriersNovice.remove(lesGuerriersNovice.getLast());
+        for (Guerrier g : aSupprimer){
+            lesGuerriersNovice.remove(g);
         }
          if (tempGuerrier.isEmpty()){
             System.out.println("Vous n'avez pas de guerrier novice à faire sortir du château...");
