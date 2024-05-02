@@ -60,7 +60,7 @@ public class Main {
                 !         BRAVO !!!! Nous avons un gagnant !           !
                 """);
         System.out.println(
-                STR."!           Le chateau \{lePlateau.getGagnant()} a gagné !                      !"
+                StringTemplate.STR."!           Le chateau \{lePlateau.getGagnant()} a gagné !                      !"
         );
         System.out.println("""
                 !                                                      !

@@ -4,86 +4,155 @@ import Couleur.Couleur;
 import Plateau.Chateau;
 
 /**
- * Cette classe permet de définir un guerrier de base
- * Les guerrier ont par défaut :
- *          - 10 de force
- *          - 100 de points de vie
+ * Cette classe permet de définir un guerrier de base.
+ * Les guerriers ont par défaut :
+ * - 10 de force
+ * - 100 points de vie
  */
 public class Guerrier {
-    //attributs
+    // Attributs
     private final int FORCE_BASE = 10;
     private final int PV_MAX_BASE = 100;
     private final int RESSOURCE_BASE = 1;
     private int pointsDeVie;
     private int nbRessources = 0;
-
     private boolean estEntrainer;
     private Chateau cha;
 
-    //Constructors
-    public Guerrier(){
+    // Constructeurs
+    public Guerrier() {
         setPointsDeVie(100);
         this.estEntrainer = false;
     }
-    //Méthodes
-    public int getForce(){
+
+    // Méthodes
+
+    /**
+     * Renvoie la force de ce guerrier.
+     *
+     * @return la force de ce guerrier
+     */
+    public int getForce() {
         return this.FORCE_BASE;
     }
-    public int getPointsDeVie(){
+
+    /**
+     * Renvoie les points de vie actuels de ce guerrier.
+     *
+     * @return les points de vie actuels de ce guerrier
+     */
+    public int getPointsDeVie() {
         return this.pointsDeVie;
     }
-    public int getRessourcesPourEntrainement(){ return RESSOURCE_BASE; }
-    public Couleur getCouleur(){ return cha.getCouleur(); }
-    public void setPointsDeVie(int pointsDeVie){
+
+    /**
+     * Renvoie le coût en ressources pour entraîner ce guerrier.
+     *
+     * @return le coût en ressources pour entraîner ce guerrier
+     */
+    public int getRessourcesPourEntrainement() {
+        return RESSOURCE_BASE;
+    }
+
+    /**
+     * Renvoie la couleur du château à laquelle ce guerrier est affilié.
+     *
+     * @return la couleur du château à laquelle ce guerrier est affilié
+     */
+    public Couleur getCouleur() {
+        return cha.getCouleur();
+    }
+
+    /**
+     * Définit les points de vie de ce guerrier.
+     *
+     * @param pointsDeVie les nouveaux points de vie à définir
+     */
+    public void setPointsDeVie(int pointsDeVie) {
         this.pointsDeVie = pointsDeVie;
     }
-    public void setChateau(Chateau c){
+
+    /**
+     * Définit le château auquel ce guerrier est affilié.
+     *
+     * @param c le nouveau château auquel ce guerrier est affilié
+     */
+    public void setChateau(Chateau c) {
         this.cha = c;
     }
-    public void setEstEntrainer (boolean b) { this.estEntrainer = b;}
 
     /**
-     * Cette méthode permet de connaître l'état d'un Guerrier
-     * @return true si PointDeVie > 0 | false si PointDeVie <= 0
+     * Définit si ce guerrier est entraîné ou non.
+     *
+     * @param b true si ce guerrier est entraîné, false sinon
      */
-    public boolean estVivant(){
-        return getPointsDeVie()>0;
+    public void setEstEntrainer(boolean b) {
+        this.estEntrainer = b;
     }
 
     /**
-     * Ces méthodes permet de connaître la couleur d'un Guerrier
+     * Vérifie si ce guerrier est encore en vie.
+     *
+     * @return true si les points de vie de ce guerrier sont supérieurs à 0, false sinon
      */
-    public boolean estBleu(){
+    public boolean estVivant() {
+        return getPointsDeVie() > 0;
+    }
+
+    /**
+     * Vérifie si ce guerrier est affilié à la couleur bleue.
+     *
+     * @return true si ce guerrier est affilié à la couleur bleue, false sinon
+     */
+    public boolean estBleu() {
         return cha.estBleu();
     }
-    public boolean estRouge(){
-        return cha.estRouge() ;
+
+    /**
+     * Vérifie si ce guerrier est affilié à la couleur rouge.
+     *
+     * @return true si ce guerrier est affilié à la couleur rouge, false sinon
+     */
+    public boolean estRouge() {
+        return cha.estRouge();
     }
 
     /**
-     * Cette méthode permet d'utiliser la valeur de la force d'un Guerrier pour attaquer un autre Guerrier
-     * @param g - Guerrier a attaquer
+     * Attaque un autre guerrier en infligeant des dégâts basés sur la force de ce guerrier.
+     *
+     * @param g le guerrier à attaquer
      */
-    public void attaquer(Guerrier g){
+    public void attaquer(Guerrier g) {
         int d = 0;
         for (int i = 0; i < getForce(); i++) {
-            d+= (int) (Math.random()*3)+1;
+            d += (int) (Math.random() * 3) + 1;
         }
-        g.setPointsDeVie(g.getPointsDeVie()-d);
+        g.setPointsDeVie(g.getPointsDeVie() - d);
     }
 
     /**
-     * Cette méthode permet de gerer la perte de points de vie après une attaque d'un autre Guerrier
-     * @param degats - degats subit par le Guerrier
+     * Subit des dégâts infligés par un autre guerrier.
+     *
+     * @param degats les dégâts infligés à ce guerrier
      */
-    public void subirDegats(int degats){
-        setPointsDeVie(getPointsDeVie()-degats);
+    public void subirDegats(int degats) {
+        setPointsDeVie(getPointsDeVie() - degats);
     }
 
+    /**
+     * Renvoie le nombre de ressources possédées par ce guerrier.
+     *
+     * @return le nombre de ressources possédées par ce guerrier
+     */
     public int getNbRessources() {
         return nbRessources;
     }
 
+    /**
+     * Définit le nombre de ressources possédées par ce guerrier.
+     *
+     * @param ressources le nombre de ressources à définir
+     */
     public void setNbRessources(int ressources) {
         this.nbRessources += ressources;
     }
