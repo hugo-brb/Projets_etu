@@ -11,26 +11,28 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.CreerConcoursController">
-    <VBox spacing="20.0" layoutX="50.0" layoutY="20.0" prefWidth="400.0">
-        <Label text="Créer un concours" style="-fx-font-size: 24px;" />
+<?import javafx.scene.image.Image?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.CreateController">
+<VBox spacing="20.0" layoutX="50.0" layoutY="20.0" prefWidth="400.0">
+    <Label text="Créer un concours" style="-fx-font-size: 24px;" />
 
-        <TextField fx:id="nomField" promptText="Nom" />
-        <TextArea fx:id="descriptionField" promptText="Description" prefRowCount="3" />
+    <TextField fx:id="nomField" promptText="Nom" />
+    <TextArea fx:id="descriptionField" promptText="Description" prefRowCount="3" />
 
-        <ComboBox fx:id="categorieComboBox" promptText="Catégorie">
-            <!-- Ajoutez des éléments ici si nécessaire -->
-        </ComboBox>
+    <ComboBox fx:id="categorieComboBox" promptText="Catégorie">
+        <!-- Ajoutez des éléments ici si nécessaire -->
+    </ComboBox>
 
-        <HBox spacing="10">
-            <ComboBox fx:id="lieuComboBox" promptText="Autour de vous" />
-            <TextField fx:id="lieuSearchField" promptText="Rechercher" />
-        </HBox>
-        <!-- Vous pouvez ajouter une image ou une carte ici -->
-        <ImageView fx:id="mapImageView" fitWidth="400" fitHeight="200"/>
+    <HBox spacing="10">
+        <ComboBox fx:id="lieuComboBox" promptText="Autour de vous" />
+        <TextField fx:id="lieuSearchField" promptText="Rechercher" />
+    </HBox>
+    <!-- Vous pouvez ajouter une image ou une carte ici -->
+    <ImageView fx:id="mapImageView" fitWidth="400" fitHeight="200">
+    </ImageView>
 
-        <Button text="Ajouter cuisinier" onAction="#handleAjouterCuisinier" />
-        <Button text="Ajouter jury" onAction="#handleAjouterJury" />
-        <Button text="Ajouter sponsor" onAction="#handleAjouterSponsor" />
-    </VBox>
+    <Button text="Ajouter cuisinier" onAction="#handleAjouterCuisinier" />
+    <Button text="Ajouter jury" onAction="#handleAjouterJury" />
+    <Button text="Ajouter sponsor" onAction="#handleAjouterSponsor" />
+</VBox>
 </AnchorPane>
