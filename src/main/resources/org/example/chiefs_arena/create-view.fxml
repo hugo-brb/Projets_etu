@@ -1,38 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 
-<?import javafx.scene.image.Image?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.CreateController">
-<VBox spacing="20.0" layoutX="50.0" layoutY="20.0" prefWidth="400.0">
-    <Label text="Créer un concours" style="-fx-font-size: 24px;" />
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.CreateController" spacing="20" alignment="TOP_CENTER" prefWidth="800">
+    <children>
+        <Label text="Créer un concours" style="-fx-font-size: 24;" />
 
-    <TextField fx:id="nomField" promptText="Nom" />
-    <TextArea fx:id="descriptionField" promptText="Description" prefRowCount="3" />
+        <VBox spacing="10" alignment="CENTER_LEFT" prefWidth="600">
+            <children>
+                <Label text="Nom" />
+                <TextField fx:id="nameField" promptText="Lorem ipsum dolor sit" />
 
-    <ComboBox fx:id="categorieComboBox" promptText="Catégorie">
-        <!-- Ajoutez des éléments ici si nécessaire -->
-    </ComboBox>
+                <Label text="Description" />
+                <TextArea fx:id="descriptionField" promptText="Lorem ipsum dolor sit" prefHeight="100" />
 
-    <HBox spacing="10">
-        <ComboBox fx:id="lieuComboBox" promptText="Autour de vous" />
-        <TextField fx:id="lieuSearchField" promptText="Rechercher" />
-    </HBox>
-    <!-- Vous pouvez ajouter une image ou une carte ici -->
-    <ImageView fx:id="mapImageView" fitWidth="400" fitHeight="200">
-    </ImageView>
+                <Label text="Catégorie" />
+                <ComboBox fx:id="categoryComboBox">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Lorem ipsum" />
+                            <String fx:value="Dolor sit" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
 
-    <Button text="Ajouter cuisinier" onAction="#handleAjouterCuisinier" />
-    <Button text="Ajouter jury" onAction="#handleAjouterJury" />
-    <Button text="Ajouter sponsor" onAction="#handleAjouterSponsor" />
+                <Label text="Lieu" />
+                <VBox spacing="5">
+                    <children>
+                        <Button text="Ajouter un lieux" />
+                        <Button text="Rechercher" />
+                        <Button text="Lieu connus" />
+                        <Pane prefHeight="200" prefWidth="500" style="-fx-border-color: grey;">
+                            <Label text="Map Placeholder" layoutX="10" layoutY="10" />
+                        </Pane>
+                    </children>
+                </VBox>
+
+                <Label text="Cuisiniers" />
+                <Button text="Ajouter" />
+
+                <Label text="Jurys" />
+                <Button text="Ajouter" />
+
+                <Label text="Sponsors" />
+                <Button text="Ajouter" />
+            </children>
+        </VBox>
+    </children>
 </VBox>
-</AnchorPane>
