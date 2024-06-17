@@ -4,16 +4,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import java.io.IOException;
 
 public class AccountController {
     @FXML
-    private ImageView accountIcon;
+    private Button accountIcon;
     @FXML
-    private ImageView notifIcon;
+    private Button notifIcon;
     @FXML
-    private ImageView aboIcon;
+    private Button aboIcon;
     @FXML
     private Button modify;
     @FXML
@@ -28,15 +27,6 @@ public class AccountController {
     private Button save;
     @FXML
     private Button delete;
-
-    @FXML
-    protected void onUserMouseEntered(){
-        accountIcon.setStyle("-fx-background-color: black");
-    }
-    @FXML
-    protected void onNotifMouseEntered(){
-        notifIcon.setStyle("-fx-background-color: black");
-    }
 
     @FXML
     protected void onNotifIconClicked() throws IOException {
@@ -63,12 +53,5 @@ public class AccountController {
     protected void deleteUserInfos(){
         tfMail.setText("");
         pfPassword.setText("");
-    }
-
-    @FXML
-    protected void onElementMouseExited() {
-        accountIcon.setStyle("-fx-background-color: none");
-        notifIcon.setStyle("-fx-background-color: none");
-        aboIcon.setStyle("-fx-background-color: none");
     }
 }

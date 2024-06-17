@@ -1,16 +1,17 @@
 package com.example.chiefarena;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import java.io.IOException;
 
 public class NotifController {
     @FXML
-    private ImageView accountIcon;
+    private Button accountIcon;
     @FXML
-    private ImageView notifIcon;
+    private Button notifIcon;
     @FXML
-    private ImageView aboIcon;
+    private Button aboIcon;
 
     @FXML
     protected void onAccountIconClicked() throws IOException {

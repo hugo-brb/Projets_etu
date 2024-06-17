@@ -1,7 +1,7 @@
 package com.example.chiefarena;
 
 import javafx.fxml.FXML;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
 
@@ -13,12 +13,11 @@ public class AboController {
     @FXML
     private VBox rightVBox;
     @FXML
-    private ImageView userIcon;
+    private Button userIcon;
     @FXML
-    private ImageView notifIcon;
+    private Button notifIcon;
     @FXML
-    private ImageView aboIcon;
-
+    private Button aboIcon;
 
     @FXML
     protected void onLeftVBoxMouseEntered(){
@@ -33,15 +32,7 @@ public class AboController {
         rightVBox.setStyle("-fx-border-color: blue");
     }
     @FXML
-    protected void onUserMouseEntered(){
-        userIcon.setStyle("-fx-background-color: black");
-    }
-    @FXML
-    protected void onNotifMouseEntered(){
-        notifIcon.setStyle("-fx-background-color: black");
-    }
-    @FXML
-    protected void onUserIconClicked() throws IOException {
+    protected void onAccountIconClicked() throws IOException {
         ChiefArena.showAccountView();
     }
     @FXML
@@ -54,8 +45,5 @@ public class AboController {
         leftVBox.setStyle("-fx-border: none");
         middleVBox.setStyle("-fx-border: none");
         rightVBox.setStyle("-fx-border: none");
-        userIcon.setStyle("-fx-background-color: none");
-        notifIcon.setStyle("-fx-background-color: none");
-        aboIcon.setStyle("-fx-background-color: none");
     }
 }
