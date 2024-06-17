@@ -7,7 +7,7 @@ public class Concours {
     private String description;
     private Date dateDebut;
     private Date dateFin;
-    private List<Evenement> evenements;
+
     private List<Categorie> categories;
     private List<Partenaire> partenaires;
     private List<Personne> personnes;
