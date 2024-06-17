@@ -13,12 +13,12 @@ public class ChiefArena extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         primaryStage = stage;
-        primaryStage.setTitle("Account Settings");
+        primaryStage.setTitle("Chief's Arena");
         showAccountView();
     }
 
     public static void showAccountView() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ChiefArena.class.getResource("account-view.fxml"));;
+        FXMLLoader fxmlLoader = new FXMLLoader(ChiefArena.class.getResource("account-view.fxml"));
         openStartingView(fxmlLoader);
     }
 
