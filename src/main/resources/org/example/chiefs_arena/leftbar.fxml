@@ -14,18 +14,18 @@
         <children>
           <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
             <image>
-              <Image url="@../../img/person.png" />
+              <Image url="@../../../../img/person.png" />
             </image>
           </ImageView>
           <Label text="Username" />
           <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
             <image>
-              <Image url="@../../img/settings.png" />
+              <Image url="@../../../../img/settings.png" />
             </image>
           </ImageView>
           <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
             <image>
-              <Image url="@../../img/reduce.png" />
+              <Image url="@../../../../img/reduce.png" />
             </image>
           </ImageView>
         </children>

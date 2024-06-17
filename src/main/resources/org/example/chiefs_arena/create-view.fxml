@@ -1,55 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.CreateController" spacing="20" alignment="TOP_CENTER" prefWidth="800">
+<VBox alignment="TOP_CENTER" prefHeight="654.0" prefWidth="857.0" spacing="20" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.CreateController">
     <children>
-        <Label text="Créer un concours" style="-fx-font-size: 24;" />
+        <Label style="-fx-font-size: 24;" text="Créer un concours" />
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+             <HBox prefHeight="32.0" prefWidth="200.0">
+                 <children>
+                     <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                         <image>
+                             <Image url="@../../../../img/img.png" />
+                         </image>
+                     </ImageView>
+                     <Label text="Username" />
+                     <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                         <image>
+                             <Image url="@../../../../img/settings.png" />
+                         </image>
+                     </ImageView>
+                     <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                         <image>
+                             <Image url="@../../../../img/reduce.png" />
+                         </image>
+                     </ImageView>
+                 </children>
+                 <VBox.margin>
+                     <Insets />
+                 </VBox.margin>
+                 <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                 </padding>
+             </HBox>
 
-        <VBox spacing="10" alignment="CENTER_LEFT" prefWidth="600">
-            <children>
-                <Label text="Nom" />
-                <TextField fx:id="nameField" promptText="Lorem ipsum dolor sit" />
+              <VBox alignment="CENTER_LEFT" prefWidth="600" spacing="10">
+                  <children>
+                      <Label text="Nom" />
+                      <TextField fx:id="nameField" promptText="Lorem ipsum dolor sit" />
 
-                <Label text="Description" />
-                <TextArea fx:id="descriptionField" promptText="Lorem ipsum dolor sit" prefHeight="100" />
+                      <Label text="Description" />
+                      <TextArea fx:id="descriptionField" promptText="Lorem ipsum dolor sit" prefHeight="100" />
 
-                <Label text="Catégorie" />
-                <ComboBox fx:id="categoryComboBox">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Lorem ipsum" />
-                            <String fx:value="Dolor sit" />
-                        </FXCollections>
-                    </items>
-                </ComboBox>
+                      <Label text="Catégorie" />
+                      <ComboBox fx:id="categoryComboBox">
+                          <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                  <String fx:value="Lorem ipsum" />
+                                  <String fx:value="Dolor sit" />
+                              </FXCollections>
+                          </items>
+                      </ComboBox>
 
-                <Label text="Lieu" />
-                <VBox spacing="5">
-                    <children>
-                        <Button text="Ajouter un lieux" />
-                        <Button text="Rechercher" />
-                        <Button text="Lieu connus" />
-                        <Pane prefHeight="200" prefWidth="500" style="-fx-border-color: grey;">
-                            <Label text="Map Placeholder" layoutX="10" layoutY="10" />
-                        </Pane>
-                    </children>
-                </VBox>
+                      <Label text="Lieu" />
+                      <VBox spacing="5">
+                          <children>
+                              <Button text="Ajouter un lieux" />
+                              <Button text="Rechercher" />
+                              <Button text="Lieu connus" />
+                              <Pane prefHeight="200" prefWidth="500" style="-fx-border-color: grey;">
+                                  <Label text="Map Placeholder" layoutX="10" layoutY="10" />
+                              </Pane>
+                          </children>
+                      </VBox>
 
-                <Label text="Cuisiniers" />
-                <Button text="Ajouter" />
+                      <Label text="Cuisiniers" />
+                      <Button text="Ajouter" />
 
-                <Label text="Jurys" />
-                <Button text="Ajouter" />
+                      <Label text="Jurys" />
+                      <Button text="Ajouter" />
 
-                <Label text="Sponsors" />
-                <Button text="Ajouter" />
-            </children>
-        </VBox>
+                      <Label text="Sponsors" />
+                      <Button text="Ajouter" />
+                  </children>
+              </VBox>
+         </children>
+      </HBox>
     </children>
 </VBox>

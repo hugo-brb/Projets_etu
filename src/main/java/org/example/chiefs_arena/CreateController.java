@@ -8,13 +8,14 @@ import javafx.scene.image.ImageView;
 
 public class CreateController {
     @FXML
-    private TextField nomField;
+    private TextField nameField;
+
     @FXML
     private TextArea descriptionField;
+
     @FXML
-    private ComboBox<String> categorieComboBox;
-    @FXML
-    private ComboBox<String> lieuComboBox;
+    private ComboBox<String> categoryComboBox;
+
     @FXML
     private TextField lieuSearchField;
     @FXML
