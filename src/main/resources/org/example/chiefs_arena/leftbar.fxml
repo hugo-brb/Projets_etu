@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<VBox fx:id="leftbar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1117.0" prefWidth="291.0" xmlns:fx="http://javafx.com/fxml" fx:controller="idk.application.HelloController">
+<VBox fx:id="leftbar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1117.0" prefWidth="291.0" xmlns:fx="http://javafx.com/fxml" fx:controller="org.chiefs.arena.app.HelloController">
     <children>
       <HBox prefHeight="32.0" prefWidth="200.0">
         <children>
