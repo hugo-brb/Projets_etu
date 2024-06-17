@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chiefarena.NotifController">
+   <Label fx:id="title" layoutX="286.0" layoutY="57.0" text="Notification" />
+    <VBox layoutX="14.0" layoutY="169.0" prefHeight="99.0" prefWidth="22.0">
+        <children>
+            <ImageView fx:id="accountIcon" fitHeight="29.0" fitWidth="34.0" onMouseClicked="#onAccountIconClicked" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@img/user.png" />
+                </image>
+            </ImageView>
+            <ImageView fx:id="notifIcon" fitHeight="36.0" fitWidth="33.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@img/notification.png" />
+                </image>
+            </ImageView>
+            <ImageView fx:id="aboIcon" fitHeight="33.0" fitWidth="34.0" layoutX="10.0" layoutY="42.0" onMouseClicked="#onAboIconClicked" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@img/crown.png" />
+                </image>
+            </ImageView>
+        </children>
+    </VBox>
+   <VBox layoutX="173.0" layoutY="151.0" prefHeight="36.0" prefWidth="297.0">
+      <children>
+         <Label text="Notification sur l'ordinateur" />
+         <Label text="Recevez des notifications quand un concours approche " />
+      </children>
+   </VBox>
+   <VBox layoutX="173.0" layoutY="241.0" prefHeight="54.0" prefWidth="327.0">
+      <children>
+         <Label text="Notification par mail" />
+         <Label text="Recevez des notifications sur les nouveautés de l'application" />
+      </children>
+   </VBox>
+</AnchorPane>

@@ -1,0 +1,19 @@
+#title{
+    -fx-font-size: 30px;
+}
+
+.subTitle{
+    -fx-font-size: 15px;
+    -fx-font-weight: bolder;
+}
+
+#save, #modify{
+    -fx-text-fill: blue;
+}
+
+#delete{
+    -fx-text-fill: red;
+}
+
+
+

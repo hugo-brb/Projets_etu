@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chiefarena.AccountController">
+   <Label fx:id="title" layoutX="249.0" layoutY="55.0" text="Modifier le compte" />
+    <VBox layoutX="14.0" layoutY="172.0" prefHeight="65.0" prefWidth="22.0">
+        <children>
+            <ImageView fx:id="accountIcon" fitHeight="39.0" fitWidth="32.0" onMouseEntered="#onUserMouseEntered" onMouseExited="#onElementMouseExited" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@img/user.png" />
+                </image>
+            </ImageView>
+            <ImageView fx:id="notifIcon" fitHeight="37.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#onNotifIconClicked" onMouseDragEntered="#onNotifMouseEntered" onMouseDragExited="#onElementMouseExited" onMouseEntered="#onNotifMouseEntered" onMouseExited="#onElementMouseExited" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@img/notification.png" />
+                </image>
+            </ImageView>
+         <ImageView fx:id="aboIcon" fitHeight="37.0" fitWidth="30.0" layoutX="10.0" layoutY="42.0" onMouseClicked="#onAboIconClicked" onMouseEntered="#onNotifMouseEntered" onMouseExited="#onElementMouseExited" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@img/crown.png" />
+            </image>
+         </ImageView>
+        </children>
+    </VBox>
+   <HBox layoutX="168.0" layoutY="105.0" prefHeight="100.0" prefWidth="263.0">
+      <children>
+         <ImageView fitHeight="97.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@img/user.png" />
+            </image>
+         </ImageView>
+         <VBox prefHeight="64.0" prefWidth="201.0">
+            <children>
+               <TextField fx:id="user" onMouseClicked="#setUser" prefHeight="7.0" prefWidth="72.0" text="User" />
+               <TextField fx:id="username" onMouseClicked="#setUsername" text="Username" />
+            </children>
+         </VBox>
+      </children>
+   </HBox>
+   <Label layoutX="266.0" layoutY="205.0" text="Mail" />
+   <TextField fx:id="tfMail" layoutX="263.0" layoutY="230.0" />
+   <Label layoutX="264.0" layoutY="261.0" text="Mot de passe" />
+   <PasswordField fx:id="pfPassword" layoutX="263.0" layoutY="284.0" />
+   <Button fx:id="save" layoutX="131.0" layoutY="335.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="189.0" text="Enregistrer les modifications" />
+   <Button fx:id="delete" layoutX="374.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#deleteUserInfos" prefHeight="26.0" prefWidth="189.0" text="Supprimer les modifications" />
+   <Button fx:id="modify" layoutX="462.0" layoutY="118.0" mnemonicParsing="false" onMouseClicked="#setUserIdentity" prefHeight="26.0" prefWidth="108.0" text="Modifier" />
+</AnchorPane>
