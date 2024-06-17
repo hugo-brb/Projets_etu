@@ -2,7 +2,7 @@
     -fx-font-size: 30px;
 }
 
-.subTitle{
+.subTitle, .notifTitle{
     -fx-font-size: 15px;
     -fx-font-weight: bolder;
 }
@@ -15,5 +15,11 @@
     -fx-text-fill: red;
 }
 
+.notifText{
+    -fx-text-fill: rgb(128, 128, 128);
+}
 
-
+.active{
+    -fx-border-style: solid;
+    -fx-background-color: orange;
+}

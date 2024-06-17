@@ -7,23 +7,35 @@
 <AnchorPane prefHeight="667.0" prefWidth="837.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chiefarena.AboController">
 
    <Label fx:id="title" layoutX="384.0" layoutY="54.0" text="Abonnement" />
-   <VBox layoutX="14.0" layoutY="169.0" prefHeight="99.0" prefWidth="22.0">
+   <VBox layoutX="14.0" layoutY="168.0" prefHeight="121.0" prefWidth="47.0">
       <children>
-         <ImageView fx:id="userIcon" fitHeight="29.0" fitWidth="34.0" onMouseClicked="#onUserIconClicked" onMouseEntered="#onUserMouseEntered" onMouseExited="#onElementMouseExited" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@img/user.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="notifIcon" fitHeight="36.0" fitWidth="33.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#onNotifIconClicked" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@img/notification.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="aboIcon" fitHeight="33.0" fitWidth="34.0" layoutX="10.0" layoutY="42.0" onMouseDragEntered="#onNotifMouseEntered" onMouseDragExited="#onElementMouseExited" onMouseEntered="#onNotifMouseEntered" onMouseExited="#onElementMouseExited" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@img/crown.png" />
-            </image>
-         </ImageView>
+         <Button fx:id="userIcon" onMouseClicked="#onAccountIconClicked" mnemonicParsing="false">
+            <graphic>
+               <ImageView fitHeight="29.0" fitWidth="34.0" onMouseExited="#onElementMouseExited" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@img/user.png"/>
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+         <Button fx:id="notifIcon" onMouseClicked="#onNotifIconClicked" mnemonicParsing="false">
+            <graphic>
+               <ImageView fitHeight="36.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@img/notification.png"/>
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+         <Button fx:id="aboIcon" styleClass="active" mnemonicParsing="false" prefHeight="18.0" prefWidth="21.0">
+            <graphic>
+               <ImageView fitHeight="32.0" fitWidth="31.0"  onMouseDragExited="#onElementMouseExited" onMouseExited="#onElementMouseExited" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@img/crown.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
       </children>
    </VBox>
    <VBox fx:id="leftVBox" layoutX="67.0" layoutY="139.0" onMouseEntered="#onLeftVBoxMouseEntered" onMouseExited="#onElementMouseExited" prefHeight="130.0" prefWidth="240.0">
