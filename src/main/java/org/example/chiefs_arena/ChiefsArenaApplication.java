@@ -10,7 +10,7 @@ import java.io.IOException;
 public class ChiefsArenaApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ChiefsArenaApplication.class.getResource("create-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ChiefsArenaApplication.class.getResource("home-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Chief's Arena");
         stage.setScene(scene);

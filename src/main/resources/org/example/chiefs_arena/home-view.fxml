@@ -4,13 +4,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-
-
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
+<?import javafx.scene.text.*?>
       <VBox prefHeight="200.0" prefWidth="200.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="60.0" prefWidth="200.0">
                <children>
                   <ImageView fitHeight="33.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -21,31 +18,46 @@
                      <HBox.margin>
                         <Insets left="5.0" top="10.0" />
                      </HBox.margin>
+                     <font>
+                        <Font name="Inter Semi Bold" size="12.0" />
+                     </font>
                   </Label>
                </children>
+               <VBox.margin>
+                  <Insets left="5.0" top="5.0" />
+               </VBox.margin>
             </HBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" />
-            <VBox prefHeight="200.0" prefWidth="100.0" />
-         </children>
-      </VBox>
-      <VBox prefHeight="400.0" prefWidth="483.0">
-         <children>
-            <HBox id="barTop" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="barTop">
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                <children>
-                  <Label text="Accueil" />
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0">
                      <children>
-                        <Label text="Chief's Arena" />
-                        <ImageView fitHeight="48.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../img/Logo_ChiefsArena_transparentBlack.png" />
-                           </image>
-                        </ImageView>
+                        <Label text="Accueil">
+                           <font>
+                              <Font name="Inter Regular" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Mes concours">
+                           <font>
+                              <Font name="Inter Regular" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Analyse">
+                           <font>
+                              <Font name="Inter Regular" size="12.0" />
+                           </font>
+                        </Label>
                      </children>
                   </HBox>
                </children>
-            </HBox>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" />
          </children>
       </VBox>
-   </children>
-</HBox>
