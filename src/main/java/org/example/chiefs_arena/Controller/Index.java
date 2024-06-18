@@ -13,8 +13,7 @@ import org.example.chiefs_arena.ChiefsArenaApplication;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 
-public class Index
-{
+public class Index {
 	@FXML
 	private FlowPane root;
 

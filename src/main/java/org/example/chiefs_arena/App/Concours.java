@@ -14,10 +14,11 @@ public class Concours {
     private List<Partenaire> partenaires;
     private List<Personne> participants;
 
-    public Concours(String nom, Date dateDebut, Date dateFin) {
+    public Concours(String nom, Date dateDebut, Date dateFin, Lieu lieu) {
         setNom(nom);
         setDateDebut(dateDebut);
         setDateFin(dateFin);
+        setLieu(lieu);
     }
 
     public String getNom() {
@@ -76,7 +77,6 @@ public class Concours {
         // Logique pour déterminer si c'est un championnat
         return true;
     }
-
     /**
      * Renvoie vrai s'il un de ces champs est manquant. Ils sont obligatoires pour créer un événement
      * @return nom == null | dateDebut == null | dateFin == null | lieu == null | categories.isEmpty();
@@ -84,6 +84,7 @@ public class Concours {
     public boolean isChampManquant() {
         return nom == null | dateDebut == null | dateFin == null | lieu == null | categories.isEmpty();
     }
+
 
 
 }
