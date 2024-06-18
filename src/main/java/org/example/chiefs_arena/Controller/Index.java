@@ -2,6 +2,7 @@ package org.example.chiefs_arena.Controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.layout.FlowPane;
@@ -21,8 +22,8 @@ public class Index
 	public void initialize() throws IOException
 	{
 		VBox home = FXMLLoader.load(ChiefsArenaApplication.class.getResource("home-view.fxml"));
-		FlowPane container_wrapper = (FlowPane) root.getChildren().get(1);
-		Pane container = (Pane) container_wrapper.getChildren().get(0);
+		FlowPane container = (FlowPane) root.getChildren().get(1);
+		//container.setPadding(new Insets(5.0, 5.0, 5.0, 5.0));
 		container.getChildren().add(home);
 	}
 

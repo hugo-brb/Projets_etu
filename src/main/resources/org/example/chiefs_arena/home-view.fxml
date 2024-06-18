@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox id="all" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="843.0" style="-fx-background-color: f0f0f0;" styleClass="all" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="org.example.chiefs_arena.AppController">
+<VBox id="all" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="799.0" prefWidth="842.0" style="-fx-background-color: f0f0f0;" styleClass="all" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="org.example.chiefs_arena.AppController">
    <children>
       <VBox id="background" alignment="CENTER" maxWidth="700.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" style="-fx-border-width: 1; -fx-border-color: #808080; -fx-border-radius: 10px;" styleClass="background" stylesheets="@style.css">
          <VBox.margin>
