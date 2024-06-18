@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.VBox?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
-
-<FlowPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/22" fx:controller="org.example.chiefs_arena.Controller.LoadHome">
+<FlowPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.Index">
     <children>
-        <VBox fx:id="leftbar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="237.0">
+        <VBox fx:id="leftbar" prefHeight="800.0" prefWidth="247.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
             <children>
                 <VBox fx:id="top" prefHeight="745.0" prefWidth="197.0" spacing="50.0">
                     <children>
@@ -142,7 +142,11 @@
             <padding>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </padding>
+            <stylesheets>
+                <URL value="@./style/leftbar.css" />
+            </stylesheets>
         </VBox>
+      <FlowPane fx:id="container" prefHeight="800.0" prefWidth="853.0" />
     </children>
     <stylesheets>
         <URL value="@./style/index.css" />
