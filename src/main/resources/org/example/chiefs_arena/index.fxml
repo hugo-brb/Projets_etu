@@ -114,12 +114,12 @@
                                 <Label fx:id="title" styleClass="text dark" text="Mes Concours" />
                                 <VBox fx:id="concours_content_wrapper" prefHeight="200.0" prefWidth="100.0" spacing="27.0">
                                     <children>
-                                        <Label onMouseEntered="#mouse_entered" onMouseExited="#mouse_exited" styleClass="text" text="Lorem ipsum dolor sit amet" />
-                                        <Label onMouseEntered="#mouse_entered" onMouseExited="#mouse_exited"  styleClass="text" text="consectetur. Volutpat aenean " />
-                                        <Label onMouseEntered="#mouse_entered" onMouseExited="#mouse_exited" styleClass="text" text="convallis habitant et id placerat " />
-                                        <Label onMouseEntered="#mouse_entered" onMouseExited="#mouse_exited" styleClass="text" text="phasellus cursus tristique. Vitae" />
-                                        <Label onMouseEntered="#mouse_entered" onMouseExited="#mouse_exited" styleClass="text" text="mattis neque eu consequat" />
-                                        <Label onMouseEntered="#mouse_entered" onMouseExited="#mouse_exited" styleClass="text" text="congue. Volutpat eleifend vel" />
+                                        <Label styleClass="text" text="Lorem ipsum dolor sit amet" />
+                                        <Label styleClass="text" text="consectetur. Volutpat aenean " />
+                                        <Label styleClass="text" text="convallis habitant et id placerat " />
+                                        <Label styleClass="text" text="phasellus cursus tristique. Vitae" />
+                                        <Label styleClass="text" text="mattis neque eu consequat" />
+                                        <Label styleClass="text" text="congue. Volutpat eleifend vel" />
                                     </children>
                                 </VBox>
                             </children>

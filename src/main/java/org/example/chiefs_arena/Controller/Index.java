@@ -3,6 +3,7 @@ package org.example.chiefs_arena.Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -31,12 +32,12 @@ public class Index
 	@FXML
 	public void mouse_entered(MouseEvent e)
 	{
-		e.getComponent().setCursor(Cursor.HAND);
+		((Node) e.getSource()).setCursor(Cursor.HAND);
 	}
 
 	@FXML
 	public void mouse_exited(MouseEvent e)
 	{
-		e.getComponent().setCursor(Cursor.HAND);
+		((Node) e.getSource()).setCursor(Cursor.HAND);
 	}
 }
