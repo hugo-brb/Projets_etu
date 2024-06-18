@@ -4,3 +4,71 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
+<AnchorPane prefHeight="667.0" prefWidth="837.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chiefarena.AboController">
+
+   <Label fx:id="title" layoutX="384.0" layoutY="54.0" text="Abonnement" />
+   <VBox layoutX="14.0" layoutY="168.0" prefHeight="121.0" prefWidth="47.0">
+      <children>
+         <Button fx:id="userIcon" onMouseClicked="#onAccountIconClicked" mnemonicParsing="false">
+            <graphic>
+               <ImageView fitHeight="29.0" fitWidth="34.0" onMouseExited="#onElementMouseExited" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@img/user.png"/>
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+         <Button fx:id="notifIcon" onMouseClicked="#onNotifIconClicked" mnemonicParsing="false">
+            <graphic>
+               <ImageView fitHeight="36.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@img/notification.png"/>
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+         <Button fx:id="aboIcon" styleClass="active" mnemonicParsing="false" prefHeight="18.0" prefWidth="21.0">
+            <graphic>
+               <ImageView fitHeight="32.0" fitWidth="31.0"  onMouseDragExited="#onElementMouseExited" onMouseExited="#onElementMouseExited" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@img/crown.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+      </children>
+   </VBox>
+   <VBox fx:id="leftVBox" layoutX="67.0" layoutY="139.0" onMouseEntered="#onLeftVBoxMouseEntered" onMouseExited="#onElementMouseExited" prefHeight="130.0" prefWidth="240.0">
+      <children>
+         <Label styleClass="subTitle" text="Standard" />
+         <Label fx:id="standard" layoutX="10.0" layoutY="10.0" text="Current" />
+         <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="405.0" text="Accès à des templates" />
+         <CheckBox layoutX="10.0" layoutY="45.0" mnemonicParsing="false" text="Système de notation des plats" />
+         <CheckBox layoutX="10.0" layoutY="45.0" mnemonicParsing="false" text="Support client prioritaire" />
+         <CheckBox layoutX="10.0" layoutY="45.0" mnemonicParsing="false" text="Possibilité de streamer les événements" />
+         <CheckBox layoutX="10.0" layoutY="98.0" mnemonicParsing="false" text="Outils d'analyse des événements avancés" />
+      </children>
+   </VBox>
+   <VBox fx:id="middleVBox" layoutX="314.0" layoutY="139.0" onMouseEntered="#onMiddleVBoxMouseEntered" onMouseExited="#onElementMouseExited" prefHeight="130.0" prefWidth="240.0">
+      <children>
+         <Label styleClass="subTitle" text="Plus" />
+         <Label fx:id="standard1" layoutX="10.0" layoutY="10.0" text="Upgrade" />
+         <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="405.0" text="Accès à des templates" />
+         <CheckBox layoutX="10.0" layoutY="45.0" mnemonicParsing="false" text="Système de notation des plats" />
+         <CheckBox layoutX="10.0" layoutY="45.0" mnemonicParsing="false" text="Support client prioritaire" />
+         <CheckBox layoutX="10.0" layoutY="45.0" mnemonicParsing="false" text="Possibilité de streamer les événements" />
+         <CheckBox layoutX="10.0" layoutY="98.0" mnemonicParsing="false" text="Outils d'analyse des événements avancés" />
+      </children>
+   </VBox>
+   <VBox fx:id="rightVBox" layoutX="569.0" layoutY="139.0" onMouseEntered="#onRightVBoxMouseEntered" onMouseExited="#onElementMouseExited" prefHeight="130.0" prefWidth="260.0">
+      <children>
+         <Label styleClass="subTitle" text="Premium" />
+         <Label fx:id="premium" layoutX="10.0" layoutY="10.0" text="Upgrade" />
+         <CheckBox mnemonicParsing="false" text="Accès à des templates" />
+         <CheckBox mnemonicParsing="false" text="Système de notation des plats" />
+         <CheckBox mnemonicParsing="false" text="Support client prioritaire" />
+         <CheckBox mnemonicParsing="false" text="Possibilité de streamer les événements" />
+         <CheckBox mnemonicParsing="false" text="Outils d'analyse des événements avancés" />
+      </children>
+   </VBox>
+</AnchorPane>
