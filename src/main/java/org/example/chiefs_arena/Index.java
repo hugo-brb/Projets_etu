@@ -29,13 +29,13 @@ public class Index
 	 * controller pour la left bar
 	 */
 	@FXML
-	public void mouse_entered(MouseEvent e)
+	public static void mouse_entered(MouseEvent e)
 	{
 		((Node) e.getSource()).setCursor(Cursor.HAND);
 	}
 
 	@FXML
-	public void mouse_exited(MouseEvent e)
+	public static void mouse_exited(MouseEvent e)
 	{
 		((Node) e.getSource()).setCursor(Cursor.HAND);
 	}

@@ -19,7 +19,7 @@ public class User
 		this.computer_notif = computer_notif;
 		this.mail_notif = mail_notif;
 		this.abonnement = abonnement;
-		UserHandler.create_file(UserHandler.user_file, UserHandler.gson.toJson(this));
+		Handler.write_data(Handler.user_file, Handler.gson.toJson(this));
 	}
 
 	public String getName()
@@ -74,7 +74,7 @@ public class User
 
 	public void setPassword(String password)
 	{
-		this.password = UserHandler.sha3_256(password);
+		this.password = Handler.sha3_256(password);
 	}
 
 	public void setComputer_notif(boolean computer_notif)
