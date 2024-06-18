@@ -9,7 +9,6 @@ module org.example.chiefs_arena {
 
     opens org.example.chiefs_arena to javafx.fxml;
     exports org.example.chiefs_arena;
-    exports com.example.chiefarena;
     opens com.example.chiefarena to javafx.fxml;
     exports org.example.chiefs_arena.Controller;
     opens org.example.chiefs_arena.Controller to javafx.fxml;
