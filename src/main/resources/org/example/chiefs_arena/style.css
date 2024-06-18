@@ -1,0 +1,14 @@
+/* Background Chat */
+.background{
+    -fx-background-image: url("./img/Background_Chat.png");
+}
+
+.all{
+    
+    -fx-background-image: url('./img/Background_Chat_2.png');
+    -fx-background-color: #f0f0f0;
+}
+
+.bCreate{
+    -fx-background-image: url('./img/Blur.png');
+}
