@@ -1,5 +1,6 @@
 package org.example.chiefs_arena.App;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -73,10 +74,7 @@ public class Concours {
         participants.add(personne);
     }
 
-    public boolean isChampionnant() {
-        // Logique pour déterminer si c'est un championnat
-        return true;
-    }
+
     /**
      * Renvoie vrai s'il un de ces champs est manquant. Ils sont obligatoires pour créer un événement
      * @return nom == null | dateDebut == null | dateFin == null | lieu == null | categories.isEmpty();
@@ -85,7 +83,16 @@ public class Concours {
         return nom == null | dateDebut == null | dateFin == null | lieu == null;
     }
 
+    public List<Partenaire> getPartenaires() {
+        return partenaires;
+    }
 
+    public List<Personne> getPersonnes() {
+        return participants;
+    }
 
+    public List<Categorie> getCategories() {
+        return categories;
+    }
 }
 
