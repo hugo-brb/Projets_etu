@@ -11,8 +11,7 @@ import javafx.scene.layout.VBox;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 
-public class Index
-{
+public class Index {
 	@FXML
 	private FlowPane root;
 
