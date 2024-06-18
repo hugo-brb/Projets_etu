@@ -6,9 +6,13 @@
 .all{
     
     -fx-background-image: url('./img/Background_Chat_2.png');
-    -fx-background-color: #f0f0f0;
 }
 
 .bCreate{
     -fx-background-image: url('./img/Blur.png');
+}
+
+.bConcours{
+    -fx-background-image: url('./img/blur_mesconcours.png');
+    -fx-background-position: 50% 0%;
 }

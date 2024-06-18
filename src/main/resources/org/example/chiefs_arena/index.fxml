@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<FlowPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.Controller.Index">
+<FlowPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.Index">
     <children>
         <VBox fx:id="leftbar" prefHeight="800.0" prefWidth="247.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
             <children>
@@ -146,7 +146,7 @@
                 <URL value="@./style/leftbar.css" />
             </stylesheets>
         </VBox>
-      <FlowPane fx:id="container" prefHeight="810.0" prefWidth="853.0" />
+      <FlowPane fx:id="container" prefHeight="800.0" prefWidth="853.0" />
     </children>
     <stylesheets>
         <URL value="@./style/index.css" />
