@@ -1,4 +1,4 @@
-package com.example.chiefarena;
+package org.example.chiefs_arena;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

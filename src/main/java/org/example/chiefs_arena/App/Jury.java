@@ -1,4 +1,4 @@
-package org.example.chiefs_arena;
+package org.example.chiefs_arena.App;
 import java.util.List;
 
 public class Jury extends Personne {

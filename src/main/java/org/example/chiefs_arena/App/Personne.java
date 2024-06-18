@@ -1,4 +1,4 @@
-package org.example.chiefs_arena;
+package org.example.chiefs_arena.App;
 
 public class Personne {
     private int id;

@@ -1,4 +1,5 @@
-package org.example.chiefs_arena;
+package org.example.chiefs_arena.App;
+
 import java.util.Date;
 import java.util.List;
 

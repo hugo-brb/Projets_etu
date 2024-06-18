@@ -1,8 +1,10 @@
-package com.example.chiefarena;
+package org.example.chiefs_arena.Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import org.example.chiefs_arena.ChiefArena;
+
 import java.io.IOException;
 
 public class AboController {

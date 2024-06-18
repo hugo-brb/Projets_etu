@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chiefarena.AccountController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.Controller.AccountController">
    <Label fx:id="title" layoutX="249.0" layoutY="55.0" text="Modifier le compte"/>
     <VBox layoutX="14.0" layoutY="172.0" prefHeight="65.0" prefWidth="22.0">
         <children>

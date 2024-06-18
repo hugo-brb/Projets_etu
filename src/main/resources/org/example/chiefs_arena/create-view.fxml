@@ -15,10 +15,9 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="843.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="843.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <VBox id="bCreate" alignment="TOP_CENTER" prefHeight="1100.0" prefWidth="843.0" spacing="15.0" style="-fx-background-color: #f0f0f0;" styleClass="bCreate" stylesheets="@style.css">
+      <VBox id="bCreate" alignment="TOP_CENTER" maxWidth="843.0" prefHeight="1100.0" prefWidth="843.0" spacing="15.0" style="-fx-background-color: #f0f0f0;" styleClass="bCreate" stylesheets="@style.css">
          <children>
             <Label text="Créer un concours">
                <font>
