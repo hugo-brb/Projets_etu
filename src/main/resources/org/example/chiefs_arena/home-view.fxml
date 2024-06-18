@@ -21,7 +21,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<FlowPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22" fx:controller="org.example.chiefs_arena.AppController">
+<FlowPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.AppController">
     <children>
         <VBox fx:id="leftbar" prefHeight="800.0" prefWidth="247.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
             <children>
@@ -84,8 +84,11 @@
                                     <padding>
                                         <Insets left="15.0" />
                                     </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                                 </HBox>
-                                <HBox fx:id="mes_concours" alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="182.0" spacing="13.0">
+                                <HBox fx:id="mes_concours" alignment="CENTER_LEFT" onMouseClicked="#actionGoMyConcours" prefHeight="40.0" prefWidth="182.0" spacing="13.0">
                                     <children>
                                         <ImageView fitHeight="17.0" fitWidth="16.0">
                                             <image>
@@ -100,6 +103,9 @@
                                     <padding>
                                         <Insets left="15.0" />
                                     </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                                 </HBox>
                                 <HBox fx:id="analyse" alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="182.0" spacing="13.0">
                                     <children>
@@ -116,6 +122,9 @@
                                     <padding>
                                         <Insets left="15.0" />
                                     </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                                 </HBox>
                             </children>
                         </VBox>
@@ -141,9 +150,12 @@
                 </VBox>
                 <VBox fx:id="bottom" prefHeight="33.0" prefWidth="100.0">
                     <children>
-                        <HBox fx:id="button_wrapper" alignment="CENTER" prefHeight="33.0" prefWidth="200.0">
+                        <HBox fx:id="button_wrapper" alignment="CENTER" prefHeight="46.0" prefWidth="207.0">
                             <children>
-                                <Button fx:id="new_button" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#actionCreateEvent" prefHeight="33.0" prefWidth="155.0" styleClass="rounded text" text=" + Nouveau concours" />
+                                <Button fx:id="new_button" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#actionCreateEvent" prefHeight="33.0" prefWidth="155.0" styleClass="rounded text" text=" + Nouveau concours">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                             </children>
                         </HBox>
                     </children>
@@ -211,7 +223,7 @@
                         <children>
                             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="159.0">
                                 <children>
-                                    <TextField focusTraversable="false" prefHeight="26.0" prefWidth="142.0" promptText="Rechercher un concours" style="-fx-border-color: white; -fx-border-width: 0; -fx-background-radius: 5; -fx-background-color: white;">
+                                    <TextField focusTraversable="false" prefHeight="26.0" prefWidth="166.0" promptText="Rechercher un concours" style="-fx-border-color: white; -fx-border-width: 0; -fx-background-radius: 5; -fx-background-color: white;">
                                         <effect>
                                             <DropShadow height="16.32" offsetY="1.0" radius="6.49" width="11.64">
                                                 <color>

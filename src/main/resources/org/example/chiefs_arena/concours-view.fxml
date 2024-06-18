@@ -17,10 +17,9 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
 <ScrollPane fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="843.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <VBox id="bConcours" prefHeight="1200.0" prefWidth="843.0" spacing="20.0" style="-fx-background-color: #f0f0f0;" styleClass="bConcours" stylesheets="@style/style.css">
+      <VBox id="bConcours" prefHeight="1200.0" prefWidth="843.0" spacing="20.0" style="-fx-background-color: #f0f0f0;" styleClass="bConcours" stylesheets="@style.css">
          <children>
             <VBox prefHeight="65.0" prefWidth="828.0">
                <children>
