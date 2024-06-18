@@ -19,7 +19,7 @@
                             <children>
                                 <ImageView fx:id="profile_picture" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../../../img/placeholder.png" />
+                                        <Image url="@./img/placeholder.png" />
                                     </image>
                                 </ImageView>
                                 <Label fx:id="username" styleClass="text dark" text="Username" />
@@ -29,7 +29,7 @@
                             <children>
                                 <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../../../img/placeholder.png" />
+                                        <Image url="@./img/placeholder.png" />
                                     </image>
                                     <HBox.margin>
                                         <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
@@ -37,7 +37,7 @@
                                 </ImageView>
                                 <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../../../img/placeholder.png" />
+                                        <Image url="@./img/placeholder.png" />
                                     </image>
                                     <HBox.margin>
                                         <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
@@ -59,7 +59,7 @@
                             <children>
                                 <ImageView fitHeight="17.0" fitWidth="16.0">
                                     <image>
-                                        <Image url="@../../../../img/placeholder.png" />
+                                        <Image url="@./img/placeholder.png" />
                                     </image>
                                 </ImageView>
                                 <Label styleClass="text" text="Accueil" />
@@ -75,7 +75,7 @@
                             <children>
                                 <ImageView fitHeight="17.0" fitWidth="16.0">
                                     <image>
-                                        <Image url="@../../../../img/placeholder.png" />
+                                        <Image url="@./img/placeholder.png" />
                                     </image>
                                 </ImageView>
                                 <Label styleClass="text" text="Mes concours" />
@@ -91,7 +91,7 @@
                             <children>
                                 <ImageView fitHeight="17.0" fitWidth="16.0">
                                     <image>
-                                        <Image url="@../../../../img/placeholder.png" />
+                                        <Image url="@./img/placeholder.png" />
                                     </image>
                                 </ImageView>
                                 <Label styleClass="text" text="Analyse" />
