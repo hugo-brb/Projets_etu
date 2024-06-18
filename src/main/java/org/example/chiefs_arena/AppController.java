@@ -1,4 +1,4 @@
-package org.example.chiefs_arena.Controller;
+package org.example.chiefs_arena;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

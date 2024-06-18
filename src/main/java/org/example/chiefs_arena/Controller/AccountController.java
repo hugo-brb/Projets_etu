@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import org.example.chiefs_arena.ChiefArena;
 
 import java.io.IOException;
 
