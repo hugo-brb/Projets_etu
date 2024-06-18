@@ -7,6 +7,7 @@ module org.example.chiefs_arena {
     requires org.kordamp.bootstrapfx.core;
     requires java.xml;
 	requires java.desktop;
+	requires com.google.gson;
 
 	opens org.example.chiefs_arena to javafx.fxml;
     exports org.example.chiefs_arena;
