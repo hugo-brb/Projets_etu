@@ -146,13 +146,7 @@
                 <URL value="@./style/leftbar.css" />
             </stylesheets>
         </VBox>
-      <FlowPane fx:id="container" prefHeight="810.0" prefWidth="853.0">
-         <children>
-         </children>
-         <FlowPane.margin>
-            <Insets />
-         </FlowPane.margin>
-      </FlowPane>
+      <FlowPane fx:id="container" prefHeight="810.0" prefWidth="853.0" />
     </children>
     <stylesheets>
         <URL value="@./style/index.css" />
