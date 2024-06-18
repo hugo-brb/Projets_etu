@@ -8,11 +8,11 @@ public class Personne {
     private String role;
 
     public Personne(int id, String nom, String prenom, int age, String role) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.age = age;
-        this.role = role;
+        setId(id);
+        setNom(nom);
+        setPrenom(prenom);
+        setAge(age);
+        setRole(role);
     }
 
     public int getId() {
