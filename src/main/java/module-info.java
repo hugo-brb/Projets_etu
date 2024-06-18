@@ -6,8 +6,9 @@ module org.example.chiefs_arena {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
     requires java.xml;
+	requires java.desktop;
 
-    opens org.example.chiefs_arena to javafx.fxml;
+	opens org.example.chiefs_arena to javafx.fxml;
     exports org.example.chiefs_arena;
     exports org.example.chiefs_arena.Controller;
     opens org.example.chiefs_arena.Controller to javafx.fxml;
