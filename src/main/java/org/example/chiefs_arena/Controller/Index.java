@@ -6,7 +6,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import org.example.chiefs_arena.ChiefsArenaApplication;
 
@@ -23,7 +22,7 @@ public class Index
 	{
 		VBox home = FXMLLoader.load(ChiefsArenaApplication.class.getResource("home-view.fxml"));
 		FlowPane container = (FlowPane) root.getChildren().get(1);
-		//container.setPadding(new Insets(5.0, 5.0, 5.0, 5.0));
+		container.setPadding(new Insets(5.0, 5.0, 5.0, 5.0));
 		container.getChildren().add(home);
 	}
 
