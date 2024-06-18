@@ -82,7 +82,7 @@ public class Concours {
      * @return nom == null | dateDebut == null | dateFin == null | lieu == null | categories.isEmpty();
      */
     public boolean isChampManquant() {
-        return nom == null | dateDebut == null | dateFin == null | lieu == null | categories.isEmpty();
+        return nom == null | dateDebut == null | dateFin == null | lieu == null;
     }
 
 

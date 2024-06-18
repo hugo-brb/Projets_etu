@@ -3,18 +3,14 @@ package org.example.chiefs_arena.App;
 import org.junit.jupiter.api.Test;
 import java.util.Calendar;
 import java.util.Date;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class ConcoursTest {
     Concours concours = new Concours("CookTempest", new Date(2024, Calendar.AUGUST, 8, 14, 0 , 0), new Date(2024, Calendar.AUGUST, 8, 18, 0 , 0), new Lieu("Castilla", 70));
     @Test
-    void setNom() {
-        assertEquals("CookTempest", concours.getNom());
-    }
+    void setNom() {assertEquals("CookTempest", concours.getNom());}
     @Test
-    void setDescription() {
-        assertEquals(null, concours.getDescription());
+    void setDescription() {assertEquals(null, concours.getDescription());
     }
 
     @Test
@@ -29,11 +25,13 @@ class ConcoursTest {
 
     @Test
     void setLieu() {
-        assertEquals(new Lieu("Castilla", 70), concours.getLieu());
+        assertEquals("Castilla", concours.getLieu().getNom());
+        assertEquals(70, concours.getLieu().getCapacite());
     }
 
     @Test
     void ajouterCategorie() {
+
     }
 
     @Test
@@ -46,6 +44,6 @@ class ConcoursTest {
 
     @Test
     void isChampManquant() {
-        assertEquals(false, concours.isChampManquant());
+        assertFalse(concours.isChampManquant());
     }
 }

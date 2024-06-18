@@ -3,10 +3,10 @@ package org.example.chiefs_arena.App;
 public class Partenaire {
     private String id;
     private String nom;
-    private String contribution;
+    private int contribution;
     private String contraintes;
 
-    public Partenaire(String id, String nom, String contribution, String contraintes) {
+    public Partenaire(String id, String nom, int contribution, String contraintes) {
         this.id = id;
         this.nom = nom;
         this.contribution = contribution;
@@ -29,11 +29,11 @@ public class Partenaire {
         this.nom = nom;
     }
 
-    public String getContribution() {
+    public int getContribution() {
         return contribution;
     }
 
-    public void setContribution(String contribution) {
+    public void setContribution(int contribution) {
         this.contribution = contribution;
     }
 
