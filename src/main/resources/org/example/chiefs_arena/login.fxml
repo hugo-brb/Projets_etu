@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="login" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="843.0" spacing="35.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.LoginController">
+<VBox fx:id="login" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="500" minHeight="-Infinity" minWidth="500" spacing="35.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.LoginController">
    <children>
       <Label fx:id="connexion_label" text="Connexion" />
       <VBox prefHeight="80.0" prefWidth="100.0" spacing="15.0">
@@ -23,13 +23,10 @@
             <PasswordField fx:id="password" />
          </children>
       </VBox>
-      <HBox fx:id="error_box" alignment="CENTER" minHeight="17.0" maxHeight="17.0" prefHeight="17.0" prefWidth="200.0">
-         <children>
-         </children>
-      </HBox>
-      <Button mnemonicParsing="false" onAction="#login" text="Se connecter" />
+      <HBox fx:id="error_box" alignment="CENTER" minHeight="17.0" maxHeight="17.0" prefHeight="17.0" prefWidth="200.0" />
+      <Button mnemonicParsing="false" onMouseClicked="#login" text="Se connecter" />
    </children>
    <padding>
-      <Insets bottom="50.0" left="100.0" right="100.0" top="50.0" />
+      <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
    </padding>
 </VBox>
