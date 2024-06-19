@@ -1,6 +1,7 @@
 package org.example.chiefs_arena.App;
 
 import org.example.chiefs_arena.exception.ChampNonSaisie;
+import org.example.chiefs_arena.exception.ConcourDejaExistant;
 
 import java.util.Date;
 import java.util.List;
@@ -17,7 +18,7 @@ public class Concours {
     private List<Personne> participants = new ArrayList<>();
     private Classement classement;
 
-    public Concours() {
+    public Concours() throws ConcourDejaExistant {
         setNom(getNom());
         setDateDebut(getDateDebut());
         setDateFin(getDateFin());
@@ -29,7 +30,10 @@ public class Concours {
         return nom;
     }
 
-    public void setNom(String nom) {
+    public void setNom(String nom) throws ConcourDejaExistant {
+        if (this.nom != null && this.nom.equals(nom)) {
+            throw new ConcourDejaExistant("Le nom de l'événement est déjà utilisé.");
+        }
         this.nom = nom;
     }
 
