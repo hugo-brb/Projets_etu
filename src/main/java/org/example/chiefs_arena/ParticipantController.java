@@ -4,6 +4,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.Modality;
 import org.example.chiefs_arena.App.Participant;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,6 +49,21 @@ public class ParticipantController {
 
     @FXML
     private Button creerParticipantButton;
+
+    //-----------------------------------
+    @FXML
+    private FlowPane root;
+
+    @FXML
+    private VBox leftbar;
+
+    @FXML
+    private Button addCuisinierButton;
+
+    @FXML
+    private VBox cuisiniersContainer; // Conteneur pour afficher les cuisiniers ajoutés
+
+
 
     @FXML
     public void actionCreateEvent(MouseEvent event) throws IOException {
@@ -118,6 +134,13 @@ public class ParticipantController {
 
         // Afficher une confirmation ou traiter l'objet participant
         showAlert("Succès", "Participant créé : " + participant.getNom() + " " + participant.getPrenom() + ", Âge: " + participant.getAge());
+
+        // Ajouter le participant à la liste des cuisiniers du contrôleur principal
+        addCuisinier(nom, prenom, age);
+
+        // Fermer la fenêtre d'ajout de participant
+        Stage stage = (Stage) nomField.getScene().getWindow();
+        stage.close();
     }
 
     private void showAlert(String title, String message) {
@@ -126,5 +149,30 @@ public class ParticipantController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    //-----------------------------------------------
+    @FXML
+    private void openAddParticipantWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("participant.fxml"));
+
+
+
+            Stage participant = new Stage();
+            participant.initModality(Modality.APPLICATION_MODAL);
+            participant.setTitle("Ajouter un Participant");
+            participant.setScene(new Scene(loader.load()));
+            participant.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void addCuisinier(String nom, String prenom, int age) {
+        Label label = new Label(nom + " " + prenom + ", Âge: " + age);
+        cuisiniersContainer.getChildren().add(label);
     }
 }
