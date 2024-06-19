@@ -9,9 +9,12 @@ module org.example.chiefs_arena {
     requires java.xml;
 	requires java.desktop;
 
-	opens org.example.chiefs_arena to javafx.fxml;
+    exports org.example.chiefs_arena.user to javafx.fxml;
     exports org.example.chiefs_arena;
     exports org.example.chiefs_arena.App;
     opens org.example.chiefs_arena.App to javafx.fxml, com.google.gson;
 	opens org.example.chiefs_arena.user to com.google.gson;
+    opens org.example.chiefs_arena to com.google.gson, javafx.fxml;
+
+
 }
