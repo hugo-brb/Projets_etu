@@ -47,7 +47,7 @@ public class AppController {
 
     @FXML
     public void actionGoMyConcours(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("concours.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("concours-view.fxml"));
 
         Stage fenetre = (Stage) mes_concours.getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
@@ -59,6 +59,12 @@ public class AppController {
     @FXML
     public void actionGoAnalyse()
     {}
+
+    @FXML
+    public void actionCreateEvent2()
+    {
+
+    }
 
     /**
      * controller pour la left bar
