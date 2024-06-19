@@ -1,5 +1,6 @@
 package org.example.chiefs_arena.App;
 import org.example.chiefs_arena.exception.ChampNonSaisie;
+import org.example.chiefs_arena.exception.ConcourDejaExistant;
 import org.example.chiefs_arena.exception.ConcoursDateInvalide;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,7 @@ class ConcoursTest {
     private Concours concours;
     private Concours concours2;
     @BeforeEach
-    void setUp() {
+    void setUp() throws ConcourDejaExistant {
         concours = new Concours();
         concours.setNom("CookTempest");
         concours.setDescription("Evénement culinaire sur la cuisine française");
@@ -79,7 +80,7 @@ class ConcoursTest {
     }
 
     @Test
-    void isChampManquant() {
+    void isChampManquant() throws ConcourDejaExistant {
         assertFalse(concours.isChampManquant());
         assertTrue(concours2.isChampManquant());
         concours.setNom(null);
@@ -87,7 +88,17 @@ class ConcoursTest {
     }
 
     @Test
-    public void testChampsObligatoiresNonSaisis() {
+    public void testEvenementDejaExistant() throws ConcourDejaExistant {
+        concours.setNom("Hackathon");
+
+        Exception exception = assertThrows(ConcourDejaExistant.class, () -> {
+            concours2.setNom("Hackathon");
+        });
+
+        assertEquals("Le nom de l'événement est déjà utilisé.", exception.getMessage());
+    }
+    @Test
+    public void testChampsObligatoiresNonSaisis() throws ConcourDejaExistant {
         concours.setNom(null);
 
         Exception exception = assertThrows(ChampNonSaisie.class, () -> {
