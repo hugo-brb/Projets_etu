@@ -2,6 +2,7 @@ package org.example.chiefs_arena.App;
 
 import org.example.chiefs_arena.exception.ChampNonSaisie;
 import org.example.chiefs_arena.exception.ConcoursDejaExistant;
+import org.example.chiefs_arena.exception.DescriptionTropLongue;
 
 import java.util.Date;
 import java.util.List;
@@ -41,7 +42,10 @@ public class Concours {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description) throws DescriptionTropLongue {
+        if(description.length() > 1000){
+            throw new DescriptionTropLongue("Votre description doit contenir moins de 1000 caractères.");
+        }
         this.description = description;
     }
 
@@ -91,7 +95,6 @@ public class Concours {
     public void ajouterPersonne(Personne personne) {
         participants.add(personne);
     }
-
 
     /**
      * Renvoie vrai s'il un de ces champs est manquant. Ils sont obligatoires pour créer un événement

@@ -18,7 +18,7 @@ public class NoteTest {
      * Initialise les objets Note avant chaque test.
      */
     @BeforeEach
-    public void setUp() throws org.example.chiefs_arena.exception.NoteException {
+    public void setUp() throws NoteException {
         note1 = new Note();
         note2 = new Note();
         note3 = new Note();
@@ -33,15 +33,8 @@ public class NoteTest {
     @Test
     public void testSetGetNote() {
         assertEquals(10, note1.getNote());
-        assertEquals(0, note3.getNote());
-    }
-
-    /**
-     * Teste la méthode setNote avec une note invalide.
-     */
-    @Test
-    public void testSetNoteException(){
         assertThrows(NoteException.class, () -> note2.setNote(15));
+        assertEquals(0, note3.getNote());
     }
 }
 
