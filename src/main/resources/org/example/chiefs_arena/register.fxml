@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox fx:id="register_page" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="843.0" spacing="30.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.LoginController">
+<VBox fx:id="register_page" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="500" minHeight="-Infinity" minWidth="500" spacing="30.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.LoginController">
    <children>
       <VBox prefHeight="60.0" prefWidth="100.0">
          <children>
@@ -29,8 +28,8 @@
             <PasswordField fx:id="register_password_field" />
          </children>
       </VBox>
-      <HBox fx:id="register_error_box" alignment="CENTER" minHeight="30.0" maxHeight="30.0" prefHeight="30.0" prefWidth="843.0" />
-      <Button onAction="#register_next" mnemonicParsing="false" text="Suivant     ›" />
+      <HBox fx:id="register_error_box" alignment="CENTER" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="843.0" />
+      <Button mnemonicParsing="false" onMouseClicked="#register_next" text="Créer mon compte" />
    </children>
    <padding>
       <Insets bottom="50.0" left="100.0" right="100.0" top="50.0" />
