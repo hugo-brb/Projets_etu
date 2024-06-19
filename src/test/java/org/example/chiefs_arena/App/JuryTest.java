@@ -3,6 +3,7 @@ package org.example.chiefs_arena.App;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.example.chiefs_arena.exception.NoteException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class JuryTest {
      * Initialise un objet Jury avant chaque test.
      */
     @BeforeEach
-    public void setUp() throws NoteException{
+    public void setUp() throws NoteException {
         jury = new Jury(1, "Durand", "John", 35, "Jury");
         note1 = new Note();
         note1.setNote(8);
