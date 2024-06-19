@@ -51,6 +51,10 @@ public class AppController {
         fenetre.show();
     }
 
+    @FXML
+    public void actionGoAnalyse()
+    {}
+
     /**
      * controller pour la left bar
      */
