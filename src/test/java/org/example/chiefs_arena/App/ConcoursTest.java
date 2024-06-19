@@ -96,4 +96,5 @@ class ConcoursTest {
 
         assertEquals("Un champ obligatoire n'a pas été saisi.", exception.getMessage());
     }
+
 }
