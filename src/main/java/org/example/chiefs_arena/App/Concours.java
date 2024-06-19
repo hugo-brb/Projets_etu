@@ -1,8 +1,10 @@
 package org.example.chiefs_arena.App;
 
-import java.util.ArrayList;
+import org.example.chiefs_arena.exception.ChampNonSaisie;
+
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Concours {
     private String nom;
@@ -41,6 +43,17 @@ public class Concours {
 
     public Date getDateDebut() {
         return dateDebut;
+    }
+    public List<Partenaire> getPartenaires() {
+        return partenaires;
+    }
+
+    public List<Personne> getPersonnes() {
+        return participants;
+    }
+
+    public List<Categorie> getCategories() {
+        return categories;
     }
 
     public void setDateDebut(Date dateDebut) {
@@ -84,16 +97,15 @@ public class Concours {
         return nom == null || dateDebut == null || dateFin == null || lieu == null;
     }
 
-    public List<Partenaire> getPartenaires() {
-        return partenaires;
+    /**
+     *     Méthode pour vérifier les champs obligatoires
+     */
+    public void checkChampsSaisie() throws ChampNonSaisie {
+        if (isChampManquant()) {
+            throw new ChampNonSaisie("Un champ obligatoire n'a pas été saisi.");
+        }
     }
 
-    public List<Personne> getPersonnes() {
-        return participants;
-    }
 
-    public List<Categorie> getCategories() {
-        return categories;
-    }
 }
 
