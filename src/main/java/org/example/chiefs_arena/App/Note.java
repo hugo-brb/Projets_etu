@@ -1,5 +1,7 @@
 package org.example.chiefs_arena.App;
 
+import org.example.chiefs_arena.exception.NoteException;
+
 public class Note {
     private int note;
 
