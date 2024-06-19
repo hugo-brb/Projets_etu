@@ -19,8 +19,8 @@ import java.util.regex.Pattern;
 public class Handler
 {
 	public static Gson gson = new Gson();
-	public static final String user_file = "/Users/nilshubert/Desktop/Chief-s-Arena/src/main/java/org/example/chiefs_arena/user/data/user.json";
-	public static final String concours_file = "/Users/nilshubert/Desktop/Chief-s-Arena/src/main/java/org/example/chiefs_arena/user/data/concours.json";
+	public static final String user_file = "../data/users.json";
+	public static final String concours_file = "../data/concours.json";
 
 	public static boolean login(String username, String password)
 	{

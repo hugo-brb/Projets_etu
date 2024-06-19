@@ -5,9 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.example.chiefs_arena.user.Handler;
 
-import java.io.File;
 import java.io.IOException;
 
 public class ChiefsArenaApplication extends Application {
