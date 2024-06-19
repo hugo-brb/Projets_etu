@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import org.example.chiefs_arena.user.ConcoursList;
 import org.example.chiefs_arena.user.Handler;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.Arrays;
@@ -21,8 +22,11 @@ import java.util.Arrays;
 public class AppController {
     @FXML
     public HBox btnCreate;
+    public HBox btnCreate2;
+    public HBox btnCreate3;
     public HBox btnHome;
     public HBox mes_concours;
+    public HBox analyse;
 
     @FXML
     public void actionCreateEvent(javafx.scene.input.MouseEvent event) throws IOException {
@@ -34,6 +38,29 @@ public class AppController {
         fenetre.setScene(scene);
         fenetre.show();
     }
+
+    @FXML
+    public void actionCreateEvent2(javafx.scene.input.MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("create-view.fxml"));
+
+        Stage fenetre = (Stage) btnCreate2.getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load());
+
+        fenetre.setScene(scene);
+        fenetre.show();
+    }
+
+    @FXML
+    public void actionCreateEvent3(javafx.scene.input.MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("create-view.fxml"));
+
+        Stage fenetre = (Stage) btnCreate3.getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load());
+
+        fenetre.setScene(scene);
+        fenetre.show();
+    }
+
 
     @FXML
     public void actionGoHome(javafx.scene.input.MouseEvent event) throws IOException {
@@ -48,9 +75,20 @@ public class AppController {
 
     @FXML
     public void actionGoMyConcours(javafx.scene.input.MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("concours.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("concours-view.fxml"));
 
         Stage fenetre = (Stage) mes_concours.getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load());
+
+        fenetre.setScene(scene);
+        fenetre.show();
+    }
+
+    @FXML
+    public void actionGoAnalyse(javafx.scene.input.MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("analyse-view.fxml"));
+
+        Stage fenetre = (Stage) analyse.getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
 
         fenetre.setScene(scene);

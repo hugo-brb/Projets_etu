@@ -3,7 +3,6 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -23,7 +22,7 @@
 
 <FlowPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.AppController">
     <children>
-        <VBox fx:id="leftbar" maxWidth="247.0" prefHeight="800.0" prefWidth="247.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+        <VBox fx:id="leftbar" prefHeight="800.0" prefWidth="255.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
             <children>
                 <VBox fx:id="top" prefHeight="745.0" prefWidth="197.0" spacing="50.0">
                     <children>
@@ -107,7 +106,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                                 </HBox>
-                                <HBox fx:id="analyse" alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="182.0" spacing="13.0">
+                                <HBox fx:id="analyse" alignment="CENTER_LEFT" onMouseClicked="#actionGoAnalyse" prefHeight="40.0" prefWidth="182.0" spacing="13.0">
                                     <children>
                                         <ImageView fitHeight="17.0" fitWidth="16.0">
                                             <image>
@@ -131,7 +130,16 @@
                         <VBox fx:id="concours" prefHeight="200.0" prefWidth="197.0" spacing="27.0">
                             <children>
                                 <Label fx:id="title" styleClass="text dark" text="Mes Concours" />
-                                <VBox fx:id="concours_content_wrapper" prefHeight="200.0" prefWidth="100.0" spacing="27.0" />
+                                <VBox fx:id="concours_content_wrapper" prefHeight="200.0" prefWidth="100.0" spacing="27.0">
+                                    <children>
+                                        <Label styleClass="text" text="Lorem ipsum dolor sit amet" />
+                                        <Label styleClass="text" text="consectetur. Volutpat aenean " />
+                                        <Label styleClass="text" text="convallis habitant et id placerat " />
+                                        <Label styleClass="text" text="phasellus cursus tristique. Vitae" />
+                                        <Label styleClass="text" text="mattis neque eu consequat" />
+                                        <Label styleClass="text" text="congue. Volutpat eleifend vel" />
+                                    </children>
+                                </VBox>
                             </children>
                             <padding>
                                 <Insets left="11.0" right="11.0" />
@@ -139,18 +147,25 @@
                         </VBox>
                     </children>
                 </VBox>
-                <VBox fx:id="bottom" prefHeight="33.0" prefWidth="100.0">
-                    <children>
-                        <HBox fx:id="button_wrapper" alignment="CENTER" prefHeight="46.0" prefWidth="207.0">
-                            <children>
-                                <Button fx:id="new_button" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#actionCreateEvent" prefHeight="33.0" prefWidth="155.0" styleClass="rounded text" text=" + Nouveau concours">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                            </children>
-                        </HBox>
-                    </children>
-                </VBox>
+            <HBox fx:id="btnCreate2" alignment="CENTER" onMouseClicked="#actionCreateEvent" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-width: 0;">
+               <children>
+                  <Label onMouseClicked="#actionCreateEvent" text="+ Nouveau Concours" textFill="#2a8cff">
+                     <padding>
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <effect>
+                  <DropShadow offsetY="1.0">
+                     <color>
+                        <Color red="0.05999999865889549" green="0.05999999865889549" blue="0.05999999865889549" opacity="0.10000000149011612" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <VBox.margin>
+                  <Insets left="30.0" right="30.0" />
+               </VBox.margin>
+            </HBox>
             </children>
             <padding>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -159,8 +174,38 @@
                 <URL value="@./style/leftbar.css" />
             </stylesheets>
         </VBox>
-    <VBox id="all" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="799.0" prefWidth="842.0" style="-fx-background-color: f0f0f0;" styleClass="all" stylesheets="@./style/style.css">
+    <VBox id="all" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="799.0" prefWidth="843.0" style="-fx-background-color: f0f0f0;" styleClass="all" stylesheets="@./style/style.css">
         <children>
+            <VBox prefHeight="65.0" prefWidth="843.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="787.0">
+                     <children>
+                        <Label prefHeight="20.0" prefWidth="99.0" text="Accueil">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="20.0" prefWidth="92.0" text="Chief's Arena">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="520.0" />
+                           </HBox.margin>
+                        </Label>
+                        <ImageView fitHeight="61.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/Logo_ChiefsArena_transparentBlack.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="30.0" right="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Separator prefWidth="200.0" style="-fx-background-color: #808080; -fx-border-color: #808080; -fx-border-width: 0;" />
+               </children>
+            </VBox>
             <VBox id="background" alignment="CENTER" maxWidth="700.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" style="-fx-border-width: 1; -fx-border-color: #808080; -fx-border-radius: 10px;" styleClass="background" stylesheets="@./style/style.css">
                 <VBox.margin>
                     <Insets bottom="40.0" left="70.0" right="70.0" top="40.0" />
