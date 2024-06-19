@@ -1,5 +1,6 @@
 package org.example.chiefs_arena.App;
 import org.example.chiefs_arena.exception.ChampNonSaisie;
+import org.example.chiefs_arena.exception.ConcoursDateInvalide;
 import org.example.chiefs_arena.exception.ConcoursDejaExistant;
 import org.example.chiefs_arena.exception.DescriptionTropLongue;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,17 +15,16 @@ class ConcoursTest {
     private Concours concours;
     private Concours concours2;
     @BeforeEach
-    void setUp() throws ConcoursDejaExistant, DescriptionTropLongue {
+    void setUp() throws ConcoursDejaExistant, DescriptionTropLongue, ConcoursDateInvalide{
         concours = new Concours();
         concours.setNom("CookTempest");
         concours.setDescription("Evénement culinaire sur la cuisine française");
-        concours.setDateDebut(new Date(2024, Calendar.AUGUST, 8, 14, 0, 0));
-        concours.setDateFin(new Date(2024, Calendar.AUGUST, 8, 18, 0, 0));
+        concours.setDateDebut(new Date(2024 - 1900, Calendar.AUGUST, 8, 14, 0, 0));
+        concours.setDateFin(new Date(2024 - 1900, Calendar.AUGUST, 8, 18, 0, 0));
         concours.setLieu(new Lieu("Castilla", 70));
 
         concours2 = new Concours();
         concours2.setNom("CookContest");
-        concours2.setDateDebut(new Date(2024, Calendar.AUGUST, 20, 14, 0, 0));
         concours2.setLieu(new Lieu("Menlack", 110));
     }
     @Test
@@ -41,15 +41,29 @@ class ConcoursTest {
     }
 
     @Test
-    void setDateDebut() {
-        assertEquals(new Date(2024, Calendar.AUGUST, 8, 14, 0 , 0),concours.getDateDebut());
-        assertEquals(new Date(2024, Calendar.AUGUST, 20, 14, 0 , 0),concours2.getDateDebut());
+    void setDateDebut() throws ConcoursDateInvalide {
+        // Date future (2024-08-08 14:00:00)
+        Date futureDate = new Date(2024 - 1900, Calendar.AUGUST, 8, 14, 0, 0);
+        concours.setDateDebut(futureDate);
+        assertEquals(futureDate, concours.getDateDebut());
+
+        // Date passée (2021-08-08 14:00:00)
+        Date pastDate = new Date(2021 - 1900, Calendar.AUGUST, 8, 14, 0, 0);
+        assertThrows(ConcoursDateInvalide.class, () -> {
+            concours2.setDateDebut(pastDate);
+        });
     }
 
     @Test
     void setDateFin() {
-        assertEquals(new Date(2024, Calendar.AUGUST, 8, 18, 0 , 0), concours.getDateFin());
-        assertNull(concours2.getDateFin());
+        /*Le concours commence le 8 août 2024 à 14h et se termine à 18h*/
+        Date afterContestBegun = new Date(2024 - 1900, Calendar.AUGUST, 8, 18, 0 , 0);
+        assertEquals(afterContestBegun,concours.getDateFin());
+
+        Date beforeContestBegun = new Date(2024 - 1900, Calendar.AUGUST, 8, 12, 0, 0);
+        assertThrows(ConcoursDateInvalide.class, () -> {
+            concours.setDateFin(beforeContestBegun);
+        });
     }
 
     @Test

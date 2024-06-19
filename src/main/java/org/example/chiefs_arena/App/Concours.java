@@ -1,9 +1,11 @@
 package org.example.chiefs_arena.App;
 
 import org.example.chiefs_arena.exception.ChampNonSaisie;
+import org.example.chiefs_arena.exception.ConcoursDateInvalide;
 import org.example.chiefs_arena.exception.ConcoursDejaExistant;
 import org.example.chiefs_arena.exception.DescriptionTropLongue;
 
+import java.time.*;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
@@ -19,8 +21,8 @@ public class Concours {
     private List<Personne> participants = new ArrayList<>();
     private Classement classement;
 
-    public Concours() throws ConcoursDejaExistant {
-        setNom(getNom());
+    public Concours() throws ConcoursDejaExistant, ConcoursDateInvalide {
+        /*setNom(getNom());
         setDateDebut(getDateDebut());
         setDateFin(getDateFin());
         setLieu(getLieu());
@@ -49,9 +51,36 @@ public class Concours {
         this.description = description;
     }
 
-    public Date getDateDebut() {
+    public Date getDateDebut(){
         return dateDebut;
     }
+
+    public void setDateDebut(Date dateDebut) throws ConcoursDateInvalide{
+        if(dateDebut.toInstant().atZone(ZoneId.of("Europe/Paris")).isBefore(ZonedDateTime.now(Clock.system(ZoneId.of("Europe/Paris"))))){
+            throw new ConcoursDateInvalide("La date est déjà passée");
+        }
+        this.dateDebut = dateDebut;
+    }
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(Date dateFin) throws ConcoursDateInvalide {
+        if(dateFin.toInstant().isBefore(dateDebut.toInstant())){
+            throw new ConcoursDateInvalide("La fin du concours ne peut pas être avant le début.");
+        }
+        this.dateFin = dateFin;
+    }
+
+    public Lieu getLieu() {
+        return lieu;
+    }
+
+    public void setLieu(Lieu lieu) {
+        this.lieu = lieu;
+    }
+
     public List<Partenaire> getPartenaires() {
         return partenaires;
     }
@@ -62,26 +91,6 @@ public class Concours {
 
     public List<Categorie> getCategories() {
         return categories;
-    }
-
-    public void setDateDebut(Date dateDebut) {
-        this.dateDebut = dateDebut;
-    }
-
-    public Date getDateFin() {
-        return dateFin;
-    }
-
-    public void setDateFin(Date dateFin) {
-        this.dateFin = dateFin;
-    }
-
-    public Lieu getLieu() {
-        return lieu;
-    }
-    
-    public void setLieu(Lieu lieu) {
-        this.lieu = lieu;
     }
 
     public void ajouterCategorie(Categorie categorie) {
