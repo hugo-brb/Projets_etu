@@ -1,6 +1,8 @@
 package org.example.chiefs_arena.user;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import org.example.chiefs_arena.App.*;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,16 +12,25 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.regex.Pattern;
 
-public class UserHandler
+public class Handler
 {
 	public static Gson gson = new Gson();
-	public static final String user_file = "./data/org.example.chiefs_arena.user.json";
+	public static final String user_file = "/Users/nilshubert/Desktop/Chief-s-Arena/src/main/java/org/example/chiefs_arena/user/data/user.json";
+	public static final String concours_file = "/Users/nilshubert/Desktop/Chief-s-Arena/src/main/java/org/example/chiefs_arena/user/data/concours.json";
 
 	public static boolean login(String username, String password)
 	{
 		User user = gson.fromJson(String.valueOf(fetch_data(user_file)), User.class);
 		return user.getUsername() != null && user.getUsername().equals(username) && user.getPassword() != null && user.getPassword().equals(sha3_256(password));
+	}
+
+	public static boolean isPasswordValid(String password)
+	{
+		return Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!#?@])[A-Za-z\\d!#?@]{8,}$", password);
 	}
 
 	public static String fetch_data(String file)
@@ -40,13 +51,17 @@ public class UserHandler
 		return String.valueOf(json);
 	}
 
-	public static void create_file(String file, String content)
+	public static void write_data(String file, String content)
 	{
 		try
 		{
-			new File(file).createNewFile();
-			FileWriter writer = new FileWriter(file, false);
-			writer.write(content);
+			File newFile = new File(file);
+			newFile.createNewFile();
+
+			try (FileWriter writer = new FileWriter(file))
+			{
+				writer.write(content);
+			}
 		}
 		catch (IOException e) { e.printStackTrace(); }
 	}

@@ -13,6 +13,8 @@ public class Partenaire {
         this.contraintes = contraintes;
     }
 
+
+
     public String getId() {
         return id;
     }

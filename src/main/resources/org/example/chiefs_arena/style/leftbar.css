@@ -10,7 +10,9 @@
     -fx-font-family: 'Inter';
     -fx-text-fill: #808080;
 }
-.text .dark { -fx-text-fill: #2A2A2A; }
+.text .dark {
+    -fx-text-fill: #2A2A2A;
+}
 
 #nav .active
 {
