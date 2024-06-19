@@ -6,6 +6,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -13,7 +14,6 @@ import javafx.stage.Stage;
 import org.example.chiefs_arena.user.ConcoursList;
 import org.example.chiefs_arena.user.Handler;
 
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -24,7 +24,7 @@ public class AppController {
     public HBox mes_concours;
 
     @FXML
-    public void actionCreateEvent(javafx.scene.input.MouseEvent event) throws IOException {
+    public void actionCreateEvent(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("create-view.fxml"));
 
         Stage fenetre = (Stage) btnCreate.getScene().getWindow();
@@ -35,7 +35,7 @@ public class AppController {
     }
 
     @FXML
-    public void actionGoHome(javafx.scene.input.MouseEvent event) throws IOException {
+    public void actionGoHome(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("home-view.fxml"));
 
         Stage fenetre = (Stage) btnHome.getScene().getWindow();
@@ -46,7 +46,7 @@ public class AppController {
     }
 
     @FXML
-    public void actionGoMyConcours(javafx.scene.input.MouseEvent event) throws IOException {
+    public void actionGoMyConcours(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("concours.fxml"));
 
         Stage fenetre = (Stage) mes_concours.getScene().getWindow();
@@ -85,6 +85,8 @@ public class AppController {
             concours.getConcours().forEach(c -> {
                 Label label = new Label(c.getNom());
                 label.getStyleClass().add("text");
+                label.addEventHandler(MouseEvent.MOUSE_ENTERED, this::mouse_entered);
+                label.addEventHandler(MouseEvent.MOUSE_ENTERED, this::mouse_entered);
                 concours_content_wrapper.getChildren().add(label);
             });
         }
