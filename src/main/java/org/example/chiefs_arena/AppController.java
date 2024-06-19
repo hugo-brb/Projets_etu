@@ -5,12 +5,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.example.chiefs_arena.user.ConcoursList;
+import org.example.chiefs_arena.user.Handler;
 
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class AppController {
     @FXML
@@ -61,7 +66,7 @@ public class AppController {
     @FXML
     private VBox concours_content_wrapper;
 
-    /*public void initialize() throws IOException {
+    public void initialize() throws IOException {
         ConcoursList concours = Handler.gson.fromJson(Handler.fetch_data(Handler.concours_file), ConcoursList.class);
         concours_content_wrapper.getChildren().clear();
         if (concours == null || concours.getConcours().isEmpty())
@@ -83,7 +88,7 @@ public class AppController {
                 concours_content_wrapper.getChildren().add(label);
             });
         }
-    }*/
+    }
 
     @FXML
     public void mouse_entered(MouseEvent e)

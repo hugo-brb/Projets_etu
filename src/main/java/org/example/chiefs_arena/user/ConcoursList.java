@@ -17,11 +17,21 @@ public class ConcoursList
 		this.concours = concours;
 	}
 
+	public void addConcours(Concours concours)
+	{
+		this.concours.add(concours);
+	}
+
 	public List<Concours> getConcours() {
 		return concours;
 	}
 
 	public void setConcours(List<Concours> concours) {
 		this.concours = concours;
+	}
+
+	public void save()
+	{
+		Handler.write_data(Handler.concours_file, Handler.gson.toJson(this));
 	}
 }
