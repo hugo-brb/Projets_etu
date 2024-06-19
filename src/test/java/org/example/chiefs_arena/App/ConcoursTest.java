@@ -19,7 +19,6 @@ class ConcoursTest {
         concours.setDateFin(new Date(2024, Calendar.AUGUST, 8, 18, 0 , 0));
         concours.setLieu(new Lieu("Castilla", 70));
 
-
         concours2 = new Concours();
         concours2.setNom("CookContest");
         concours2.setDateDebut(new Date(2024, Calendar.AUGUST, 20, 14, 0 , 0));

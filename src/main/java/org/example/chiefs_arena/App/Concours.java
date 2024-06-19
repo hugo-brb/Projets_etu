@@ -1,5 +1,6 @@
 package org.example.chiefs_arena.App;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,9 +10,9 @@ public class Concours {
     private Date dateDebut;
     private Date dateFin;
     private Lieu lieu;
-    private List<Categorie> categories;
-    private List<Partenaire> partenaires;
-    private List<Personne> participants;
+    private List<Categorie> categories = new ArrayList<>();
+    private List<Partenaire> partenaires = new ArrayList<>();
+    private List<Personne> participants = new ArrayList<>();
     private Classement classement;
 
     public Concours() {
