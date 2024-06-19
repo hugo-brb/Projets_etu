@@ -24,15 +24,19 @@ public class AppController {
     public HBox mes_concours;
 
     @FXML
+    private VBox concours_content_wrapper;
+
+    @FXML
     public void actionCreateEvent(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("create-view.fxml"));
 
-        Stage fenetre = (Stage) btnCreate.getScene().getWindow();
+        Stage fenetre = (Stage) concours_content_wrapper.getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
 
         fenetre.setScene(scene);
         fenetre.show();
     }
+
 
     @FXML
     public void actionGoHome(MouseEvent event) throws IOException {
@@ -57,20 +61,20 @@ public class AppController {
     }
 
     @FXML
-    public void actionGoAnalyse()
-    {}
-
-    @FXML
-    public void actionCreateEvent2()
+    public void actionGoAnalyse() throws IOException
     {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("analyse-view.fxml"));
 
+        Stage fenetre = (Stage) concours_content_wrapper.getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load());
+
+        fenetre.setScene(scene);
+        fenetre.show();
     }
 
     /**
      * controller pour la left bar
      */
-    @FXML
-    private VBox concours_content_wrapper;
 
     public void initialize() throws IOException {
         ConcoursList concours = Handler.gson.fromJson(Handler.fetch_data(Handler.concours_file), ConcoursList.class);

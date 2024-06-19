@@ -138,7 +138,7 @@
                         </VBox>
                     </children>
                 </VBox>
-            <HBox fx:id="btnCreate2" alignment="CENTER" onMouseClicked="#actionCreateEvent" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-width: 0;">
+            <HBox fx:id="btnCreate2" alignment="CENTER" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-width: 0;">
                <children>
                   <Label onMouseClicked="#actionCreateEvent" text="+ Nouveau Concours" textFill="#2a8cff">
                      <padding>
