@@ -1,7 +1,11 @@
 package org.example.chiefs_arena.App;
 
+import org.example.chiefs_arena.exception.ChampNonSaisie;
+import org.example.chiefs_arena.exception.ConcoursDejaExistant;
+
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Concours {
     private String nom;
@@ -9,76 +13,27 @@ public class Concours {
     private Date dateDebut;
     private Date dateFin;
     private Lieu lieu;
+    private List<Categorie> categories = new ArrayList<>();
+    private List<Partenaire> partenaires = new ArrayList<>();
+    private List<Personne> participants = new ArrayList<>();
     private Classement classement;
-    private List<Categorie> categories;
-    private List<Partenaire> partenaires;
 
-
-    private List<Personne> participants;
-
-    public Concours(String nom, String description, Date dateDebut, Date dateFin, Lieu lieu, Classement classement, List<Categorie> categories, List<Partenaire> partenaires, List<Personne> participants) {
-        this.nom = nom;
-        this.description = description;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.lieu = lieu;
-        this.classement = classement;
-        this.categories = categories;
-        this.partenaires = partenaires;
-        this.participants = participants;
-    }
-
-    public Classement getClassement()
-    {
-        return classement;
-    }
-
-    public List<Categorie> getCategories()
-    {
-        return categories;
-    }
-
-    public List<Partenaire> getPartenaires()
-    {
-        return partenaires;
-    }
-
-    public List<Personne> getParticipants()
-    {
-        return participants;
-    }
-
-    public void setParticipants(List<Personne> participants)
-    {
-        this.participants = participants;
-    }
-
-    public void setPartenaires(List<Partenaire> partenaires)
-    {
-        this.partenaires = partenaires;
-    }
-
-    public void setCategories(List<Categorie> categories)
-    {
-        this.categories = categories;
-    }
-
-    public void setClassement(Classement classement)
-    {
-        this.classement = classement;
-    }
-
-    public Concours(String nom, Date dateDebut, Date dateFin) {
-        setNom(nom);
-        setDateDebut(dateDebut);
-        setDateFin(dateFin);
+    public Concours() throws ConcoursDejaExistant {
+        setNom(getNom());
+        setDateDebut(getDateDebut());
+        setDateFin(getDateFin());
+        setLieu(getLieu());
+        /*Pas nécessaire*/
     }
 
     public String getNom() {
         return nom;
     }
 
-    public void setNom(String nom) {
+    public void setNom(String nom) throws ConcoursDejaExistant {
+        if (this.nom != null && this.nom.equals(nom)) {
+            throw new ConcoursDejaExistant("Le nom de l'événement est déjà utilisé.");
+        }
         this.nom = nom;
     }
 
@@ -92,6 +47,17 @@ public class Concours {
 
     public Date getDateDebut() {
         return dateDebut;
+    }
+    public List<Partenaire> getPartenaires() {
+        return partenaires;
+    }
+
+    public List<Personne> getPersonnes() {
+        return participants;
+    }
+
+    public List<Categorie> getCategories() {
+        return categories;
     }
 
     public void setDateDebut(Date dateDebut) {
@@ -126,17 +92,22 @@ public class Concours {
         participants.add(personne);
     }
 
-    public boolean isChampionnant() {
-        // Logique pour déterminer si c'est un championnat
-        return true;
-    }
 
     /**
      * Renvoie vrai s'il un de ces champs est manquant. Ils sont obligatoires pour créer un événement
-     * @return nom == null | dateDebut == null | dateFin == null | lieu == null | categories.isEmpty();
+     * @return nom == null | dateDebut == null | dateFin == null | lieu == null;
      */
     public boolean isChampManquant() {
-        return nom == null | dateDebut == null | dateFin == null | lieu == null | categories.isEmpty();
+        return nom == null || dateDebut == null || dateFin == null || lieu == null;
+    }
+
+    /**
+     *     Méthode pour vérifier les champs obligatoires
+     */
+    public void checkChampsSaisie() throws ChampNonSaisie {
+        if (isChampManquant()) {
+            throw new ChampNonSaisie("Un champ obligatoire n'a pas été saisi.");
+        }
     }
 
 
