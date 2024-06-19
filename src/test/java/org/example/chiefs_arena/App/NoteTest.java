@@ -8,17 +8,20 @@ import org.junit.jupiter.api.Test;
  * Tests unitaires pour la classe Note.
  */
 public class NoteTest {
-    private Note note1 = new Note();
-    private Note note2 = new Note();
-    private Note note3 = new Note();
+    private Note note1;
+    private Note note2;
+    private Note note3;
 
     /**
-     * Initialise un objet Note avant chaque test.
+     * Initialise les objets Note avant chaque test.
      */
     @BeforeEach
-    public void setUp(){
+    public void setUp() throws NoteException {
+        note1 = new Note();
+        note2 = new Note();
+        note3 = new Note();
+
         note1.setNote(10);
-        note2.setNote(15);
         note3.setNote(0);
     }
 
@@ -26,9 +29,17 @@ public class NoteTest {
      * Teste la méthode setGetNote().
      */
     @Test
-    public void testSetGetNote(){
+    public void testSetGetNote() {
         assertEquals(10, note1.getNote());
+        assertEquals(0, note3.getNote());
+    }
 
+    /**
+     * Teste la méthode setNote avec une note invalide.
+     */
+    @Test
+    public void testSetNoteException() {
+        assertThrows(NoteException.class, () -> note2.setNote(15));
     }
 }
 
