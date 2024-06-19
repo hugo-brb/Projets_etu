@@ -1,4 +1,7 @@
 package org.example.chiefs_arena.App;
+import org.example.chiefs_arena.exception.ChampNonSaisie;
+import org.example.chiefs_arena.exception.ConcourDejaExistant;
+import org.example.chiefs_arena.exception.ConcoursDateInvalide;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.Calendar;
@@ -11,14 +14,13 @@ class ConcoursTest {
     private Concours concours;
     private Concours concours2;
     @BeforeEach
-    void setUp() {
+    void setUp() throws ConcourDejaExistant {
         concours = new Concours();
         concours.setNom("CookTempest");
         concours.setDescription("Evénement culinaire sur la cuisine française");
         concours.setDateDebut(new Date(2024, Calendar.AUGUST, 8, 14, 0 , 0));
         concours.setDateFin(new Date(2024, Calendar.AUGUST, 8, 18, 0 , 0));
         concours.setLieu(new Lieu("Castilla", 70));
-
 
         concours2 = new Concours();
         concours2.setNom("CookContest");
@@ -78,10 +80,32 @@ class ConcoursTest {
     }
 
     @Test
-    void isChampManquant() {
+    void isChampManquant() throws ConcourDejaExistant {
         assertFalse(concours.isChampManquant());
         assertTrue(concours2.isChampManquant());
         concours.setNom(null);
         assertTrue(concours.isChampManquant());
     }
+
+    @Test
+    public void testEvenementDejaExistant() throws ConcourDejaExistant {
+        concours.setNom("Hackathon");
+
+        Exception exception = assertThrows(ConcourDejaExistant.class, () -> {
+            concours2.setNom("Hackathon");
+        });
+
+        assertEquals("Le nom de l'événement est déjà utilisé.", exception.getMessage());
+    }
+    @Test
+    public void testChampsObligatoiresNonSaisis() throws ConcourDejaExistant {
+        concours.setNom(null);
+
+        Exception exception = assertThrows(ChampNonSaisie.class, () -> {
+            concours.checkChampsSaisie();
+        });
+
+        assertEquals("Un champ obligatoire n'a pas été saisi.", exception.getMessage());
+    }
+
 }

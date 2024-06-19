@@ -1,6 +1,8 @@
 package org.example.chiefs_arena.App;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.example.chiefs_arena.exception.NoteException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,14 +10,21 @@ import org.junit.jupiter.api.Test;
  * Tests unitaires pour la classe Note.
  */
 public class NoteTest {
-    private Note note;
+    private Note note1;
+    private Note note2;
+    private Note note3;
 
     /**
-     * Initialise un objet Note avant chaque test.
+     * Initialise les objets Note avant chaque test.
      */
     @BeforeEach
-    public void setUp() {
-        note = new Note();
+    public void setUp() throws org.example.chiefs_arena.exception.NoteException {
+        note1 = new Note();
+        note2 = new Note();
+        note3 = new Note();
+
+        note1.setNote(10);
+        note3.setNote(0);
     }
 
     /**
@@ -23,8 +32,16 @@ public class NoteTest {
      */
     @Test
     public void testSetGetNote() {
-        note.setNote(10);
-        assertEquals(10, note.getNote());
+        assertEquals(10, note1.getNote());
+        assertEquals(0, note3.getNote());
+    }
+
+    /**
+     * Teste la méthode setNote avec une note invalide.
+     */
+    @Test
+    public void testSetNoteException(){
+        assertThrows(NoteException.class, () -> note2.setNote(15));
     }
 }
 
