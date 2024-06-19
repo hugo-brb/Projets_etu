@@ -10,6 +10,10 @@ public class User
 	private boolean mail_notif;
 	private Abonnement abonnement;
 
+	public User()
+	{
+	}
+
 	public User(String name, String username, String mail, String password, boolean computer_notif, boolean mail_notif, Abonnement abonnement)
 	{
 		this.name = name;
@@ -19,6 +23,11 @@ public class User
 		this.computer_notif = computer_notif;
 		this.mail_notif = mail_notif;
 		this.abonnement = abonnement;
+		Handler.write_data(Handler.user_file, Handler.gson.toJson(this));
+	}
+
+	public void save()
+	{
 		Handler.write_data(Handler.user_file, Handler.gson.toJson(this));
 	}
 
