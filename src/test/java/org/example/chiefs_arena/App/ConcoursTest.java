@@ -1,4 +1,6 @@
 package org.example.chiefs_arena.App;
+import org.example.chiefs_arena.exception.ChampNonSaisie;
+import org.example.chiefs_arena.exception.ConcoursDateInvalide;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.Calendar;
@@ -82,5 +84,16 @@ class ConcoursTest {
         assertTrue(concours2.isChampManquant());
         concours.setNom(null);
         assertTrue(concours.isChampManquant());
+    }
+
+    @Test
+    public void testChampsObligatoiresNonSaisis() {
+        concours.setNom(null);
+
+        Exception exception = assertThrows(ChampNonSaisie.class, () -> {
+            concours.checkChampsSaisie();
+        });
+
+        assertEquals("Un champ obligatoire n'a pas été saisi.", exception.getMessage());
     }
 }
