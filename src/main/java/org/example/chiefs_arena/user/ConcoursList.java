@@ -2,11 +2,12 @@ package org.example.chiefs_arena.user;
 
 import org.example.chiefs_arena.App.Concours;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ConcoursList
 {
-	private List<Concours> concours;
+	private List<Concours> concours = new ArrayList<>();
 
 	public ConcoursList()
 	{

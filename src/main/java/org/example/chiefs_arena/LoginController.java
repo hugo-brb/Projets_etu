@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -101,14 +100,11 @@ public class LoginController
 			user.setPassword(register_password_field.getText());
 			user.save();
 
-			Stage stage = new Stage();
-			Scene scene = new Scene(FXMLLoader.load(getClass().getResource("home-view.fxml")));
-			stage.setTitle("Chief's Arena");
-			Image icon = new Image(getClass().getResourceAsStream("/org/example/chiefs_arena/img/icone.png"));
-			stage.getIcons().add(icon);
-			stage.setScene(scene);
-			stage.setResizable(false);
-			stage.show();
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("home-view.fxml"));
+			Stage window = (Stage) register_name.getScene().getWindow();
+			Scene scene = new Scene(fxmlLoader.load());
+			window.setScene(scene);
+			window.show();
 		}
 	}
 }
