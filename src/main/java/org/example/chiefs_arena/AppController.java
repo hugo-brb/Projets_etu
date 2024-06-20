@@ -40,7 +40,16 @@ public class AppController {
     @FXML
     private TextArea contest_desc;
     @FXML
-    private ComboBox<String> contest_cat;
+    private MenuButton contest_cat;
+
+    @FXML
+    private Label paramUsername;
+    @FXML
+    private Label paramNom;
+    @FXML
+    private TextField paramMail;
+    @FXML
+    private PasswordField paramMdp;
 
     @FXML
     private TextField nomField, prenomField, ageField, nomJury, prenomJury, ageJury, idSponso, nomSponso, contributionSponso, contrainteSponso;
@@ -105,6 +114,16 @@ public class AppController {
         if (concours_content_wrapper != null) {
             UpdateConcoursList.update(concours, concours_content_wrapper, concours_info_list);
         }
+
+        initParam();
+    }
+
+    @FXML
+    public void initParam(){
+        if (paramUsername != null) paramUsername.setText(Handler.getInstance().getUser().getUsername());
+        if (paramNom != null) paramNom.setText(STR."\{Handler.getInstance().getUser().getName().toUpperCase()} \{Handler.getInstance().getUser().getPrenom()}");
+        if (paramMail != null) paramMail.setText(Handler.getInstance().getUser().getMail());
+        if (paramMdp != null) paramMdp.setText(Handler.getInstance().getUser().getPassword());
     }
 
     @FXML
@@ -256,5 +275,11 @@ public class AppController {
     private void closeWindow(TextField field) {
         Stage stage = (Stage) field.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void handleMenuItemClick(ActionEvent event) {
+        MenuItem clickedItem = (MenuItem) event.getSource();
+        contest_cat.setText(clickedItem.getText());
     }
 }

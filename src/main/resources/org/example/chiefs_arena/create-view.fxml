@@ -4,8 +4,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
@@ -253,7 +254,7 @@
                                         <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <ComboBox fx:id="contest_cat" prefHeight="35.0" prefWidth="800.0" promptText="Choisissez une catégorie..." style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-width: 0; -fx-border-color: #f0f0f0;">
+                                <MenuButton fx:id="contest_cat" onAction="#handleMenuItemClick" prefHeight="35.0" prefWidth="800.0" style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-width: 0; -fx-border-color: #f0f0f0;" text="Choisissez une catégorie...">
                                     <effect>
                                         <DropShadow offsetY="1.0">
                                             <color>
@@ -261,7 +262,52 @@
                                             </color>
                                         </DropShadow>
                                     </effect>
-                                </ComboBox>
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Gastronomie" />
+                                        <MenuItem mnemonicParsing="false" text="Fast-food" />
+                                        <MenuItem mnemonicParsing="false" text="Vegan" />
+                                        <MenuItem mnemonicParsing="false" text="Végétarien" />
+                                        <MenuItem mnemonicParsing="false" text="Barbecue" />
+                                        <MenuItem mnemonicParsing="false" text="Pâtisserie" />
+                                        <MenuItem mnemonicParsing="false" text="Œnologie" />
+                                        <MenuItem mnemonicParsing="false" text="Allemagne" />
+                                        <MenuItem mnemonicParsing="false" text="Argentine" />
+                                        <MenuItem mnemonicParsing="false" text="Australie" />
+                                        <MenuItem mnemonicParsing="false" text="Brésil" />
+                                        <MenuItem mnemonicParsing="false" text="Chine" />
+                                        <MenuItem mnemonicParsing="false" text="Corée du Sud" />
+                                        <MenuItem mnemonicParsing="false" text="Cuba" />
+                                        <MenuItem mnemonicParsing="false" text="États-Unis" />
+                                        <MenuItem mnemonicParsing="false" text="Espagne" />
+                                        <MenuItem mnemonicParsing="false" text="Éthiopie" />
+                                        <MenuItem mnemonicParsing="false" text="France" />
+                                        <MenuItem mnemonicParsing="false" text="Grèce" />
+                                        <MenuItem mnemonicParsing="false" text="Guinée" />
+                                        <MenuItem mnemonicParsing="false" text="Hongrie" />
+                                        <MenuItem mnemonicParsing="false" text="Inde" />
+                                        <MenuItem mnemonicParsing="false" text="Indonésie" />
+                                        <MenuItem mnemonicParsing="false" text="Iran" />
+                                        <MenuItem mnemonicParsing="false" text="Italie" />
+                                        <MenuItem mnemonicParsing="false" text="Jamaïque" />
+                                        <MenuItem mnemonicParsing="false" text="Japon" />
+                                        <MenuItem mnemonicParsing="false" text="Liban" />
+                                        <MenuItem mnemonicParsing="false" text="Malaisie" />
+                                        <MenuItem mnemonicParsing="false" text="Maroc" />
+                                        <MenuItem mnemonicParsing="false" text="Mexique" />
+                                        <MenuItem mnemonicParsing="false" text="Pérou" />
+                                        <MenuItem mnemonicParsing="false" text="Philippines" />
+                                        <MenuItem mnemonicParsing="false" text="Portugal" />
+                                        <MenuItem mnemonicParsing="false" text="Royaume-Uni" />
+                                        <MenuItem mnemonicParsing="false" text="Russie" />
+                                        <MenuItem mnemonicParsing="false" text="Sénégal" />
+                                        <MenuItem mnemonicParsing="false" text="Suède" />
+                                        <MenuItem mnemonicParsing="false" text="Thaïlande" />
+                                        <MenuItem mnemonicParsing="false" text="Tunisie" />
+                                        <MenuItem mnemonicParsing="false" text="Turquie" />
+                                        <MenuItem mnemonicParsing="false" text="Vietnam" />
+                                    </items>
+
+                                </MenuButton>
                             </children>
                             <VBox.margin>
                                 <Insets left="150.0" right="150.0" />
