@@ -142,9 +142,9 @@ public class AppController {
     public void initialize() throws IOException {
         String username = Handler.getInstance().getUser().getUsername();
         ConcoursList concours = Handler.getInstance().getAllConcours();
-        this.username.setText(username);
+        if (this.username != null) this.username.setText(username);
         if (welcome != null) welcome.setText("Bienvenue, " + username);
-        UpdateConcoursList.update(concours, concours_content_wrapper, concours_info_list);
+        if (concours_content_wrapper != null) UpdateConcoursList.update(concours, concours_content_wrapper, concours_info_list);
     }
 
     /**
