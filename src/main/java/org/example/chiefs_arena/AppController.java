@@ -10,8 +10,8 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.chiefs_arena.App.*;
@@ -19,16 +19,20 @@ import org.example.chiefs_arena.exception.ConcoursDejaExistant;
 import org.example.chiefs_arena.user.ConcoursList;
 import org.example.chiefs_arena.user.Handler;
 
+import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 public class AppController {
     @FXML
     public HBox btnCreate;
     public HBox btnHome;
     public HBox mes_concours;
+    public HBox btnParam;
+    public Pane pParam;
+    public Pane btnNotif;
+    public Pane btnAbo;
 
     @FXML
     private VBox concours_content_wrapper;
@@ -73,6 +77,54 @@ public class AppController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("analyse-view.fxml"));
 
         Stage fenetre = (Stage) concours_content_wrapper.getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load());
+
+        fenetre.setScene(scene);
+        fenetre.show();
+    }
+
+    @FXML
+    public void actionGoParam() throws  IOException
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("param.fxml"));
+
+        Stage fenetre = (Stage) btnParam.getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load());
+
+        fenetre.setScene(scene);
+        fenetre.show();
+    }
+
+    @FXML
+    public void actionGoUser() throws  IOException
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("param.fxml"));
+
+        Stage fenetre = (Stage) pParam.getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load());
+
+        fenetre.setScene(scene);
+        fenetre.show();
+    }
+
+    @FXML
+    public void actionGoNotif() throws  IOException
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("notif.fxml"));
+
+        Stage fenetre = (Stage) btnNotif.getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load());
+
+        fenetre.setScene(scene);
+        fenetre.show();
+    }
+
+    @FXML
+    public void actionGoAbo() throws  IOException
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("abo.fxml"));
+
+        Stage fenetre = (Stage) btnAbo.getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
 
         fenetre.setScene(scene);

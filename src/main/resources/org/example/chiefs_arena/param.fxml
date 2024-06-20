@@ -104,7 +104,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </HBox>
-                                <HBox fx:id="analyse" alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="182.0" spacing="13.0">
+                                <HBox fx:id="analyse" alignment="CENTER_LEFT" onMouseClicked="#actionGoAnalyse" prefHeight="40.0" prefWidth="182.0" spacing="13.0">
                                     <children>
                                         <ImageView fitHeight="17.0" fitWidth="16.0">
                                             <image>
@@ -145,7 +145,7 @@
                         </VBox>
                     </children>
                 </VBox>
-                <HBox fx:id="btnCreate3" alignment="CENTER" onMouseClicked="#actionCreateEvent3" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-width: 0;">
+                <HBox fx:id="btnCreate4" alignment="CENTER" onMouseClicked="#actionCreateEvent" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-width: 0;">
                     <children>
                         <Label text="+ Nouveau Concours" textFill="#2a8cff">
                             <padding>
@@ -246,8 +246,11 @@
                                        </color>
                                     </DropShadow>
                                  </effect>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Pane>
-                              <Pane minHeight="60.0" minWidth="60.0" prefHeight="60.0" prefWidth="60.0">
+                              <Pane fx:id="btnNotif" minHeight="60.0" minWidth="60.0" onMouseClicked="#actionGoNotif" prefHeight="60.0" prefWidth="60.0">
                                  <children>
                                     <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" translateX="14.0" translateY="9.0">
                                        <image>
@@ -261,8 +264,11 @@
                                  <VBox.margin>
                                     <Insets left="5.0" right="5.0" />
                                  </VBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Pane>
-                              <Pane minHeight="60.0" minWidth="60.0" prefHeight="60.0" prefWidth="60.0">
+                              <Pane fx:id="btnAbo" minHeight="60.0" minWidth="60.0" onMouseClicked="#actionGoAbo" prefHeight="60.0" prefWidth="60.0">
                                  <children>
                                     <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" translateX="10.0" translateY="9.0">
                                        <image>
@@ -276,6 +282,9 @@
                                  <VBox.margin>
                                     <Insets left="5.0" right="5.0" />
                                  </VBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Pane>
                            </children>
                            <HBox.margin>

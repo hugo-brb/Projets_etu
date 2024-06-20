@@ -39,14 +39,24 @@
                                 </HBox>
                                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="5000.0">
                                     <children>
-                                        <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@./img/leftbar/settings.png" />
-                                            </image>
-                                            <HBox.margin>
-                                                <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-                                            </HBox.margin>
-                                        </ImageView>
+                              <HBox fx:id="btnParam" alignment="CENTER" maxHeight="14.0" maxWidth="14.0" minHeight="14.0" minWidth="14.0" onMouseClicked="#actionGoParam" prefHeight="14.0" prefWidth="14.0">
+                                 <children>
+                                              <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                                  <image>
+                                                      <Image url="@./img/leftbar/settings.png" />
+                                                  </image>
+                                                  <HBox.margin>
+                                                      <Insets />
+                                                  </HBox.margin>
+                                              </ImageView>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </HBox>
                                         <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@./img/leftbar/reduce.png" />
