@@ -6,15 +6,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.chiefs_arena.App.*;
 import org.example.chiefs_arena.exception.ConcoursDejaExistant;
@@ -85,15 +83,13 @@ public class AppController {
     private Label username;
     @FXML
     private Label welcome;
-    @FXML
-    private GridPane concours_info_list;
 
+    /*
     public void initialize() throws IOException {
         String username = Handler.getInstance().getUser().getUsername();
         this.username.setText(username);
         if (welcome != null) welcome.setText("Bienvenue, " + username);
-        ConcoursList concours = Handler.getInstance().getAllConcours();
-        UpdateConcoursList.update(concours, concours_content_wrapper, concours_info_list);
+        UpdateConcoursList.update(concours_content_wrapper);
     }
 
     /**
@@ -112,7 +108,6 @@ public class AppController {
         ((Node) e.getSource()).setCursor(Cursor.HAND);
     }
 
-    /** Création d'un concours */
     @FXML
     private TextField contest_name;
     @FXML
@@ -120,6 +115,7 @@ public class AppController {
     @FXML
     private ComboBox contest_cat;
 
+    /** Création d'un concours */
     @FXML
     public void create(ActionEvent e) throws ConcoursDejaExistant
     {
@@ -164,6 +160,101 @@ public class AppController {
                     )
         );
         all_concours.save();
-        UpdateConcoursList.update(all_concours, concours_content_wrapper, concours_info_list);
+        UpdateConcoursList.update(concours_content_wrapper);
+    }
+
+
+
+
+    // ---------------------- Participant  -----------------------------
+
+
+    @FXML
+    private TextField nomField;
+
+    @FXML
+    private TextField prenomField;
+
+    @FXML
+    private TextField ageField;
+
+    @FXML
+    private Button creerParticipantButton;
+
+    //-----------------------------------
+    @FXML
+    private FlowPane root;
+
+    @FXML
+    private VBox leftbar;
+
+    @FXML
+    private Button addCuisinierButton;
+
+    @FXML
+    private VBox cuisiniersContainer; // Conteneur pour afficher les cuisiniers ajoutés
+
+
+    @FXML
+    private void creerParticipant() {
+        // Récupérer les valeurs des champs
+        String nom = nomField.getText();
+        String prenom = prenomField.getText();
+        int age;
+
+        try {
+            age = Integer.parseInt(ageField.getText());
+        } catch (NumberFormatException e) {
+            // Gestion de l'erreur si l'âge n'est pas un entier valide
+            showAlert("Erreur de saisie", "Veuillez entrer un âge valide.");
+            return;
+        }
+
+        // Créer et retourner une nouvelle instance de Participant
+        int Serial = 1;
+        Participant participant = new Participant(Serial ,nom, prenom, age );
+
+        // Afficher une confirmation ou traiter l'objet participant
+        showAlert("Succès", "Participant créé : " + participant.getNom() + " " + participant.getPrenom() + ", Âge: " + participant.getAge());
+
+        // Ajouter le participant à la liste des cuisiniers du contrôleur principal
+        addCuisinier(nom, prenom, age);
+
+        // Fermer la fenêtre d'ajout de participant
+        Stage stage = (Stage) nomField.getScene().getWindow();
+        stage.close();
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    //-----------------------------------------------
+    @FXML
+    private void openAddParticipantWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("participant.fxml"));
+
+
+
+            Stage participant = new Stage();
+            participant.initModality(Modality.APPLICATION_MODAL);
+            participant.setTitle("Ajouter un Participant");
+            participant.setScene(new Scene(loader.load()));
+            participant.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void addCuisinier(String nom, String prenom, int age) {
+        Label label = new Label(nom + " " + prenom + ", Âge: " + age);
+        cuisiniersContainer.getChildren().add(label);
     }
 }
