@@ -18,6 +18,9 @@ import org.example.chiefs_arena.user.User;
 
 import java.io.IOException;
 
+/**
+ * Contrôleur pour la gestion de la connexion et de l'inscription des utilisateurs.
+ */
 public class LoginController {
 
 	@FXML
@@ -53,6 +56,12 @@ public class LoginController {
 	private Label error = new Label("Nom d'utilisateur ou mot de passe incorrect");
 	private Text error_message = new Text();
 
+	/**
+	 * Méthode appelée lors de la tentative de connexion.
+	 *
+	 * @param e l'événement de la souris
+	 * @throws IOException si le fichier FXML de la scène suivante n'est pas trouvé
+	 */
 	@FXML
 	public void login(MouseEvent e) throws IOException {
 		if (Handler.login(username.getText(), password.getText())) {
@@ -62,6 +71,12 @@ public class LoginController {
 		}
 	}
 
+	/**
+	 * Méthode appelée pour passer à l'étape suivante de l'inscription.
+	 *
+	 * @param e l'événement de la souris
+	 * @throws IOException si le fichier FXML de la scène suivante n'est pas trouvé
+	 */
 	@FXML
 	public void register_next(MouseEvent e) throws IOException {
 		error_message.setWrappingWidth(500);
@@ -75,14 +90,31 @@ public class LoginController {
 		}
 	}
 
+	/**
+	 * Méthode appelée pour aller à la scène de création de compte.
+	 *
+	 * @param event l'événement d'action
+	 * @throws IOException si le fichier FXML de la scène suivante n'est pas trouvé
+	 */
 	public void goCreateAccount(javafx.event.ActionEvent event) throws IOException {
 		navigateToScene("register.fxml", btnGoAccount);
 	}
 
+	/**
+	 * Méthode appelée pour aller à la scène de connexion.
+	 *
+	 * @param event l'événement d'action
+	 * @throws IOException si le fichier FXML de la scène suivante n'est pas trouvé
+	 */
 	public void goLogin(javafx.event.ActionEvent event) throws IOException {
 		navigateToScene("login.fxml", btnGoLogin);
 	}
 
+	/**
+	 * Valide les champs d'inscription.
+	 *
+	 * @return vrai si tous les champs sont valides, faux sinon
+	 */
 	private boolean validateRegistrationFields() {
 		if (register_name.getText().isBlank()) {
 			displayError(register_error_box, error_message, "Vous devez entrer un nom", null);
@@ -104,6 +136,9 @@ public class LoginController {
 		return false;
 	}
 
+	/**
+	 * Crée un nouvel utilisateur et enregistre les informations.
+	 */
 	private void createUser() {
 		User user = new User();
 		user.setName(register_name.getText());
@@ -114,6 +149,14 @@ public class LoginController {
 		user.save();
 	}
 
+	/**
+	 * Affiche un message d'erreur dans une boîte de dialogue.
+	 *
+	 * @param errorBox la boîte de dialogue d'erreur
+	 * @param errorLabel le label de l'erreur
+	 * @param message le message de l'erreur
+	 * @param style le style à appliquer au message
+	 */
 	private void displayError(HBox errorBox, Label errorLabel, String message, String style) {
 		if (style != null) {
 			errorLabel.setStyle(style);
@@ -124,6 +167,14 @@ public class LoginController {
 		}
 	}
 
+	/**
+	 * Affiche un message d'erreur dans une boîte de dialogue.
+	 *
+	 * @param errorBox la boîte de dialogue d'erreur
+	 * @param errorText le texte de l'erreur
+	 * @param message le message de l'erreur
+	 * @param style le style à appliquer au message
+	 */
 	private void displayError(HBox errorBox, Text errorText, String message, String style) {
 		if (style != null) {
 			errorText.setStyle(style);
@@ -134,6 +185,13 @@ public class LoginController {
 		}
 	}
 
+	/**
+	 * Change la scène de l'application.
+	 *
+	 * @param fxml le fichier FXML de la nouvelle scène
+	 * @param sourceNode le nœud source
+	 * @throws IOException si le fichier FXML de la scène suivante n'est pas trouvé
+	 */
 	private void navigateToScene(String fxml, javafx.scene.Node sourceNode) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml));
 		Stage window = (Stage) sourceNode.getScene().getWindow();
