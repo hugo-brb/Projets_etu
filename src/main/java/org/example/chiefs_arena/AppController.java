@@ -1,21 +1,29 @@
 package org.example.chiefs_arena;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.example.chiefs_arena.App.*;
+import org.example.chiefs_arena.exception.ConcoursDejaExistant;
 import org.example.chiefs_arena.user.ConcoursList;
 import org.example.chiefs_arena.user.Handler;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 public class AppController {
     @FXML
@@ -72,35 +80,21 @@ public class AppController {
         fenetre.show();
     }
 
+    @FXML
+    private Label username;
+    @FXML
+    private Label welcome;
+
+    public void initialize() throws IOException {
+        String username = Handler.getInstance().getUser().getUsername();
+        this.username.setText(username);
+        if (welcome != null) welcome.setText("Bienvenue, " + username);
+        UpdateConcoursList.update(concours_content_wrapper);
+    }
+
     /**
      * controller pour la left bar
      */
-
-    public void initialize() throws IOException {
-        ConcoursList concours = Handler.gson.fromJson(Handler.fetch_data(Handler.concours_file), ConcoursList.class);
-        concours_content_wrapper.getChildren().clear();
-        if (concours == null || concours.getConcours().isEmpty())
-        {
-            concours_content_wrapper.setSpacing(8d);
-            Text no_concours = new Text("Aucun concours");
-            Text create = new Text("Commencez à en créer avec Chef's Arena !");
-            Arrays.asList(no_concours, create).forEach(text -> {
-                text.setWrappingWidth(190);
-                text.getStyleClass().add("text");
-                concours_content_wrapper.getChildren().add(text);
-            });
-        }
-        else
-        {
-            concours.getConcours().forEach(c -> {
-                Label label = new Label(c.getNom());
-                label.getStyleClass().add("text");
-                label.addEventHandler(MouseEvent.MOUSE_ENTERED, this::mouse_entered);
-                label.addEventHandler(MouseEvent.MOUSE_ENTERED, this::mouse_entered);
-                concours_content_wrapper.getChildren().add(label);
-            });
-        }
-    }
 
     @FXML
     public void mouse_entered(MouseEvent e)
@@ -114,4 +108,58 @@ public class AppController {
         ((Node) e.getSource()).setCursor(Cursor.HAND);
     }
 
+    @FXML
+    private TextField contest_name;
+    @FXML
+    private TextArea contest_desc;
+    @FXML
+    private ComboBox contest_cat;
+
+    /** Création d'un concours */
+    @FXML
+    public void create(ActionEvent e) throws ConcoursDejaExistant
+    {
+        if (contest_name.getText().isBlank())
+        {
+            return;
+        }
+        if (contest_desc.getText().isBlank() || contest_desc.getText().length() > 1000)
+        {
+            return;
+        }
+        ConcoursList all_concours = Handler.getInstance().getAllConcours();
+        if (all_concours == null) all_concours = new ConcoursList();
+        all_concours.addConcours(
+                new Concours(
+                        contest_name.getText(),
+                        contest_desc.getText(),
+                        new Date(System.currentTimeMillis()),
+                        new Date(System.currentTimeMillis()),
+                        new Lieu(
+                                "lieu-1",
+                                    100
+                        ),
+                        Arrays.asList(new Categorie(
+                                "nom",
+                                Arrays.asList("sous-categorie")
+                        )),
+                        Arrays.asList(new Partenaire(
+                            "id",
+                            "nom",
+                            999999999,
+                            "contraintes"
+                        )),
+                        Arrays.asList(new Personne(
+                                1,
+                                "nom",
+                                "prenom",
+                                94,
+                                "role"
+                        )),
+                        new Classement()
+                    )
+        );
+        all_concours.save();
+        UpdateConcoursList.update(concours_content_wrapper);
+    }
 }

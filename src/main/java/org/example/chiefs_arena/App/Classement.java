@@ -9,6 +9,14 @@ public class Classement {
     private int position;
     private List<Participant> podium;
 
+    public Classement() {}
+
+    public Classement(int position, List<Participant> podium)
+    {
+        this.position = position;
+        this.podium = podium;
+    }
+
     /**
      * Obtient la position du classement.
      *

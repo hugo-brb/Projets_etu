@@ -204,7 +204,7 @@
                                         <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <TextField prefHeight="35.0" promptText="Saisissez un nom..." style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-color: #f0f0f0; -fx-border-width: 0;">
+                                <TextField fx:id="contest_name" prefHeight="35.0" promptText="Saisissez un nom..." style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-color: #f0f0f0; -fx-border-width: 0;">
                                     <effect>
                                         <DropShadow offsetY="1.0">
                                             <color>
@@ -222,7 +222,7 @@
                                         <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <TextArea prefHeight="85.0" prefWidth="542.0" promptText="Saisissez une description..." style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-color: #f0f0f0; -fx-border-width: 0;">
+                                <TextArea fx:id="contest_desc" prefHeight="85.0" prefWidth="542.0" promptText="Saisissez une description..." style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-color: #f0f0f0; -fx-border-width: 0;">
                                     <effect>
                                         <DropShadow offsetY="1.0">
                                             <color>
@@ -243,7 +243,7 @@
                                         <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <ComboBox prefHeight="35.0" prefWidth="800.0" promptText="Choisissez une catégorie..." style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-width: 0; -fx-border-color: #f0f0f0;">
+                                <ComboBox fx:id="contest_cat" prefHeight="35.0" prefWidth="800.0" promptText="Choisissez une catégorie..." style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-width: 0; -fx-border-color: #f0f0f0;">
                                     <effect>
                                         <DropShadow offsetY="1.0">
                                             <color>
@@ -398,7 +398,7 @@
                                         </Button>
                                     </children>
                                 </VBox>
-                                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #2a8cff; -fx-border-color: #f0f0f0; -fx-border-width: 0; -fx-background-radius: 7;" text="Créer" textFill="WHITE">
+                                <Button onAction="#create" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #2a8cff; -fx-border-color: #f0f0f0; -fx-border-width: 0; -fx-background-radius: 7;" text="Créer" textFill="WHITE">
                                     <effect>
                                         <DropShadow offsetY="1.0">
                                             <color>
