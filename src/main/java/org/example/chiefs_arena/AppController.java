@@ -279,7 +279,7 @@ public class AppController {
 
         // Créer et retourner une nouvelle instance de Participant
         int Serial = 1;
-        Participant participant = new Participant(Serial ,nom, prenom, age );
+        Participant participant = new Participant(Serial ,nom, prenom, age, Participant.class.getSimpleName());
 
         // Afficher une confirmation ou traiter l'objet participant
         showAlert("Succès", "Participant créé : " + participant.getNom() + " " + participant.getPrenom() + ", Âge: " + participant.getAge());
@@ -359,7 +359,7 @@ public class AppController {
 
         // Créer et retourner une nouvelle instance de Participant
         int Serial = 1;
-        Jury jury = new Jury(Serial ,nom, prenom, age );
+        Jury jury = new Jury(Serial ,nom, prenom, age, Jury.class.getSimpleName());
 
         // Afficher une confirmation ou traiter l'objet participant
         showAlert("Succès", "Jury créé : " + jury.getNom() + " " + jury.getPrenom() + ", Âge: " + jury.getAge());

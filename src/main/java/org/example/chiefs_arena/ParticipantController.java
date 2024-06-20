@@ -130,7 +130,7 @@ public class ParticipantController {
 
         // Créer et retourner une nouvelle instance de Participant
         int Serial = 1;
-        Participant participant = new Participant(Serial ,nom, prenom, age );
+        Participant participant = new Participant(Serial ,nom, prenom, age, Participant.class.getSimpleName());
 
         // Afficher une confirmation ou traiter l'objet participant
         showAlert("Succès", "Participant créé : " + participant.getNom() + " " + participant.getPrenom() + ", Âge: " + participant.getAge());

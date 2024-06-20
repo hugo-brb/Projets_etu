@@ -16,8 +16,8 @@ public class Jury extends Personne {
      * @param prenom Le prénom du membre du jury.
      * @param age L'âge du membre du jury.
      */
-    public Jury(int id, String nom, String prenom, int age) {
-        super(id, nom, prenom, age, "Jury");
+    public Jury(int id, String nom, String prenom, int age, String role) {
+        super(id, nom, prenom, age, role);
     }
 
     /**
