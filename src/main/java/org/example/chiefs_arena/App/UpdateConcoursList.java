@@ -68,7 +68,8 @@ public class UpdateConcoursList
 		footer.setSpacing(20);
 	}
 
-	private static int concours_index = 0;
+	private static int i_index = 0;
+	private static int j_index = 0;
 
 	public static void addConcoursInMain(Concours concours, GridPane container)
 	{
@@ -98,7 +99,13 @@ public class UpdateConcoursList
 		box.setStyle("-fx-background-radius: 10; -fx-background-color: white; -fx-padding: 15px");
 		box.getChildren().addAll(header, text_desc, ligner, footer);
 
+		GridPane.setConstraints(box, i_index, j_index);
 		container.getChildren().add(box);
-		concours_index++;
+		i_index++;
+		if (i_index > 2)
+		{
+			i_index = 0;
+			j_index++;
+		}
 	}
 }
