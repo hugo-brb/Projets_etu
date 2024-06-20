@@ -7,6 +7,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ClassementTest {
+
+    /**
+     * Teste le constructeur et les getters de la classe Classement.
+     */
     @Test
     void testClassementConstructorAndGetters() {
         Classement classement = new Classement();
@@ -20,6 +24,9 @@ public class ClassementTest {
         assertEquals(podium, classement.getPodium());
     }
 
+    /**
+     * Teste la méthode setPosition de la classe Classement.
+     */
     @Test
     void testSetPosition() {
         Classement classement = new Classement();
@@ -27,6 +34,9 @@ public class ClassementTest {
         assertEquals(2, classement.getPosition());
     }
 
+    /**
+     * Teste la méthode setPodium de la classe Classement.
+     */
     @Test
     void testSetPodium() {
         Classement classement = new Classement();

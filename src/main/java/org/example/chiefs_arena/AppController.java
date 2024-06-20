@@ -3,7 +3,6 @@ package org.example.chiefs_arena;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -18,292 +17,243 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.chiefs_arena.App.*;
 import org.example.chiefs_arena.exception.ConcoursDejaExistant;
-import org.example.chiefs_arena.exception.ConcoursLieuIdentique;
 import org.example.chiefs_arena.exception.DescriptionTropLongue;
 import org.example.chiefs_arena.user.ConcoursList;
 import org.example.chiefs_arena.user.Handler;
 
-import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
 
+/**
+ * Contrôleur principal de l'application.
+ */
 public class AppController {
     @FXML
-    public HBox btnCreate;
-    public HBox btnHome;
-    public HBox mes_concours;
-    public HBox btnParam;
-    public Pane pParam;
-    public Pane btnNotif;
-    public Pane btnAbo;
-
+    private HBox btnCreate, btnHome, mes_concours, btnParam;
+    @FXML
+    private Pane pParam, btnNotif, btnAbo;
     @FXML
     private VBox concours_content_wrapper;
     @FXML
     private TextField contest_name;
-
     @FXML
-    public void actionCreateEvent(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("create-view.fxml"));
-
-        Stage fenetre = (Stage) concours_content_wrapper.getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load());
-
-        fenetre.setScene(scene);
-        fenetre.show();
-        //contest_cat.getItems().addAll(Categories.values());
-    }
-
-
-    @FXML
-    public void actionGoHome(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("home-view.fxml"));
-
-        Stage fenetre = (Stage) btnHome.getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load());
-
-        fenetre.setScene(scene);
-        fenetre.show();
-    }
-
-    @FXML
-    public void actionGoMyConcours(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("concours-view.fxml"));
-
-        Stage fenetre = (Stage) mes_concours.getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load());
-
-        fenetre.setScene(scene);
-        fenetre.show();
-    }
-
-    @FXML
-    public void actionGoAnalyse() throws IOException
-    {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("analyse-view.fxml"));
-
-        Stage fenetre = (Stage) concours_content_wrapper.getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load());
-
-        fenetre.setScene(scene);
-        fenetre.show();
-    }
-
-    @FXML
-    public void actionGoParam() throws  IOException
-    {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("param.fxml"));
-
-        Stage fenetre = (Stage) btnParam.getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load());
-
-        fenetre.setScene(scene);
-        fenetre.show();
-    }
-
-    @FXML
-    public void actionGoUser() throws  IOException
-    {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("param.fxml"));
-
-        Stage fenetre = (Stage) pParam.getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load());
-
-        fenetre.setScene(scene);
-        fenetre.show();
-    }
-
-    @FXML
-    public void actionGoNotif() throws  IOException
-    {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("notif.fxml"));
-
-        Stage fenetre = (Stage) btnNotif.getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load());
-
-        fenetre.setScene(scene);
-        fenetre.show();
-    }
-
-    @FXML
-    public void actionGoAbo() throws  IOException
-    {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("abo.fxml"));
-
-        Stage fenetre = (Stage) btnAbo.getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load());
-
-        fenetre.setScene(scene);
-        fenetre.show();
-    }
-
-    @FXML
-    private Label username;
-    @FXML
-    private Label welcome;
+    private Label username, welcome;
     @FXML
     private GridPane concours_info_list;
-
-    public void initialize() throws IOException {
-        String username = Handler.getInstance().getUser().getUsername();
-        ConcoursList concours = Handler.getInstance().getAllConcours();
-        if (this.username != null) this.username.setText(username);
-        if (welcome != null) welcome.setText("Bienvenue, " + username);
-        if (concours_content_wrapper != null) UpdateConcoursList.update(concours, concours_content_wrapper, concours_info_list);
-    }
-
-
-
-    public void search_concours(KeyEvent event)
-    {
-        Handler.getInstance().getAllConcours().getConcours().forEach(c -> {
-            if (c.getNom().equals(((TextField) event.getSource()).getText()));
-        });
-    }
-
-
-    /**
-     * controller pour la left bar
-     */
-
-    @FXML
-    public void mouse_entered(MouseEvent e)
-    {
-        ((Node) e.getSource()).setCursor(Cursor.HAND);
-    }
-
-    @FXML
-    public void mouse_exited(MouseEvent e)
-    {
-        ((Node) e.getSource()).setCursor(Cursor.HAND);
-    }
-
     @FXML
     private TextArea contest_desc;
     @FXML
-    private ComboBox contest_cat;
-
-    /** Création d'un concours */
-    @FXML
-    public void create(ActionEvent e) throws DescriptionTropLongue {
-        if (contest_name.getText().isBlank())
-        {
-            return;
-        }
-
-        Concours c = new Concours();
-        c.setDescription(contest_desc.getText());
-
-        try{
-            c.setNom(contest_name.getText());
-        }catch(ConcoursDejaExistant cde){
-            return;
-        }
-
-        if (contest_desc.getText().isBlank() || contest_desc.getText().length() > 1000)
-        {
-            return;
-        }
-        ConcoursList all_concours = Handler.getInstance().getAllConcours();
-        if (all_concours == null) all_concours = new ConcoursList();
-        all_concours.addConcours(
-                new Concours(
-                        contest_name.getText(),
-                        contest_desc.getText(),
-                        new Date(System.currentTimeMillis()),
-                        new Date(System.currentTimeMillis()),
-                        new Lieu(
-                                "lieu-1",
-                                    100
-                        ),
-                        Arrays.asList(new Categorie(
-                                "nom",
-                                Arrays.asList("sous-categorie")
-                        )),
-                        Arrays.asList(new Partenaire(
-                            "id",
-                            "nom",
-                            999999999,
-                            "contraintes"
-                        )),
-                        Arrays.asList(new Personne(
-                                1,
-                                "nom",
-                                "prenom",
-                                94,
-                                "role"
-                        )),
-
-                        new Classement()
-                    )
-        );
-        UpdateConcoursList.update(all_concours, concours_content_wrapper, concours_info_list);
-        all_concours.save();
-    }
-
-
-
-
-    // ---------------------- Participant  -----------------------------
-
+    private MenuButton contest_cat;
 
     @FXML
-    private TextField nomField;
+    private Label paramUsername;
+    @FXML
+    private Label paramNom;
+    @FXML
+    private TextField paramMail;
+    @FXML
+    private PasswordField paramMdp;
 
     @FXML
-    private TextField prenomField;
-
+    private TextField nomField, prenomField, ageField, nomJury, prenomJury, ageJury, idSponso, nomSponso, contributionSponso, contrainteSponso;
     @FXML
-    private TextField ageField;
-
+    private VBox cuisiniersContainer, juryContainer, sponsorContainner;
     @FXML
-    private Button creerParticipantButton;
-
-    //-----------------------------------
+    private Button creerParticipantButton, creerJuryButton, creerSponsorButton;
     @FXML
     private FlowPane root;
-
     @FXML
     private VBox leftbar;
-
     @FXML
     private Button addCuisinierButton;
 
+    /**
+     * Change la scène pour créer un nouvel événement.
+     *
+     * @param event l'événement de la souris
+     * @throws IOException si le fichier FXML n'est pas trouvé
+     */
     @FXML
-    private VBox cuisiniersContainer; // Conteneur pour afficher les cuisiniers ajoutés
+    public void actionCreateEvent(MouseEvent event) throws IOException {
+        changeScene("create-view.fxml", concours_content_wrapper);
+    }
 
-
+    /**
+     * Change la scène pour la page d'accueil.
+     *
+     * @param event l'événement de la souris
+     * @throws IOException si le fichier FXML n'est pas trouvé
+     */
     @FXML
-    private void creerParticipant() {
-        // Récupérer les valeurs des champs
-        String nom = nomField.getText();
-        String prenom = prenomField.getText();
-        int age;
+    public void actionGoHome(MouseEvent event) throws IOException {
+        changeScene("home-view.fxml", btnHome);
+    }
 
-        try {
-            age = Integer.parseInt(ageField.getText());
-        } catch (NumberFormatException e) {
-            // Gestion de l'erreur si l'âge n'est pas un entier valide
-            showAlert("Erreur de saisie", "Veuillez entrer un âge valide.");
+    /**
+     * Change la scène pour afficher mes concours.
+     *
+     * @param event l'événement de la souris
+     * @throws IOException si le fichier FXML n'est pas trouvé
+     */
+    @FXML
+    public void actionGoMyConcours(MouseEvent event) throws IOException {
+        changeScene("concours-view.fxml", mes_concours);
+    }
+
+    /**
+     * Change la scène pour l'analyse des concours.
+     *
+     * @throws IOException si le fichier FXML n'est pas trouvé
+     */
+    @FXML
+    public void actionGoAnalyse() throws IOException {
+        changeScene("analyse-view.fxml", concours_content_wrapper);
+    }
+
+    /**
+     * Change la scène pour la page des paramètres.
+     *
+     * @throws IOException si le fichier FXML n'est pas trouvé
+     */
+    @FXML
+    public void actionGoParam() throws IOException {
+        changeScene("param.fxml", btnParam);
+    }
+
+    /**
+     * Change la scène pour la page de l'utilisateur.
+     *
+     * @throws IOException si le fichier FXML n'est pas trouvé
+     */
+    @FXML
+    public void actionGoUser() throws IOException {
+        changeScene("param.fxml", pParam);
+    }
+
+    /**
+     * Change la scène pour afficher les notifications.
+     *
+     * @throws IOException si le fichier FXML n'est pas trouvé
+     */
+    @FXML
+    public void actionGoNotif() throws IOException {
+        changeScene("notif.fxml", btnNotif);
+    }
+
+    /**
+     * Change la scène pour afficher les abonnements.
+     *
+     * @throws IOException si le fichier FXML n'est pas trouvé
+     */
+    @FXML
+    public void actionGoAbo() throws IOException {
+        changeScene("abo.fxml", btnAbo);
+    }
+
+    /**
+     * Initialise le contrôleur avec les données de l'utilisateur et met à jour la liste des concours.
+     *
+     * @throws IOException si une erreur d'entrée/sortie se produit
+     */
+    @FXML
+    public void initialize() throws IOException {
+        String userName = Handler.getInstance().getUser().getPrenom();
+        ConcoursList concours = Handler.getInstance().getAllConcours();
+
+        if (username != null) username.setText(userName);
+        if (welcome != null) welcome.setText("Bienvenue, " + userName);
+        if (concours_content_wrapper != null) {
+            UpdateConcoursList.update(concours, concours_content_wrapper, concours_info_list);
+        }
+
+        initParam();
+    }
+
+    /**
+     * Initialise les paramètres de l'utilisateur.
+     */
+    @FXML
+    public void initParam(){
+        if (paramUsername != null) paramUsername.setText(Handler.getInstance().getUser().getUsername());
+        if (paramNom != null) paramNom.setText(STR."\{Handler.getInstance().getUser().getName().toUpperCase()} \{Handler.getInstance().getUser().getPrenom()}");
+        if (paramMail != null) paramMail.setText(Handler.getInstance().getUser().getMail());
+        if (paramMdp != null) paramMdp.setText(Handler.getInstance().getUser().getPassword());
+    }
+
+    /**
+     * Recherche un concours par nom.
+     *
+     * @param event l'événement de la touche
+     */
+    @FXML
+    public void search_concours(KeyEvent event) {
+        String searchTerm = ((TextField) event.getSource()).getText();
+        Handler.getInstance().getAllConcours().getConcours().stream()
+                .filter(c -> c.getNom().equalsIgnoreCase(searchTerm))
+                .forEach(c -> System.out.println("Concours trouvé : " + c.getNom()));
+    }
+
+    /**
+     * Crée un nouveau concours.
+     *
+     * @param e l'événement d'action
+     * @throws DescriptionTropLongue si la description du concours est trop longue
+     */
+    @FXML
+    public void create(ActionEvent e) throws DescriptionTropLongue, ConcoursDejaExistant
+    {
+        if (contest_name.getText().isBlank() || contest_desc.getText().isBlank() || contest_desc.getText().length() > 1000) {
             return;
         }
 
-        // Créer et retourner une nouvelle instance de Participant
-        int Serial = 1;
-        Participant participant = new Participant(Serial ,nom, prenom, age, Participant.class.getSimpleName());
+        Concours concours = new Concours(
+                contest_name.getText(),
+                contest_desc.getText(),
+                new Date(System.currentTimeMillis()),
+                new Date(System.currentTimeMillis()),
+                new Lieu("lieu-1", 100),
+                Arrays.asList(new Categorie("nom", Arrays.asList("sous-categorie"))),
+                Arrays.asList(new Partenaire("id", "nom", 999999999, "contraintes")),
+                Arrays.asList(new Personne(1, "nom", "prenom", 94, "role")),
+                new Classement()
+        );
 
-        // Afficher une confirmation ou traiter l'objet participant
-        showAlert("Succès", "Participant créé : " + participant.getNom() + " " + participant.getPrenom() + ", Âge: " + participant.getAge());
-
-        // Ajouter le participant à la liste des cuisiniers du contrôleur principal
-        addCuisinier(nom, prenom, age);
-
-        // Fermer la fenêtre d'ajout de participant
-        Stage stage = (Stage) nomField.getScene().getWindow();
-        stage.close();
+        ConcoursList allConcours = Handler.getInstance().getAllConcours();
+        if (allConcours == null) {
+            allConcours = new ConcoursList();
+        }
+        allConcours.addConcours(concours);
+        UpdateConcoursList.update(allConcours, concours_content_wrapper, concours_info_list);
+        allConcours.save();
     }
 
+    /**
+     * Crée un participant et l'ajoute à la liste des cuisiniers.
+     */
+    @FXML
+    private void creerParticipant() {
+        try {
+            String nom = nomField.getText();
+            String prenom = prenomField.getText();
+            int age = Integer.parseInt(ageField.getText());
+
+            Participant participant = new Participant(1, nom, prenom, age, Participant.class.getSimpleName());
+            showAlert("Succès", "Participant créé : " + participant.getNom() + " " + participant.getPrenom() + ", Âge: " + participant.getAge());
+
+            addCuisinier(nom, prenom, age);
+            closeWindow(nomField);
+        } catch (NumberFormatException e) {
+            showAlert("Erreur de saisie", "Veuillez entrer un âge valide.");
+        }
+    }
+
+    /**
+     * Affiche une alerte.
+     *
+     * @param title le titre de l'alerte
+     * @param message le message de l'alerte
+     */
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -312,165 +262,159 @@ public class AppController {
         alert.showAndWait();
     }
 
-    //-----------------------------------------------
+    /**
+     * Ouvre la fenêtre d'ajout de participant.
+     */
     @FXML
     private void openAddParticipantWindow() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("participant.fxml"));
-            Stage participant = new Stage();
-            participant.initModality(Modality.APPLICATION_MODAL);
-            participant.setTitle("Ajouter un Participant");
-            participant.setScene(new Scene(loader.load()));
-            participant.showAndWait();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        openModalWindow("participant.fxml", "Ajouter un Participant");
     }
 
+    /**
+     * Ajoute un cuisinier à la liste des cuisiniers.
+     *
+     * @param nom le nom du cuisinier
+     * @param prenom le prénom du cuisinier
+     * @param age l'âge du cuisinier
+     */
     @FXML
     public void addCuisinier(String nom, String prenom, int age) {
-        Label label = new Label(nom + " " + prenom + ", Âge: " + age);
-        cuisiniersContainer.getChildren().add(label);
+        cuisiniersContainer.getChildren().add(new Label(nom + " " + prenom + ", Âge: " + age));
     }
 
-    // ---------------------- Jury -------------------------
-
-    @FXML
-    private TextField nomJury;
-
-    @FXML
-    private TextField prenomJury;
-
-    @FXML
-    private TextField ageJury;
-
-    @FXML
-    private VBox juryContainer;
-
-    @FXML
-    private Button creerJuryButton;
-
+    /**
+     * Crée un jury et l'ajoute à la liste des jurys.
+     */
     @FXML
     private void creerJury() {
-        // Récupérer les valeurs des champs
-        String nom = nomJury.getText();
-        String prenom = prenomJury.getText();
-        int age;
-
         try {
-            age = Integer.parseInt(ageJury.getText());
+            String nom = nomJury.getText();
+            String prenom = prenomJury.getText();
+            int age = Integer.parseInt(ageJury.getText());
+
+            Jury jury = new Jury(1, nom, prenom, age, Jury.class.getSimpleName());
+            showAlert("Succès", "Jury créé : " + jury.getNom() + " " + jury.getPrenom() + ", Âge: " + jury.getAge());
+
+            addJury(nom, prenom, age);
+            closeWindow(nomJury);
         } catch (NumberFormatException e) {
-            // Gestion de l'erreur si l'âge n'est pas un entier valide
             showAlert("Erreur de saisie", "Veuillez entrer un âge valide.");
-            return;
         }
-
-        // Créer et retourner une nouvelle instance de Participant
-        int Serial = 1;
-        Jury jury = new Jury(Serial ,nom, prenom, age, Jury.class.getSimpleName());
-
-        // Afficher une confirmation ou traiter l'objet participant
-        showAlert("Succès", "Jury créé : " + jury.getNom() + " " + jury.getPrenom() + ", Âge: " + jury.getAge());
-
-        // Ajouter le participant à la liste des cuisiniers du contrôleur principal
-        addJury(nom, prenom, age);
-
-        // Fermer la fenêtre d'ajout de participant
-        Stage stage = (Stage) nomJury.getScene().getWindow();
-        stage.close();
     }
 
+    /**
+     * Ouvre la fenêtre d'ajout de jury.
+     */
     @FXML
     private void openAddJuryWindow() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("jury.fxml"));
-            Stage jury = new Stage();
-            jury.initModality(Modality.APPLICATION_MODAL);
-            jury.setTitle("Ajouter un Jury");
-            jury.setScene(new Scene(loader.load()));
-            jury.showAndWait();
+        openModalWindow("jury.fxml", "Ajouter un Jury");
+    }
 
+    /**
+     * Ajoute un jury à la liste des jurys.
+     *
+     * @param nom le nom du jury
+     * @param prenom le prénom du jury
+     * @param age l'âge du jury
+     */
+    @FXML
+    public void addJury(String nom, String prenom, int age) {
+        juryContainer.getChildren().add(new Label(nom + " " + prenom + ", Âge: " + age));
+    }
+
+    /**
+     * Crée un sponsor et l'ajoute à la liste des sponsors.
+     */
+    @FXML
+    private void creerSponsor() {
+        try {
+            String id = idSponso.getText();
+            String nom = nomSponso.getText();
+            int contribution = Integer.parseInt(contributionSponso.getText());
+            String contrainte = contrainteSponso.getText();
+
+            Partenaire partenaire = new Partenaire(id, nom, contribution, contrainte);
+            showAlert("Succès", "Sponsor créé : " + partenaire.getNom() + ", contribution: " + partenaire.getContribution() + ", contrainte: " + partenaire.getContraintes());
+
+            addSponsor(nom, contribution, contrainte);
+            closeWindow(idSponso);
+        } catch (NumberFormatException e) {
+            showAlert("Erreur de saisie", "Veuillez entrer une contribution valide.");
+        }
+    }
+
+    /**
+     * Ouvre la fenêtre d'ajout de sponsor.
+     */
+    @FXML
+    private void openAddSponsorWindow() {
+        openModalWindow("sponsor.fxml", "Ajouter un Sponsor");
+    }
+
+    /**
+     * Ajoute un sponsor à la liste des sponsors.
+     *
+     * @param nom le nom du sponsor
+     * @param contribution la contribution du sponsor
+     * @param contrainte la contrainte du sponsor
+     */
+    @FXML
+    public void addSponsor(String nom, int contribution, String contrainte) {
+        sponsorContainner.getChildren().add(new Label(nom + ", contribution: " + contribution + ", Contrainte: " + contrainte));
+    }
+
+    /**
+     * Change la scène en fonction du fichier FXML fourni.
+     *
+     * @param fxml le fichier FXML
+     * @param sourceNode le nœud source
+     * @throws IOException si le fichier FXML n'est pas trouvé
+     */
+    private void changeScene(String fxml, Node sourceNode) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml));
+        Stage stage = (Stage) sourceNode.getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    /**
+     * Ouvre une fenêtre modale.
+     *
+     * @param fxml le fichier FXML
+     * @param title le titre de la fenêtre
+     */
+    private void openModalWindow(String fxml, String title) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            Stage window = new Stage();
+            window.initModality(Modality.APPLICATION_MODAL);
+            window.setTitle(title);
+            window.setScene(new Scene(loader.load()));
+            window.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    @FXML
-    public void addJury(String nom, String prenom, int age) {
-        Label label = new Label(nom + " " + prenom + ", Âge: " + age);
-        juryContainer.getChildren().add(label);
-    }
 
-    // ---------------------- sponsor -------------------------
-
-    @FXML
-    private TextField idSponso;
-    @FXML
-    private TextField nomSponso;
-
-    @FXML
-    private TextField contributionSponso;
-
-    @FXML
-    private TextField contrainteSponso;
-
-    @FXML
-    private VBox sponsorContainner;
-
-    @FXML
-    private Button creerSponsorButton;
-
-    @FXML
-    private void creerSponsor() {
-        // Récupérer les valeurs des champs
-        String id = idSponso.getText();
-        String nom = nomSponso.getText();
-        String contrainte = contrainteSponso.getText();
-        int contribution;
-
-        try {
-            contribution = Integer.parseInt(contributionSponso.getText());
-        } catch (NumberFormatException e) {
-            // Gestion de l'erreur si l'âge n'est pas un entier valide
-            showAlert("Erreur de saisie", "Veuillez entrer un âge valide.");
-            return;
-        }
-
-        // Créer et retourner une nouvelle instance de Participant
-        int Serial = 1;
-        Partenaire partenaire = new Partenaire(id ,nom, contribution, contrainte );
-
-        // Afficher une confirmation ou traiter l'objet participant
-        showAlert("Succès", "Sponsor créé : " + partenaire.getNom() + ", contribution(s) " + partenaire.getContribution() + ", contrainte(s): " + partenaire.getContraintes());
-
-        // Ajouter le participant à la liste des cuisiniers du contrôleur principal
-        addSponsor(nom, contribution, contrainte);
-
-        // Fermer la fenêtre d'ajout de participant
-        Stage stage = (Stage) nomJury.getScene().getWindow();
+    /**
+     * Ferme la fenêtre actuelle.
+     *
+     * @param field le champ texte d'où la scène actuelle est obtenue
+     */
+    private void closeWindow(TextField field) {
+        Stage stage = (Stage) field.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * Gère le clic sur un élément du menu.
+     *
+     * @param event l'événement d'action
+     */
     @FXML
-    private void openAddSponsorWindow() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("sponsor.fxml"));
-
-
-
-            Stage jury = new Stage();
-            jury.initModality(Modality.APPLICATION_MODAL);
-            jury.setTitle("Ajouter un Sponsor");
-            jury.setScene(new Scene(loader.load()));
-            jury.showAndWait();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    @FXML
-    public void addSponsor(String nom, int contribution, String contrainte) {
-        Label label = new Label(nom + ", contribution : " + contribution + ", Contrainte: " + contrainte);
-        juryContainer.getChildren().add(label);
+    private void handleMenuItemClick(ActionEvent event) {
+        MenuItem clickedItem = (MenuItem) event.getSource();
+        contest_cat.setText(clickedItem.getText());
     }
 }

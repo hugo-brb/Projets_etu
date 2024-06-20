@@ -96,6 +96,7 @@ public class UpdateConcoursList
 
 		VBox box = new VBox();
 		box.setSpacing(15.0);
+		VBox.setMargin(box, new Insets(10.0));
 		box.setStyle("-fx-background-radius: 10; -fx-background-color: white; -fx-padding: 15px");
 		box.getChildren().addAll(header, text_desc, ligner, footer);
 

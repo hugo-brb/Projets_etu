@@ -11,6 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class ConcoursTest {
     private Concours concours;
     private Concours concours2;
+
+    /**
+     * Méthode de configuration pour initialiser les données de test.
+     * @throws ConcoursDejaExistant Si un concours avec le même nom existe déjà.
+     * @throws DescriptionTropLongue Si la description dépasse la longueur maximale autorisée.
+     * @throws ConcoursDateInvalide Si les dates du concours sont invalides.
+     * @throws ConcoursLieuIdentique Si le lieu du concours est identique à un autre.
+     */
     @BeforeEach
     void setUp() throws ConcoursDejaExistant, DescriptionTropLongue, ConcoursDateInvalide, ConcoursLieuIdentique {
         concours = new Concours();
@@ -24,6 +32,11 @@ class ConcoursTest {
         concours2.setNom("CookContest");
         concours2.setLieu(new Lieu("Menlack", 110));
     }
+
+
+    /**
+     * Test pour définir le nom du concours.
+     */
     @Test
     void setNom() {
         assertEquals("CookTempest", concours.getNom());
@@ -31,6 +44,10 @@ class ConcoursTest {
             concours.setNom("CookTempest");
         });
     }
+
+    /**
+     * Test pour définir la description du concours.
+     */
     @Test
     void setDescription() {
         assertEquals("Evénement culinaire sur la cuisine française", concours.getDescription());
@@ -39,6 +56,10 @@ class ConcoursTest {
         });
     }
 
+    /**
+     * Test pour définir la date de début du concours.
+     * @throws ConcoursDateInvalide Si la date est invalide.
+     */
     @Test
     void setDateDebut() throws ConcoursDateInvalide {
         // Date future (2024-08-08 14:00:00)
@@ -53,6 +74,9 @@ class ConcoursTest {
         });
     }
 
+    /**
+     * Test pour définir la date de fin du concours.
+     */
     @Test
     void setDateFin() {
         /*Le concours commence le 8 août 2024 à 14h et se termine à 18h*/
@@ -65,6 +89,9 @@ class ConcoursTest {
         });
     }
 
+    /**
+     * Test pour définir le lieu du concours.
+     */
     @Test
     void setLieu() {
         assertEquals("Castilla", concours.getLieu().getNom());
@@ -74,6 +101,9 @@ class ConcoursTest {
 
     }
 
+    /**
+     * Test pour ajouter une catégorie au concours.
+     */
     @Test
     void ajouterCategorie() {
         Categorie categorie = new Categorie("Age", List.of("Junior", "Senior"));
@@ -81,6 +111,9 @@ class ConcoursTest {
         assertTrue(concours.getCategories().contains(categorie));
     }
 
+    /**
+     * Test pour ajouter un partenaire au concours.
+     */
     @Test
     void ajouterPartenaire() {
         Partenaire partenaire = new Partenaire("1", "Sponsor", 1000, "Aucune");
@@ -88,6 +121,9 @@ class ConcoursTest {
         assertTrue(concours.getPartenaires().contains(partenaire));
     }
 
+    /**
+     * Test pour ajouter une personne au concours.
+     */
     @Test
     void ajouterPersonne() {
         Participant personne = new Participant(1, "Durand", "John", 25, "Participant");
@@ -95,6 +131,10 @@ class ConcoursTest {
         assertTrue(concours.getPersonnes().contains(personne));
     }
 
+
+    /**
+     * Test pour vérifier si des champs obligatoires sont manquants.
+     */
     @Test
     void isChampManquant(){
         /*L'instance concours2 n'a pas tous ses champs obligatoires saisis*/
@@ -102,6 +142,11 @@ class ConcoursTest {
         assertTrue(concours2.isChampManquant());
     }
 
+
+    /**
+     * Test pour vérifier le cas où un événement existe déjà.
+     * @throws ConcoursDejaExistant Si un événement avec le même nom existe déjà.
+     */
     @Test
     public void testEvenementDejaExistant() throws ConcoursDejaExistant {
         /*Déjà vérifié dans setNom()*/
@@ -113,6 +158,10 @@ class ConcoursTest {
 
         assertEquals("Le nom de l'événement est déjà utilisé.", exception.getMessage());
     }
+
+    /**
+     * Test pour vérifier si tous les champs obligatoires sont saisis.
+     */
     @Test
     public void testChampsObligatoiresNonSaisis() {
         /*L'instance concours2 n'a pas tous ses champs obligatoires saisis*/

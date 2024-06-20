@@ -277,8 +277,8 @@
                                 <children>
                                     <MenuButton mnemonicParsing="false" style="-fx-background-color: white; -fx-border-width: 0; -fx-border-radius: 5;" text="Trier par">
                                         <items>
-                                            <MenuItem mnemonicParsing="false" text="Action 1" />
-                                            <MenuItem mnemonicParsing="false" text="Action 2" />
+                                            <MenuItem mnemonicParsing="false" text="Nom" />
+                                            <MenuItem mnemonicParsing="false" text="Date" />
                                         </items>
                                         <effect>
                                             <DropShadow blurType="GAUSSIAN" height="13.98" offsetY="1.0" radius="5.905" width="11.64">

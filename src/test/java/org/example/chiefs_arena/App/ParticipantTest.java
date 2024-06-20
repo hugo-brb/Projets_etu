@@ -5,6 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ParticipantTest {
 
+
+    /**
+     * Teste le constructeur de la classe Participant et les méthodes getters.
+     */
     @Test
     void testParticipantConstructorAndGetters() {
         Participant participant = new Participant(1, "Durand", "John", 25, "participant");

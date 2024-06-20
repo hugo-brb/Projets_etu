@@ -119,7 +119,7 @@ public class Handler
 		}
 		catch (NoSuchAlgorithmException e)
 		{
-			throw new RuntimeException("SHA3-256 algorithm not available", e);
+			throw new RuntimeException(e);
 		}
 	}
 }

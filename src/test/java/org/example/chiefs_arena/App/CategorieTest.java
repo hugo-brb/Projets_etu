@@ -8,6 +8,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CategorieTest {
+
+    /**
+     * Teste le constructeur et les getters de la classe Categorie.
+     */
     @Test
     void testCategorieConstructorAndGetters() {
         List<String> sousCategories = new ArrayList<>();
@@ -17,6 +21,9 @@ public class CategorieTest {
         assertEquals(sousCategories, categorie.getSousCategories());
     }
 
+    /**
+     * Teste la méthode setNom de la classe Categorie.
+     */
     @Test
     void testSetNom(){
         List<String> sousCategories = new ArrayList<>();
@@ -25,6 +32,9 @@ public class CategorieTest {
         assertEquals("Catégorie B", categorie.getNom());
     }
 
+    /**
+     * Teste la méthode setSousCategories de la classe Categorie.
+     */
     @Test
     void testSetSousCategorie(){
         List<String> sousCategories = new ArrayList<>();
