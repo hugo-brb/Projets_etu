@@ -8,8 +8,9 @@ module org.example.chiefs_arena {
     requires org.kordamp.bootstrapfx.core;
     requires java.xml;
 	requires java.desktop;
+	requires java.sql;
 
-    exports org.example.chiefs_arena.user to javafx.fxml;
+	exports org.example.chiefs_arena.user to javafx.fxml;
     exports org.example.chiefs_arena;
     exports org.example.chiefs_arena.App;
     opens org.example.chiefs_arena.App to javafx.fxml, com.google.gson;

@@ -18,6 +18,19 @@ public class Concours {
     private List<Personne> participants = new ArrayList<>();
     private Classement classement;
 
+    public Concours(String nom, String description, Date dateDebut, Date dateFin, Lieu lieu, List<Categorie> categories, List<Partenaire> partenaires, List<Personne> participants, Classement classement)
+    {
+        this.nom = nom;
+        this.description = description;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.lieu = lieu;
+        this.categories = categories;
+        this.partenaires = partenaires;
+        this.participants = participants;
+        this.classement = classement;
+    }
+
     public Concours() throws ConcoursDejaExistant, ConcoursDateInvalide {
         /*setNom(getNom());
         setDateDebut(getDateDebut());
@@ -25,6 +38,39 @@ public class Concours {
         setLieu(getLieu());
         /*Pas nécessaire*/
     }
+
+
+    public List<Personne> getParticipants()
+    {
+        return participants;
+    }
+
+    public Classement getClassement()
+    {
+        return classement;
+    }
+
+
+    public void setCategories(List<Categorie> categories)
+    {
+        this.categories = categories;
+    }
+
+    public void setPartenaires(List<Partenaire> partenaires)
+    {
+        this.partenaires = partenaires;
+    }
+
+    public void setParticipants(List<Personne> participants)
+    {
+        this.participants = participants;
+    }
+
+    public void setClassement(Classement classement)
+    {
+        this.classement = classement;
+    }
+
     /**
      * Obtient le nom du concours.
      * @return Le nom du concours.
@@ -32,6 +78,8 @@ public class Concours {
     public String getNom() {
         return nom;
     }
+
+
     /**
      * Définit le nom du concours.
      * Exception: Scénario alternatif 1 - Evénement déjà existant
