@@ -1,8 +1,5 @@
 package org.example.chiefs_arena.App;
-import org.example.chiefs_arena.exception.ChampNonSaisie;
-import org.example.chiefs_arena.exception.ConcoursDateInvalide;
-import org.example.chiefs_arena.exception.ConcoursDejaExistant;
-import org.example.chiefs_arena.exception.DescriptionTropLongue;
+import org.example.chiefs_arena.exception.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.Calendar;
@@ -15,7 +12,7 @@ class ConcoursTest {
     private Concours concours;
     private Concours concours2;
     @BeforeEach
-    void setUp() throws ConcoursDejaExistant, DescriptionTropLongue, ConcoursDateInvalide{
+    void setUp() throws ConcoursDejaExistant, DescriptionTropLongue, ConcoursDateInvalide, ConcoursLieuIdentique {
         concours = new Concours();
         concours.setNom("CookTempest");
         concours.setDescription("Evénement culinaire sur la cuisine française");
@@ -30,7 +27,9 @@ class ConcoursTest {
     @Test
     void setNom() {
         assertEquals("CookTempest", concours.getNom());
-        assertEquals("CookContest", concours2.getNom());
+        assertThrows(ConcoursDejaExistant.class, () -> {
+            concours.setNom("CookTempest");
+        });
     }
     @Test
     void setDescription() {
@@ -60,7 +59,7 @@ class ConcoursTest {
         Date afterContestBegun = new Date(2024 - 1900, Calendar.AUGUST, 8, 18, 0 , 0);
         assertEquals(afterContestBegun,concours.getDateFin());
 
-        Date beforeContestBegun = new Date(2024 - 1900, Calendar.AUGUST, 8, 12, 0, 0);
+        Date beforeContestBegun = new Date(2024 - 1900, Calendar.AUGUST, 8, 13, 59, 59);
         assertThrows(ConcoursDateInvalide.class, () -> {
             concours.setDateFin(beforeContestBegun);
         });
@@ -72,6 +71,7 @@ class ConcoursTest {
         assertEquals(70, concours.getLieu().getCapacite());
         assertEquals("Menlack", concours2.getLieu().getNom());
         assertEquals(110, concours2.getLieu().getCapacite());
+
     }
 
     @Test
@@ -96,31 +96,30 @@ class ConcoursTest {
     }
 
     @Test
-    void isChampManquant() throws ConcoursDejaExistant {
+    void isChampManquant(){
+        /*L'instance concours2 n'a pas tous ses champs obligatoires saisis*/
         assertFalse(concours.isChampManquant());
         assertTrue(concours2.isChampManquant());
-        concours.setNom(null);
-        assertTrue(concours.isChampManquant());
     }
 
     @Test
     public void testEvenementDejaExistant() throws ConcoursDejaExistant {
+        /*Déjà vérifié dans setNom()*/
         concours.setNom("Hackathon");
 
         Exception exception = assertThrows(ConcoursDejaExistant.class, () -> {
-            concours2.setNom("Hackathon");
+            concours.setNom("Hackathon");
         });
 
         assertEquals("Le nom de l'événement est déjà utilisé.", exception.getMessage());
     }
     @Test
-    public void testChampsObligatoiresNonSaisis() throws ConcoursDejaExistant {
-        concours.setNom(null);
-
+    public void testChampsObligatoiresNonSaisis() {
+        /*L'instance concours2 n'a pas tous ses champs obligatoires saisis*/
+        /*Déjà vérifié dans isChampManquant()*/
         Exception exception = assertThrows(ChampNonSaisie.class, () -> {
-            concours.checkChampsSaisie();
+            concours2.checkChampsSaisie();
         });
-
         assertEquals("Un champ obligatoire n'a pas été saisi.", exception.getMessage());
     }
 
