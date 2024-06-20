@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -55,23 +56,23 @@ public class UpdateConcoursList
 		}
 	}
 
-	private static final ImageView calendar = new ImageView();
-
 	private static final HBox footer = new HBox();
 	static
 	{
 		footer.getChildren().addAll(
-			new ImageView(),
-			new ImageView(),
-			new ImageView()
+			new ImageView(new Image(UpdateConcoursList.class.getResourceAsStream("/org/example/chiefs_arena/img/share-08-stroke-rounded.png"))),
+			new ImageView(new Image(UpdateConcoursList.class.getResourceAsStream("/org/example/chiefs_arena/img/favourite-stroke-rounded.png"))),
+			new ImageView(new Image(UpdateConcoursList.class.getResourceAsStream("/org/example/chiefs_arena/img/more-vertical-stroke-rounded.png")))
 		);
 		footer.setAlignment(Pos.CENTER);
+		footer.setSpacing(20);
 	}
 
 	private static int concours_index = 0;
 
 	public static void addConcoursInMain(Concours concours, GridPane container)
 	{
+		ImageView calendar = new ImageView(new Image(UpdateConcoursList.class.getResourceAsStream("/org/example/chiefs_arena/img/calendar-03-stroke-rounded.png")));
 		HBox header = new HBox();
 		HBox left = new HBox();
 
