@@ -18,6 +18,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.chiefs_arena.App.*;
 import org.example.chiefs_arena.exception.ConcoursDejaExistant;
+import org.example.chiefs_arena.exception.ConcoursLieuIdentique;
+import org.example.chiefs_arena.exception.DescriptionTropLongue;
 import org.example.chiefs_arena.user.ConcoursList;
 import org.example.chiefs_arena.user.Handler;
 
@@ -184,12 +186,21 @@ public class AppController {
 
     /** Création d'un concours */
     @FXML
-    public void create(ActionEvent e) throws ConcoursDejaExistant
-    {
+    public void create(ActionEvent e) throws DescriptionTropLongue {
         if (contest_name.getText().isBlank())
         {
             return;
         }
+
+        Concours c = new Concours();
+        c.setDescription(contest_desc.getText());
+
+        try{
+            c.setNom(contest_name.getText());
+        }catch(ConcoursDejaExistant cde){
+            return;
+        }
+
         if (contest_desc.getText().isBlank() || contest_desc.getText().length() > 1000)
         {
             return;
@@ -305,9 +316,6 @@ public class AppController {
     private void openAddParticipantWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("participant.fxml"));
-
-
-
             Stage participant = new Stage();
             participant.initModality(Modality.APPLICATION_MODAL);
             participant.setTitle("Ajouter un Participant");

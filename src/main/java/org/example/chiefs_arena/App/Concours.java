@@ -18,6 +18,8 @@ public class Concours {
     private List<Personne> participants = new ArrayList<>();
     private Classement classement;
 
+    public Concours() {}
+
     public Concours(String nom, String description, Date dateDebut, Date dateFin, Lieu lieu, List<Categorie> categories, List<Partenaire> partenaires, List<Personne> participants, Classement classement)
     {
         this.nom = nom;
@@ -30,15 +32,6 @@ public class Concours {
         this.participants = participants;
         this.classement = classement;
     }
-
-    public Concours() throws ConcoursDejaExistant, ConcoursDateInvalide {
-        /*setNom(getNom());
-        setDateDebut(getDateDebut());
-        setDateFin(getDateFin());
-        setLieu(getLieu());
-        /*Pas nécessaire*/
-    }
-
 
     public List<Personne> getParticipants()
     {
