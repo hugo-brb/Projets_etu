@@ -7,6 +7,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Représente un concours et ses attributs.
+ */
+
 public class Concours {
     private String nom;
     private String description;
@@ -19,6 +23,19 @@ public class Concours {
     private Classement classement;
 
     public Concours() {}
+
+    /**
+     * Constructeur de la classe Concours
+     * @param nom Le nom du concours
+     * @param description La description du concours
+     * @param dateDebut La date de début du concours
+     * @param dateFin La date de fin du concours
+     * @param lieu Le lieu du concours
+     * @param categories Les catégories du concours
+     * @param partenaires Les partenaires du concours
+     * @param participants Les participants au concours
+     * @param classement Le classement du concours
+     */
 
     public Concours(String nom, String description, Date dateDebut, Date dateFin, Lieu lieu, List<Categorie> categories, List<Partenaire> partenaires, List<Personne> participants, Classement classement)
     {

@@ -1,5 +1,9 @@
 package org.example.chiefs_arena.App;
 
+/**
+ * Enumération des différentes catégories possibles pour un concours.
+ */
+
 public enum Categories
 {
 	AFRICAIN,

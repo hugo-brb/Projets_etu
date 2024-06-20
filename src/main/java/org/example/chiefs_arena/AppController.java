@@ -234,6 +234,7 @@ public class AppController {
                                 94,
                                 "role"
                         )),
+
                         new Classement()
                     )
         );
@@ -384,9 +385,6 @@ public class AppController {
     private void openAddJuryWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("jury.fxml"));
-
-
-
             Stage jury = new Stage();
             jury.initModality(Modality.APPLICATION_MODAL);
             jury.setTitle("Ajouter un Jury");

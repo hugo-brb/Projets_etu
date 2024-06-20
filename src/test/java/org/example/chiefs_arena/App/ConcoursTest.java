@@ -90,7 +90,7 @@ class ConcoursTest {
 
     @Test
     void ajouterPersonne() {
-        Personne personne = new Personne(1, "Durand", "John", 25, "Participant");
+        Participant personne = new Participant(1, "Durand", "John", 25, "Participant");
         concours.ajouterPersonne(personne);
         assertTrue(concours.getPersonnes().contains(personne));
     }

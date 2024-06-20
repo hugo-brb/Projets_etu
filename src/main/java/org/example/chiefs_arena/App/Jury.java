@@ -10,7 +10,6 @@ public class Jury extends Personne {
 
     /**
      * Constructeur de la classe Jury.
-     *
      * @param id L'identifiant du membre du jury.
      * @param nom Le nom du membre du jury.
      * @param prenom Le prénom du membre du jury.
