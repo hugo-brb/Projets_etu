@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -84,12 +85,15 @@ public class AppController {
     private Label username;
     @FXML
     private Label welcome;
+    @FXML
+    private GridPane concours_info_list;
 
     public void initialize() throws IOException {
         String username = Handler.getInstance().getUser().getUsername();
         this.username.setText(username);
         if (welcome != null) welcome.setText("Bienvenue, " + username);
-        UpdateConcoursList.update(concours_content_wrapper);
+        ConcoursList concours = Handler.getInstance().getAllConcours();
+        UpdateConcoursList.update(concours, concours_content_wrapper, concours_info_list);
     }
 
     /**
@@ -108,6 +112,7 @@ public class AppController {
         ((Node) e.getSource()).setCursor(Cursor.HAND);
     }
 
+    /** Création d'un concours */
     @FXML
     private TextField contest_name;
     @FXML
@@ -115,7 +120,6 @@ public class AppController {
     @FXML
     private ComboBox contest_cat;
 
-    /** Création d'un concours */
     @FXML
     public void create(ActionEvent e) throws ConcoursDejaExistant
     {
@@ -160,6 +164,6 @@ public class AppController {
                     )
         );
         all_concours.save();
-        UpdateConcoursList.update(concours_content_wrapper);
+        UpdateConcoursList.update(all_concours, concours_content_wrapper, concours_info_list);
     }
 }
