@@ -1,1 +1,1 @@
-{"concours":[{"nom":"Test","description":"Test","dateDebut":"Jun 20, 2024, 4:09:26 PM","dateFin":"Jun 20, 2024, 4:09:26 PM","lieu":{"nom":"lieu-1","capacite":100},"categories":[{"nom":"nom","sousCategories":["sous-categorie"]}],"partenaires":[{"id":"id","nom":"nom","contribution":999999999,"contraintes":"contraintes"}],"participants":[{"id":1,"nom":"nom","prenom":"prenom","age":94,"role":"role"}],"classement":{"position":0,"podium":[],"participants":[]}}]}
+{"concours":[]}
