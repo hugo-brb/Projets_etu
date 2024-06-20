@@ -260,7 +260,7 @@
                         <children>
                             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="159.0">
                                 <children>
-                                    <TextField focusTraversable="false" prefHeight="26.0" prefWidth="166.0" promptText="Rechercher un concours" style="-fx-border-color: white; -fx-border-width: 0; -fx-background-radius: 5; -fx-background-color: white;">
+                                    <TextField onKeyTyped="#search_concours" focusTraversable="false" prefHeight="26.0" prefWidth="166.0" promptText="Rechercher un concours" style="-fx-border-color: white; -fx-border-width: 0; -fx-background-radius: 5; -fx-background-color: white;">
                                         <effect>
                                             <DropShadow height="16.32" offsetY="1.0" radius="6.49" width="11.64">
                                                 <color>

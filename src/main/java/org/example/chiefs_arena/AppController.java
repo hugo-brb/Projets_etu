@@ -7,6 +7,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -37,6 +38,8 @@ public class AppController {
 
     @FXML
     private VBox concours_content_wrapper;
+    @FXML
+    private TextField contest_name;
 
     @FXML
     public void actionCreateEvent(MouseEvent event) throws IOException {
@@ -47,6 +50,7 @@ public class AppController {
 
         fenetre.setScene(scene);
         fenetre.show();
+        //contest_cat.getItems().addAll(Categories.values());
     }
 
 
@@ -147,6 +151,16 @@ public class AppController {
         if (concours_content_wrapper != null) UpdateConcoursList.update(concours, concours_content_wrapper, concours_info_list);
     }
 
+
+
+    public void search_concours(KeyEvent event)
+    {
+        Handler.getInstance().getAllConcours().getConcours().forEach(c -> {
+            if (c.getNom().equals(((TextField) event.getSource()).getText()));
+        });
+    }
+
+
     /**
      * controller pour la left bar
      */
@@ -163,8 +177,6 @@ public class AppController {
         ((Node) e.getSource()).setCursor(Cursor.HAND);
     }
 
-    @FXML
-    private TextField contest_name;
     @FXML
     private TextArea contest_desc;
     @FXML
