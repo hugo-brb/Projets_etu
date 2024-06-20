@@ -1,5 +1,6 @@
 package org.example.chiefs_arena.App;
 
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -13,7 +14,9 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import org.example.chiefs_arena.user.ConcoursList;
 
+import java.io.IOException;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -71,41 +74,37 @@ public class UpdateConcoursList
 	private static int i_index = 0;
 	private static int j_index = 0;
 
-	public static void addConcoursInMain(Concours concours, GridPane container)
-	{
-		ImageView calendar = new ImageView(new Image(UpdateConcoursList.class.getResourceAsStream("/org/example/chiefs_arena/img/calendar-03-stroke-rounded.png")));
-		HBox header = new HBox();
-		HBox left = new HBox();
+	public static void addConcoursInMain(Concours concours, GridPane container) {
+		try {
+			FXMLLoader loader = new FXMLLoader(UpdateConcoursList.class.getResource("/org/example/chiefs_arena/mainConcours.fxml"));
+			VBox box = loader.load();
 
-		Date date = concours.getDateDebut();
-		Label label_date = new Label(date.getMonth() + " " + date.getDay() + ", " + date.getYear());
-		left.getChildren().addAll(calendar, label_date);
+			Label label_date = (Label) box.lookup("#mainDate");
+			Label label_title = (Label) box.lookup("#mainTitle");
+			Label label_desc = (Label) box.lookup("#mainDesc");
 
-		String category_name = (concours.getCategories().isEmpty() ? null : concours.getCategories().get(0).getNom());
-		Label category = new Label();
-		header.getChildren().addAll(left, category);
+			Date creationDate = concours.getDateDebut();
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
+			label_date.setText(dateFormat.format(creationDate));
 
-		String desc = concours.getDescription();
-		if (desc.length() > 120) desc = desc.substring(0, 120) + "...";
-		Text text_desc = new Text(desc);
-		text_desc.getStyleClass().add("text");
-		text_desc.setTextAlignment(TextAlignment.CENTER);
-		text_desc.setWrappingWidth(220);
+			label_title.setText(concours.getNom());
 
-		Separator ligner = new Separator();
+			String desc = concours.getDescription();
+			if (desc.length() > 120) {
+				desc = desc.substring(0, 120) + "...";
+			}
+			label_desc.setText(desc);
 
-		VBox box = new VBox();
-		box.setSpacing(15.0);
-		box.setStyle("-fx-background-radius: 10; -fx-background-color: white; -fx-padding: 15px");
-		box.getChildren().addAll(header, text_desc, ligner, footer);
+			GridPane.setConstraints(box, i_index, j_index);
+			container.getChildren().add(box);
+			i_index++;
+			if (i_index > 2) {
+				i_index = 0;
+				j_index++;
+			}
 
-		GridPane.setConstraints(box, i_index, j_index);
-		container.getChildren().add(box);
-		i_index++;
-		if (i_index > 2)
-		{
-			i_index = 0;
-			j_index++;
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-	}
+    }
 }

@@ -1,144 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<FlowPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.AppController">
+<VBox id="bConcours" prefHeight="500.0" prefWidth="843.0" spacing="20.0" style="-fx-background-color: #f0f0f0;" styleClass="bConcours" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.AppController">
    <children>
-      <ScrollPane fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="843.0">
-         <content>
-            <VBox id="bConcours" prefHeight="1200.0" prefWidth="843.0" spacing="20.0" style="-fx-background-color: #f0f0f0;" styleClass="bConcours" stylesheets="@style/style.css">
+      <VBox prefHeight="65.0" prefWidth="828.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="787.0">
                <children>
-                  <VBox prefHeight="65.0" prefWidth="828.0">
-                     <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="787.0">
-                           <children>
-                              <Label prefHeight="20.0" prefWidth="99.0" text="Mes concours">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="20.0" prefWidth="92.0" text="Chief's Arena">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="520.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <ImageView fitHeight="61.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@img/Logo_ChiefsArena_transparentBlack.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                           <VBox.margin>
-                              <Insets left="30.0" right="10.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <Separator prefWidth="200.0" style="-fx-background-color: #808080; -fx-border-color: #808080; -fx-border-width: 0;" />
-                     </children>
-                  </VBox>
-                  <HBox alignment="CENTER" prefHeight="41.0" prefWidth="828.0" spacing="5.0">
-                     <children>
-                        <Label text="Jury">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <VBox prefHeight="1200.0" prefWidth="628.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-width: 0;">
+                  <Label prefHeight="20.0" prefWidth="99.0" text="Mes concours">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="20.0" prefWidth="92.0" text="Chief's Arena">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="520.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="61.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/Logo_ChiefsArena_transparentBlack.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets left="30.0" right="10.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0" style="-fx-background-color: #808080; -fx-border-color: #808080; -fx-border-width: 0;" />
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="41.0" prefWidth="828.0" spacing="5.0">
+         <children>
+            <Label text="Jury">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+         </children>
+      </HBox>
+      <VBox fx:id="juryContainer" prefHeight="1200.0" prefWidth="628.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-width: 0;">
+         <VBox.margin>
+            <Insets bottom="50.0" left="100.0" right="100.0" />
+         </VBox.margin>
+         <children>
+            <VBox prefHeight="77.0" prefWidth="542.0" spacing="5.0">
+               <children>
+                  <Label text="Nom">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nomJury" prefHeight="35.0" style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-color: #f0f0f0; -fx-border-width: 0;">
+                     <effect>
+                        <DropShadow offsetY="1.0">
+                           <color>
+                              <Color red="0.05999999865889549" green="0.05999999865889549" blue="0.05999999865889549" opacity="0.10000000149011612" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets left="75.0" right="75.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox prefHeight="77.0" prefWidth="542.0" spacing="5.0">
+               <children>
+                  <Label text="Prenom">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="prenomJury" prefHeight="35.0" style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-color: #f0f0f0; -fx-border-width: 0;">
+                     <effect>
+                        <DropShadow offsetY="1.0">
+                           <color>
+                              <Color red="0.05999999865889549" green="0.05999999865889549" blue="0.05999999865889549" opacity="0.10000000149011612" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets left="75.0" right="75.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox prefHeight="77.0" prefWidth="542.0" spacing="5.0">
+               <children>
+                  <Label text="Age">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="ageJury" prefHeight="35.0" style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-width: 0;">
+                     <effect>
+                        <DropShadow offsetY="1.0">
+                           <color>
+                              <Color red="0.05999999865889549" green="0.05999999865889549" blue="0.05999999865889549" opacity="0.10000000149011612" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets left="75.0" right="75.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="1200.0" prefWidth="628.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-width: 0;">
+               <children>
+                  <Button onAction="#creerJury" style="-fx-background-color: white; -fx-border-color: #2a8cff; -fx-background-radius: 7; -fx-border-radius: 7;" text="Créer Jury">
                      <VBox.margin>
-                        <Insets bottom="50.0" left="100.0" right="100.0" />
+                        <Insets />
                      </VBox.margin>
-                     <children>
-                        <VBox prefHeight="77.0" prefWidth="542.0" spacing="5.0">
-                           <children>
-                              <Label text="Nom">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="nomJury" prefHeight="35.0" style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-color: #f0f0f0; -fx-border-width: 0;">
-                                 <effect>
-                                    <DropShadow offsetY="1.0">
-                                       <color>
-                                          <Color red="0.05999999865889549" green="0.05999999865889549" blue="0.05999999865889549" opacity="0.10000000149011612" />
-                                       </color>
-                                    </DropShadow>
-                                 </effect>
-                              </TextField>
-                           </children>
-                           <VBox.margin>
-                              <Insets left="75.0" right="75.0" />
-                           </VBox.margin>
-                        </VBox>
-                        <VBox prefHeight="77.0" prefWidth="542.0" spacing="5.0">
-                           <children>
-                              <Label text="Prenom">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="prenomJury" prefHeight="35.0" style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-color: #f0f0f0; -fx-border-width: 0;">
-                                 <effect>
-                                    <DropShadow offsetY="1.0">
-                                       <color>
-                                          <Color red="0.05999999865889549" green="0.05999999865889549" blue="0.05999999865889549" opacity="0.10000000149011612" />
-                                       </color>
-                                    </DropShadow>
-                                 </effect>
-                              </TextField>
-                           </children>
-                           <VBox.margin>
-                              <Insets left="75.0" right="75.0" />
-                           </VBox.margin>
-                        </VBox>
-                        <VBox prefHeight="77.0" prefWidth="542.0" spacing="5.0">
-                           <children>
-                              <Label text="Age">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="ageJury" prefHeight="35.0" style="-fx-background-color: white; -fx-background-radius: 7; -fx-border-width: 0;">
-                                 <effect>
-                                    <DropShadow offsetY="1.0">
-                                       <color>
-                                          <Color red="0.05999999865889549" green="0.05999999865889549" blue="0.05999999865889549" opacity="0.10000000149011612" />
-                                       </color>
-                                    </DropShadow>
-                                 </effect>
-                              </TextField>
-                           </children>
-                           <VBox.margin>
-                              <Insets left="75.0" right="75.0" />
-                           </VBox.margin>
-                        </VBox>
-                        <VBox prefHeight="1200.0" prefWidth="628.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-width: 0;">
-                           <children>
-                              <Button onAction="#creerJury" text="Créer Jury" />
-                           </children>
-                        </VBox>
-                     </children>
                      <padding>
-                        <Insets bottom="20.0" top="20.0" />
+                        <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
                      </padding>
-                  </VBox>
+                     <effect>
+                        <DropShadow offsetY="1.0">
+                           <color>
+                              <Color red="0.17000000178813934" green="0.5573333501815796" blue="1.0" opacity="0.10000000149011612" />
+                           </color>
+                        </DropShadow>
+                     </effect></Button>
                </children>
             </VBox>
-         </content>
-      </ScrollPane>
+         </children>
+         <padding>
+            <Insets bottom="20.0" top="20.0" />
+         </padding>
+      </VBox>
    </children>
-</FlowPane>
+</VBox>

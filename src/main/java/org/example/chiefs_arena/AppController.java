@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -63,6 +64,13 @@ public class AppController {
     private VBox leftbar;
     @FXML
     private Button addCuisinierButton;
+
+    @FXML
+    private Label mainTitle;
+    @FXML
+    private Label mainDesc;
+    @FXML
+    private Label mainDate;
 
     @FXML
     public void actionCreateEvent(MouseEvent event) throws IOException {
@@ -135,7 +143,7 @@ public class AppController {
     }
 
     @FXML
-    public void create(ActionEvent e) throws DescriptionTropLongue {
+    public void create(ActionEvent e) throws DescriptionTropLongue, IOException {
         if (contest_name.getText().isBlank() || contest_desc.getText().isBlank() || contest_desc.getText().length() > 1000) {
             return;
         }
@@ -159,6 +167,7 @@ public class AppController {
         allConcours.addConcours(concours);
         UpdateConcoursList.update(allConcours, concours_content_wrapper, concours_info_list);
         allConcours.save();
+        changeScene("home-view.fxml", btnHome);
     }
 
     @FXML
@@ -172,7 +181,8 @@ public class AppController {
             showAlert("Succès", "Participant créé : " + participant.getNom() + " " + participant.getPrenom() + ", Âge: " + participant.getAge());
 
             addCuisinier(nom, prenom, age);
-            closeWindow(nomField);
+            Stage s = (Stage) nomField.getScene().getWindow();
+            s.close();
         } catch (NumberFormatException e) {
             showAlert("Erreur de saisie", "Veuillez entrer un âge valide.");
         }
@@ -267,6 +277,8 @@ public class AppController {
             window.setTitle(title);
             window.setScene(new Scene(loader.load()));
             window.showAndWait();
+            Image icon = new Image(getClass().getResourceAsStream("/org/example/chiefs_arena/img/icone.png"));
+            window.getIcons().add(icon);
         } catch (IOException e) {
             e.printStackTrace();
         }
