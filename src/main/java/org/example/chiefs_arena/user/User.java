@@ -3,6 +3,7 @@ package org.example.chiefs_arena.user;
 public class User
 {
 	private String name;
+	private String prenom;
 	private String username;
 	private String mail;
 	private String password;
@@ -35,6 +36,7 @@ public class User
 	{
 		return name;
 	}
+	public String getPrenom() {return prenom;}
 
 	public String getUsername()
 	{
@@ -70,7 +72,10 @@ public class User
 	{
 		this.name = name;
 	}
-
+	public void setPrenom(String prenom)
+	{
+		this.prenom = prenom;
+	}
 	public void setUsername(String username)
 	{
 		this.username = username;

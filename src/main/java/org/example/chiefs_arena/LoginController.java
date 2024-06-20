@@ -3,6 +3,7 @@ package org.example.chiefs_arena;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
 import org.example.chiefs_arena.user.Handler;
 import org.example.chiefs_arena.user.User;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 public class LoginController
@@ -27,6 +29,10 @@ public class LoginController
 	private PasswordField password;
 	@FXML
 	private HBox error_box;
+	@FXML
+	private Button btnGoAccount;
+	@FXML
+	private Button btnGoLogin;
 
 	Label error = new Label("Nom d'utilisateur ou mot de passe incorrect");
 
@@ -57,6 +63,10 @@ public class LoginController
 	@FXML
 	private TextField register_name;
 	@FXML
+	private TextField register_prenom;
+	@FXML
+	private TextField register_mail;
+	@FXML
 	private TextField register_username;
 
 	@FXML
@@ -78,9 +88,19 @@ public class LoginController
 			error_message.setText("Vous devez entrer un nom");
 			register_error_box.getChildren().add(error_message);
 		}
+		else if (register_prenom.getText().isBlank())
+		{
+			error_message.setText("Vous devez entrer un prénom");
+			register_error_box.getChildren().add(error_message);
+		}
 		else if (register_username.getText().isBlank())
 		{
 			error_message.setText("Vous devez entrer un nom d'utilisateur");
+			register_error_box.getChildren().add(error_message);
+		}
+		else if (register_mail.getText().isBlank())
+		{
+			error_message.setText("Vous devez entrer un mail");
 			register_error_box.getChildren().add(error_message);
 		}
 		else if (!Handler.isPasswordValid(register_password_field.getText()))
@@ -95,8 +115,9 @@ public class LoginController
 		{
 			User user = new User();
 			user.setName(register_name.getText());
+			user.setPrenom(register_prenom.getText());
 			user.setUsername(register_username.getText());
-			user.setMail("chiefs_arena@gmail.com");
+			user.setMail(register_mail.getText());
 			user.setPassword(register_password_field.getText());
 			user.save();
 
@@ -106,5 +127,25 @@ public class LoginController
 			window.setScene(scene);
 			window.show();
 		}
+	}
+
+	public void goCreateAccount(javafx.event.ActionEvent event) throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("register.fxml"));
+
+		Stage fenetre = (Stage) btnGoAccount.getScene().getWindow();
+		Scene scene = new Scene(fxmlLoader.load());
+
+		fenetre.setScene(scene);
+		fenetre.show();
+	}
+
+	public void goLogin(javafx.event.ActionEvent event) throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+
+		Stage fenetre = (Stage) btnGoLogin.getScene().getWindow();
+		Scene scene = new Scene(fxmlLoader.load());
+
+		fenetre.setScene(scene);
+		fenetre.show();
 	}
 }

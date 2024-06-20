@@ -144,7 +144,7 @@ public class AppController {
     private GridPane concours_info_list;
 
     public void initialize() throws IOException {
-        String username = Handler.getInstance().getUser().getUsername();
+        String username = Handler.getInstance().getUser().getPrenom();
         ConcoursList concours = Handler.getInstance().getAllConcours();
         if (this.username != null) this.username.setText(username);
         if (welcome != null) welcome.setText("Bienvenue, " + username);
@@ -229,7 +229,6 @@ public class AppController {
         UpdateConcoursList.update(all_concours, concours_content_wrapper, concours_info_list);
         all_concours.save();
     }
-
 
 
 
