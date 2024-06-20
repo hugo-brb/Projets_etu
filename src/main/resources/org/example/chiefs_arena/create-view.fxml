@@ -44,14 +44,14 @@
                                     <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                                  </HBox.margin>
                                  <children>
-                                              <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                                  <image>
-                                                      <Image url="@./img/leftbar/settings.png" />
-                                                  </image>
-                                                  <HBox.margin>
-                                                      <Insets />
-                                                  </HBox.margin>
-                                              </ImageView>
+                                      <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                              <Image url="@./img/leftbar/settings.png" />
+                                          </image>
+                                          <HBox.margin>
+                                              <Insets />
+                                          </HBox.margin>
+                                      </ImageView>
                                  </children>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
@@ -391,7 +391,7 @@
                                                 <Font size="16.0" />
                                             </font>
                                         </Label>
-                                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: white; -fx-border-color: #f0f0f0; -fx-border-width: 0; -fx-background-radius: 100;" text="+" textFill="GREY">
+                                        <Button mnemonicParsing="false" onAction="#openAddSponsorWindow" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: white; -fx-border-color: #f0f0f0; -fx-border-width: 0; -fx-background-radius: 100;" text="+" textFill="GREY">
                                             <font>
                                                 <Font name="System Bold" size="32.0" />
                                             </font>

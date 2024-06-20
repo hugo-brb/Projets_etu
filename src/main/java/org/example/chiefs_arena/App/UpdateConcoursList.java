@@ -100,6 +100,5 @@ public class UpdateConcoursList
 
 		container.getChildren().add(box);
 		concours_index++;
-		System.out.println(concours_index);
 	}
 }
