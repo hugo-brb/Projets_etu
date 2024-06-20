@@ -12,7 +12,7 @@ import java.io.IOException;
 public class ChiefsArenaApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        //Scene scene = new Scene(FXMLLoader.load(getClass().getResource(Handler.getInstance().getUser() == null ? "register.fxml" : "login.fxml")));
+        //Scene scene = new Scene(FXMLLoader.load(getClass().getResource("login.fxml")));
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("home-view.fxml")));
         stage.setTitle("Chief's Arena");
 
