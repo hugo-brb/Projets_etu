@@ -355,14 +355,14 @@
                                 <Insets left="150.0" right="150.0" />
                             </VBox.margin>
                         </VBox>
-                        <VBox prefHeight="108.0" prefWidth="542.0" spacing="5.0">
+                        <VBox fx:id="juryContainer" prefHeight="108.0" prefWidth="542.0" spacing="5.0">
                             <children>
                                 <Label text="Jurys">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: white; -fx-border-color: #f0f0f0; -fx-border-width: 0; -fx-background-radius: 100;" text="+" textFill="GREY">
+                                <Button mnemonicParsing="false" onAction="#openAddJuryWindow" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: white; -fx-border-color: #f0f0f0; -fx-border-width: 0; -fx-background-radius: 100;" text="+" textFill="GREY">
                                     <font>
                                         <Font name="System Bold" size="32.0" />
                                     </font>

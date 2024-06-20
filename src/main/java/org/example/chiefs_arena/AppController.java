@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -135,13 +136,15 @@ public class AppController {
     private Label username;
     @FXML
     private Label welcome;
+    @FXML
+    private GridPane concours_info_list;
 
-    /*
     public void initialize() throws IOException {
         String username = Handler.getInstance().getUser().getUsername();
+        ConcoursList concours = Handler.getInstance().getAllConcours();
         this.username.setText(username);
         if (welcome != null) welcome.setText("Bienvenue, " + username);
-        UpdateConcoursList.update(concours_content_wrapper);
+        UpdateConcoursList.update(concours, concours_content_wrapper, concours_info_list);
     }
 
     /**
@@ -211,8 +214,8 @@ public class AppController {
                         new Classement()
                     )
         );
+        UpdateConcoursList.update(all_concours, concours_content_wrapper, concours_info_list);
         all_concours.save();
-        UpdateConcoursList.update(concours_content_wrapper);
     }
 
 
@@ -308,5 +311,75 @@ public class AppController {
     public void addCuisinier(String nom, String prenom, int age) {
         Label label = new Label(nom + " " + prenom + ", Âge: " + age);
         cuisiniersContainer.getChildren().add(label);
+    }
+
+    // ---------------------- Jury -------------------------
+
+    @FXML
+    private TextField nomJury;
+
+    @FXML
+    private TextField prenomJury;
+
+    @FXML
+    private TextField ageJury;
+
+    @FXML
+    private VBox juryContainer;
+
+    @FXML
+    private Button creerJuryButton;
+
+    @FXML
+    private void creerJury() {
+        // Récupérer les valeurs des champs
+        String nom = nomJury.getText();
+        String prenom = prenomJury.getText();
+        int age;
+
+        try {
+            age = Integer.parseInt(ageJury.getText());
+        } catch (NumberFormatException e) {
+            // Gestion de l'erreur si l'âge n'est pas un entier valide
+            showAlert("Erreur de saisie", "Veuillez entrer un âge valide.");
+            return;
+        }
+
+        // Créer et retourner une nouvelle instance de Participant
+        int Serial = 1;
+        Jury jury = new Jury(Serial ,nom, prenom, age );
+
+        // Afficher une confirmation ou traiter l'objet participant
+        showAlert("Succès", "Jury créé : " + jury.getNom() + " " + jury.getPrenom() + ", Âge: " + jury.getAge());
+
+        // Ajouter le participant à la liste des cuisiniers du contrôleur principal
+        addJury(nom, prenom, age);
+
+        // Fermer la fenêtre d'ajout de participant
+        Stage stage = (Stage) nomJury.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void openAddJuryWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("jury.fxml"));
+
+
+
+            Stage jury = new Stage();
+            jury.initModality(Modality.APPLICATION_MODAL);
+            jury.setTitle("Ajouter un Jury");
+            jury.setScene(new Scene(loader.load()));
+            jury.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void addJury(String nom, String prenom, int age) {
+        Label label = new Label(nom + " " + prenom + ", Âge: " + age);
+        juryContainer.getChildren().add(label);
     }
 }

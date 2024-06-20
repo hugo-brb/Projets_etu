@@ -1,20 +1,26 @@
 package org.example.chiefs_arena.App;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.Separator;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import org.example.chiefs_arena.user.ConcoursList;
-import org.example.chiefs_arena.user.Handler;
 
+import java.sql.Time;
 import java.util.Arrays;
+import java.util.Date;
 
 public class UpdateConcoursList
 {
-	public static void update(VBox container)
+	public static void update(ConcoursList concours, VBox container, GridPane main)
 	{
-		ConcoursList concours = Handler.getInstance().getAllConcours();
 		container.getChildren().clear();
 		if (concours == null || concours.getConcours().isEmpty())
 		{
@@ -29,11 +35,71 @@ public class UpdateConcoursList
 		}
 		else
 		{
-			concours.getConcours().forEach(c -> {
-				Label label = new Label(c.getNom());
-				label.getStyleClass().add("text");
-				container.getChildren().add(label);
-			});
+			if (main != null)
+			{
+				main.getChildren().clear();
+				concours.getConcours().forEach(c -> {
+					addConcoursInMain(c, main);
+					Label label = new Label(c.getNom());
+					label.getStyleClass().add("text");
+					container.getChildren().add(label);
+				});
+			}
+			else
+			{
+				concours.getConcours().forEach(c -> {
+					Label label = new Label(c.getNom());
+					label.getStyleClass().add("text");
+					container.getChildren().add(label);
+				});
+			}
 		}
+	}
+
+	private static final HBox footer = new HBox();
+	static
+	{
+		footer.getChildren().addAll(
+			new ImageView(new Image(UpdateConcoursList.class.getResourceAsStream("/org/example/chiefs_arena/img/share-08-stroke-rounded.png"))),
+			new ImageView(new Image(UpdateConcoursList.class.getResourceAsStream("/org/example/chiefs_arena/img/favourite-stroke-rounded.png"))),
+			new ImageView(new Image(UpdateConcoursList.class.getResourceAsStream("/org/example/chiefs_arena/img/more-vertical-stroke-rounded.png")))
+		);
+		footer.setAlignment(Pos.CENTER);
+		footer.setSpacing(20);
+	}
+
+	private static int concours_index = 0;
+
+	public static void addConcoursInMain(Concours concours, GridPane container)
+	{
+		ImageView calendar = new ImageView(new Image(UpdateConcoursList.class.getResourceAsStream("/org/example/chiefs_arena/img/calendar-03-stroke-rounded.png")));
+		HBox header = new HBox();
+		HBox left = new HBox();
+
+		Date date = concours.getDateDebut();
+		Label label_date = new Label(date.getMonth() + " " + date.getDay() + ", " + date.getYear());
+		left.getChildren().addAll(calendar, label_date);
+
+		String category_name = (concours.getCategories().isEmpty() ? null : concours.getCategories().get(0).getNom());
+		Label category = new Label();
+		header.getChildren().addAll(left, category);
+
+		String desc = concours.getDescription();
+		if (desc.length() > 120) desc = desc.substring(0, 120) + "...";
+		Text text_desc = new Text(desc);
+		text_desc.getStyleClass().add("text");
+		text_desc.setTextAlignment(TextAlignment.CENTER);
+		text_desc.setWrappingWidth(220);
+
+		Separator ligner = new Separator();
+
+		VBox box = new VBox();
+		box.setSpacing(15.0);
+		box.setStyle("-fx-background-radius: 10; -fx-background-color: white; -fx-padding: 15px");
+		box.getChildren().addAll(header, text_desc, ligner, footer);
+
+		container.getChildren().add(box);
+		concours_index++;
+		System.out.println(concours_index);
 	}
 }
