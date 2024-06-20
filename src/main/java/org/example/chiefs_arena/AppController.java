@@ -9,9 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.chiefs_arena.App.*;
@@ -22,7 +22,6 @@ import org.example.chiefs_arena.user.Handler;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 public class AppController {
     @FXML
@@ -83,13 +82,15 @@ public class AppController {
     private Label username;
     @FXML
     private Label welcome;
+    @FXML
+    private GridPane concours_info_list;
 
-    /*
     public void initialize() throws IOException {
         String username = Handler.getInstance().getUser().getUsername();
+        ConcoursList concours = Handler.getInstance().getAllConcours();
         this.username.setText(username);
         if (welcome != null) welcome.setText("Bienvenue, " + username);
-        UpdateConcoursList.update(concours_content_wrapper);
+        UpdateConcoursList.update(concours, concours_content_wrapper, concours_info_list);
     }
 
     /**
@@ -159,8 +160,8 @@ public class AppController {
                         new Classement()
                     )
         );
+        UpdateConcoursList.update(all_concours, concours_content_wrapper, concours_info_list);
         all_concours.save();
-        UpdateConcoursList.update(concours_content_wrapper);
     }
 
 
