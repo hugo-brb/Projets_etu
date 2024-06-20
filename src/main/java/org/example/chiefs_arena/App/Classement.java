@@ -2,7 +2,6 @@ package org.example.chiefs_arena.App;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * Représente le classement des participants dans un concours.
@@ -13,6 +12,12 @@ public class Classement {
     private List<Participant> participants = new ArrayList<>();
 
     public Classement() {}
+
+    /**
+     * Constructeur de la classe Classement.
+     * @param position Le position d'un partcipant dans le classement.
+     * @param podium Le podium du classement.
+     */
 
     public Classement(int position, List<Participant> podium) {
         this.position = position;
@@ -36,6 +41,14 @@ public class Classement {
     }
 
     /**
+     * Définit la liste de tous les participants du classement d'un concours
+     * @return la liste de tous les participants à classer
+     */
+    public List<Participant> getParticipants(){
+        return participants;
+    }
+
+    /**
      * Obtient la liste des participants sur le podium.
      * @return La liste des participants sur le podium.
      */
@@ -47,19 +60,10 @@ public class Classement {
     }
 
     /**
-     * Définit la liste des participants sur le podium.
-     * @param podium La nouvelle liste des participants sur le podium.
+     * Méthode permettant de calculer la moyenne des 3 notes obtenues par un participant. Il y a 3 jurés dans un concours.
+     * @param notes
+     * @return la moyenne de 3 notes
      */
-    public void setPodium(List<Participant> podium) {
-        this.podium = podium;
-    }
-
-    public List<Participant> getParticipants(){
-        return participants;
-    }
-    public void setParticipants(List<Participant> participants) {
-        this.participants = participants;
-    }
 
     public int moyenne(List<Note> notes){
         int somme = 0;
@@ -68,6 +72,11 @@ public class Classement {
         }
         return somme/3;
     }
+
+    /**
+     * Génére le classement des participants à un concours en fonction de la moyenne de leurs notes données par les 3 jurés.
+     * @param participants
+     */
 
     public void genererClassement(List<Participant> participants){
         int j;
