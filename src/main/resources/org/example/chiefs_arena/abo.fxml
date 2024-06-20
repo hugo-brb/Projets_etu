@@ -317,7 +317,7 @@
                                                       <Image url="@img/Valid.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label text="Lorem ipsum dolor sit " />
+                                                <Label text="Création de concours" />
                                              </children>
                                              <VBox.margin>
                                                 <Insets left="15.0" top="10.0" />
@@ -330,20 +330,20 @@
                                                       <Image url="@img/Valid.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label text="Lorem ipsum dolor sit " />
+                                                <Label text="Outils d'analyse basique" />
                                              </children>
                                              <VBox.margin>
                                                 <Insets left="15.0" />
                                              </VBox.margin>
                                           </HBox>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="207.0" spacing="10.0">
+                                          <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="160.0" spacing="10.0">
                                              <children>
                                                 <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@img/Valid.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label text="Lorem ipsum dolor sit " />
+                                                <Label text="Système d'aide à la rentabilité" textOverrun="CLIP" wrapText="true" />
                                              </children>
                                              <VBox.margin>
                                                 <Insets left="15.0" />
@@ -451,7 +451,7 @@
                                                       <Image url="@img/Valid.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label text="Lorem ipsum dolor sit " />
+                                                <Label text="Création de concours" />
                                              </children>
                                              <VBox.margin>
                                                 <Insets left="15.0" top="10.0" />
@@ -464,20 +464,20 @@
                                                       <Image url="@img/Valid.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label text="Lorem ipsum dolor sit " />
+                                                <Label text="Outils d'analyse basique" />
                                              </children>
                                              <VBox.margin>
                                                 <Insets left="15.0" />
                                              </VBox.margin>
                                           </HBox>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="207.0" spacing="10.0">
+                                          <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="160.0" spacing="10.0">
                                              <children>
                                                 <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@img/Valid.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label text="Lorem ipsum dolor sit " />
+                                                <Label text="Système d'aide à la rentabilité" textOverrun="CLIP" wrapText="true" />
                                              </children>
                                              <VBox.margin>
                                                 <Insets left="15.0" />
@@ -597,7 +597,7 @@
                                                       <Image url="@img/Valid.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label text="Lorem ipsum dolor sit " />
+                                                <Label text="Création de concours" />
                                              </children>
                                              <VBox.margin>
                                                 <Insets left="15.0" top="10.0" />
@@ -610,20 +610,20 @@
                                                       <Image url="@img/Valid.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label text="Lorem ipsum dolor sit " />
+                                                <Label text="Outils d'analyse basique" />
                                              </children>
                                              <VBox.margin>
                                                 <Insets left="15.0" />
                                              </VBox.margin>
                                           </HBox>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="207.0" spacing="10.0">
+                                          <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="160.0" spacing="10.0">
                                              <children>
                                                 <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@img/Valid.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label text="Lorem ipsum dolor sit " />
+                                                <Label text="Système d'aide à la rentabilité" textOverrun="CLIP" wrapText="true" />
                                              </children>
                                              <VBox.margin>
                                                 <Insets left="15.0" />

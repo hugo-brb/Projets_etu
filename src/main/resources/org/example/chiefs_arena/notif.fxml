@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
+<?import eu.hansolo.tilesfx.addons.Switch?>
 
 <FlowPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chiefs_arena.AppController">
     <children>
@@ -306,7 +307,8 @@
                                           <Label text="recevez des notifications quand un concours approche" />
                                        </children>
                                     </VBox>
-                                    <ToggleButton mnemonicParsing="false" text="ToggleButton" />
+                                     <Switch backgroundColor="#f0f0f0" activeColor="#2a8cff" active="false">
+                                     </Switch>
       
                                  </children>
                               </HBox>
@@ -323,7 +325,8 @@
                                           <Label text="recevez des notifications sur les nouveautés de l’application" />
                                        </children>
                                     </VBox>
-                                    <ToggleButton mnemonicParsing="false" text="ToggleButton" />
+                                     <Switch backgroundColor="#f0f0f0" activeColor="#2a8cff" active="false">
+                                     </Switch>
                                  </children>
                               </HBox>
                            </children>
