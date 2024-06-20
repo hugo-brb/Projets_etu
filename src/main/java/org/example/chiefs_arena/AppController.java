@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.chiefs_arena.App.*;
+import org.example.chiefs_arena.exception.ConcoursDejaExistant;
 import org.example.chiefs_arena.exception.DescriptionTropLongue;
 import org.example.chiefs_arena.user.ConcoursList;
 import org.example.chiefs_arena.user.Handler;
@@ -135,7 +136,8 @@ public class AppController {
     }
 
     @FXML
-    public void create(ActionEvent e) throws DescriptionTropLongue {
+    public void create(ActionEvent e) throws DescriptionTropLongue, ConcoursDejaExistant
+    {
         if (contest_name.getText().isBlank() || contest_desc.getText().isBlank() || contest_desc.getText().length() > 1000) {
             return;
         }

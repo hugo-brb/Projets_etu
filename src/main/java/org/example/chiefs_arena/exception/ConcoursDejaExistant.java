@@ -5,5 +5,10 @@ public class ConcoursDejaExistant extends Exception {
     public ConcoursDejaExistant(String message) {
             super(message);
     }
+
+    public ConcoursDejaExistant()
+    {
+        super("Deux concours ne peuvent pas avoir le même nom");
+    }
 }
 
