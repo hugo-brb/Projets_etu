@@ -14,10 +14,22 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.regex.Pattern;
 
 public class Handler
 {
+	private User user;
+	private ConcoursList concours_list;
+
+	private static Handler instance;
+	public static Handler getInstance()
+	{
+		if (instance == null) instance = new Handler();
+		return instance;
+	}
+
 	public static Gson gson = new Gson();
 	public static final String user_file = "src/main/java/org/example/chiefs_arena/user/data/user.json";
 	public static final String concours_file = "src/main/java/org/example/chiefs_arena/user/data/concours.json";
@@ -26,6 +38,27 @@ public class Handler
 	{
 		User user = gson.fromJson(String.valueOf(fetch_data(user_file)), User.class);
 		return user.getUsername() != null && user.getUsername().equals(username) && user.getPassword() != null && user.getPassword().equals(sha3_256(password));
+	}
+
+	public User getUser()
+	{
+		if (user != null) return user;
+		if (new File(user_file).exists()) return (user = gson.fromJson(fetch_data(user_file), User.class));
+		return null;
+	}
+	public ConcoursList getAllConcours()
+	{
+		if (concours_list != null) return concours_list;
+		if (new File(concours_file).exists()) return (concours_list = gson.fromJson(fetch_data(concours_file), ConcoursList.class));
+		return null;
+	}
+	public void setUser(User user)
+	{
+		this.user = user;
+	}
+	public void setConcours_list(ConcoursList concours_list)
+	{
+		this.concours_list = concours_list;
 	}
 
 	public static boolean isPasswordValid(String password)
