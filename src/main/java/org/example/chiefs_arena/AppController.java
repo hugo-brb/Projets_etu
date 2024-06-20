@@ -382,4 +382,77 @@ public class AppController {
         Label label = new Label(nom + " " + prenom + ", Âge: " + age);
         juryContainer.getChildren().add(label);
     }
+
+    // ---------------------- sponsor -------------------------
+
+    @FXML
+    private TextField idSponso;
+    @FXML
+    private TextField nomSponso;
+
+    @FXML
+    private TextField contributionSponso;
+
+    @FXML
+    private TextField contrainteSponso;
+
+    @FXML
+    private VBox sponsorContainner;
+
+    @FXML
+    private Button creerSponsorButton;
+
+    @FXML
+    private void creerSponsor() {
+        // Récupérer les valeurs des champs
+        String id = idSponso.getText();
+        String nom = nomSponso.getText();
+        String contrainte = contrainteSponso.getText();
+        int contribution;
+
+        try {
+            contribution = Integer.parseInt(contributionSponso.getText());
+        } catch (NumberFormatException e) {
+            // Gestion de l'erreur si l'âge n'est pas un entier valide
+            showAlert("Erreur de saisie", "Veuillez entrer un âge valide.");
+            return;
+        }
+
+        // Créer et retourner une nouvelle instance de Participant
+        int Serial = 1;
+        Partenaire partenaire = new Partenaire(id ,nom, contribution, contrainte );
+
+        // Afficher une confirmation ou traiter l'objet participant
+        showAlert("Succès", "Sponsor créé : " + partenaire.getNom() + ", contribution(s) " + partenaire.getContribution() + ", contrainte(s): " + partenaire.getContraintes());
+
+        // Ajouter le participant à la liste des cuisiniers du contrôleur principal
+        addSponsor(nom, contribution, contrainte);
+
+        // Fermer la fenêtre d'ajout de participant
+        Stage stage = (Stage) nomJury.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void openAddSponsorWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("sponsor.fxml"));
+
+
+
+            Stage jury = new Stage();
+            jury.initModality(Modality.APPLICATION_MODAL);
+            jury.setTitle("Ajouter un Sponsor");
+            jury.setScene(new Scene(loader.load()));
+            jury.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void addSponsor(String nom, int contribution, String contrainte) {
+        Label label = new Label(nom + ", contribution : " + contribution + ", Contrainte: " + contrainte);
+        juryContainer.getChildren().add(label);
+    }
 }
